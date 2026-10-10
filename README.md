@@ -1,4 +1,4 @@
-# Assets Decompiler - (RYL)
+# rDec - (RYL Decompiler)
 
 A verified decompiler for Risk Your Life (RYL) MMORPG `.mcf` script files, including `Script`, `NPCScript`, and `Quest`. The implementation is validated against the C++ source code in `RylServerProject/ScriptEngine`.
 
