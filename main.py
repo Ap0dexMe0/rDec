@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""rDec (RYL Decompiler) entry point: one command decompiles a whole version.
-
-    python main.py --version RYL2 -d
-"""
 
 import sys
 import time
@@ -14,46 +10,52 @@ try:
 except Exception:
     def clear_and_print():
         pass
-from modules.cli import (build_parser, discover_files, resolve_version)
+from modules.cli import (build_parser, discover_files, resolve_version,
+                         version_lines)
 from modules.logging import setup
 
 log = setup()
 
 
 def _count(n: int, singular: str, plural: str = "") -> str:
-    """Plural-aware count: '1 file', '3 files', '0 failures'.
-
-    Messages never use the '(s)' shorthand.
-    """
     noun = singular if n == 1 else (plural or singular + "s")
     return f"{n:,} {noun}"
 
 
 def _output_for(src: Path, base: Path, handler: str) -> Path:
-    """Output path inside the selected tree, mirroring relative structure.
-
-    Always ends in .txt, so an input binary can never be overwritten.
-    """
     if handler == "mcf":
-        from modules.mcf_decompiler import output_name_for
+        from modules.ryl_decompiler import output_name_for_mcf \
+            as output_name_for
+    elif handler == "ncf":
+        from modules.row_decompiler import output_name_for_ncf \
+            as output_name_for
     else:
-        from modules.gsf_decompiler import output_name_for
+        from modules.ryl_decompiler import output_name_for_gsf \
+            as output_name_for
     return base / src.relative_to(base).parent / output_name_for(src.name)
 
 
 def _decompile_mcf(src: Path):
-    from modules.mcf_decompiler import decompile_file
-    txt, _parsed, calls, anomalies, arg_anomalies = decompile_file(src)
-    return txt, len(calls), len(anomalies) + len(arg_anomalies)
+    from modules.ryl_decompiler import decompile_ryl_mcf
+    return decompile_ryl_mcf(src)
 
 
 def _decompile_gsf(src: Path, namemap: dict) -> bytes:
-    from modules.gsf_decompiler import decompile_gsf
-    return decompile_gsf(src, namemap)
+    from modules.ryl_decompiler import decompile_ryl_gsf
+    return decompile_ryl_gsf(src, namemap)
 
 
-def run(version: str, do_decompile: bool, base_dir=None) -> int:
-    """Run the decompile pass. base_dir is test-only; None = script/<v>/."""
+def _decompile_row_gsf(src: Path, namemap: dict) -> bytes:
+    from modules.row_decompiler import decompile_row_gsf
+    return decompile_row_gsf(src, namemap)
+
+
+def _decompile_ncf(src: Path) -> bytes:
+    from modules.row_decompiler import decompile_ncf
+    return decompile_ncf(src)
+
+
+def run(version: str, base_dir=None) -> int:
     started = time.monotonic()
     try:
         version_dir = resolve_version(version)
@@ -64,27 +66,35 @@ def run(version: str, do_decompile: bool, base_dir=None) -> int:
     if not base.is_dir():
         log.error(f"Input directory not found: {base}.")
         return 2
+    is_row = (version == "ROW")
 
     supported, unsupported = discover_files(base)
     log.info(f"Decompiling version '{version}' from {base}.")
     log.info(f"Found {_count(len(supported), 'supported file')} "
              f"and {_count(len(unsupported), 'unsupported file')}.")
-    if not do_decompile:
-        for path, handler in supported:
-            log.info(f"  [{handler}] {path.relative_to(base)}")
-        return 0
 
     namemap = {}
     if any(key == "gsf" for _, key in supported):
-        try:
-            from modules.gsf_decompiler import build_namemap
-            namemap = build_namemap([p for p, _ in supported])
-            if namemap:
-                log.info(f"Loaded {len(namemap):,} item names "
-                         f"for Chemical lookups.")
-        except Exception as e:
-            log.warning(f"Could not load item names ({e}); "
-                        f"continuing without them.")
+        if is_row:
+            try:
+                from modules.row_decompiler import build_row_namemap
+                namemap = build_row_namemap([p for p, _ in supported])
+                if namemap:
+                    log.info(f"Loaded {len(namemap):,} item names "
+                             f"for Chemical lookups.")
+            except Exception as e:
+                log.warning(f"Could not load item names ({e}); "
+                            f"continuing without them.")
+        else:
+            try:
+                from modules.ryl_decompiler import build_ryl_namemap
+                namemap = build_ryl_namemap([p for p, _ in supported])
+                if namemap:
+                    log.info(f"Loaded {len(namemap):,} item names "
+                             f"for Chemical lookups.")
+            except Exception as e:
+                log.warning(f"Could not load item names ({e}); "
+                            f"continuing without them.")
 
     counts = {"ok": 0, "skipped": 0, "unsupported": len(unsupported),
               "failed": 0}
@@ -109,6 +119,28 @@ def run(version: str, do_decompile: bool, base_dir=None) -> int:
                 else:
                     detail = (f"{n_calls:,} calls, "
                               f"{_count(n_anom, 'anomaly', 'anomalies')}")
+            elif handler == "ncf":
+                try:
+                    data = _decompile_ncf(path)
+                except RuntimeError as e:
+                    if str(e).startswith("SKIP:"):
+                        reason = str(e)[len("SKIP:"):].strip()
+                        log.warning(f"Skipped {path.name}: {reason}.")
+                        counts["skipped"] += 1
+                        continue
+                    raise
+                detail = f"{len(data):,} bytes"
+            elif is_row:
+                try:
+                    data = _decompile_row_gsf(path, namemap)
+                except RuntimeError as e:
+                    if str(e).startswith("SKIP:"):
+                        reason = str(e)[len("SKIP:"):].strip()
+                        log.warning(f"Skipped {path.name}: {reason}.")
+                        counts["skipped"] += 1
+                        continue
+                    raise
+                detail = f"{len(data):,} bytes"
             else:
                 try:
                     data = _decompile_gsf(path, namemap)
@@ -149,13 +181,20 @@ def run(version: str, do_decompile: bool, base_dir=None) -> int:
 
 
 def main(argv=None) -> int:
-    args = build_parser().parse_args(argv)
-    return run(args.version, args.decompile)
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if args.list or not args.decompile:
+        for line in version_lines():
+            log.info(line)
+        if not args.decompile:
+            return 0
+    if not args.version:
+        parser.error("-v/--version is required with -d/--decompile")
+    return run(args.version)
 
 
 if __name__ == "__main__":
     try:
-        # Banner art needs UTF-8; stock Windows consoles default to cp1252.
         sys.stdout.reconfigure(encoding="utf-8")
         sys.stderr.reconfigure(encoding="utf-8")
     except Exception:

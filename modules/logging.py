@@ -1,4 +1,3 @@
-"""Pretty colored logging for rDec (coloredlogs + stdlib fallback)."""
 
 import logging
 import os
@@ -6,7 +5,6 @@ import sys
 
 _CONFIGURED = False
 
-# Padded level names keep every message starting at the same column.
 _FMT = "%(levelname)-7s %(message)s"
 _LEVEL_STYLES = {
     "debug": {"color": "cyan"},
@@ -20,12 +18,6 @@ _LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")
 
 
 def setup(stream=None) -> logging.Logger:
-    """Configure root logging once (colored); return the app logger.
-
-    Everything (banner, logging) shares this one stream object so output
-    can never interleave or overwrite itself when redirected to a file.
-    Set RDEC_LOG_LEVEL=DEBUG to see per-operation internals.
-    """
     global _CONFIGURED
     if not _CONFIGURED:
         level = os.getenv("RDEC_LOG_LEVEL", "INFO").upper()

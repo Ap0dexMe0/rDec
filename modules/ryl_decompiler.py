@@ -1,46 +1,324 @@
 #!/usr/bin/env python3
-"""
-GSF Decompiler v1.0 — RYL ItemScript/MonsterProtoType/SkillScript/Chemical/
-Script1(MonsterChat) .gsf to TRUE text format.
 
-Pipeline (verified vs RylServerProject C++ source + TRUE example txt files):
-  envelope: [trash_size u32][trash bytes][orig_size u32][LZO1X payload]
-            (trash is a whole embedded file, e.g. a JPEG for ItemScript)
-  crypt:    LZO-decompress, then per byte ROR1 + XOR with the C++ runtime
-            XORCrypt table. THESE files use ver-0 RAW rows (pre-ctor tables —
-            the RYLGameConverter Python BIT_FIELDS belong to another revision
-            and do NOT decode these files):
-              ItemScript.gsf        ver0 page2     616B ItemInfo structs x4659
-              Chemical.gsf          ver0 page2     10B  recipe entries x905
-              MonsterProtoType.gsf  ver0 page3     552B MonsterInfo structs x910
-              SkillScript.gsf       ver0 page1     5x516B skill groups x187
-              Script1.gsf           ver0 page1     15B  abuse words x129
-  MonsterChat.gsf is PLAINTEXT (byte passthrough).
-  SkillScriptEX.gsf is Lua 5.0 bytecode — decompiled with unluac
-  (lua/unluac.jar, built from source; needs java). Bytecode carries no
-  comments/spacing/quote-style/number-format info, so cosmetic deltas vs
-  any hand-written reference are expected; semantics are exact.
 
-Verified:
-  ItemScript   4659 rows; only diffs vs example = bool/empty spelling
-               variants (same loader semantics), ORE->ETC retype, scattered
-               revision value changes, 25 trailing-space lines, 1 added row.
-               Grade enum of this data has NO S grade: {AAA:0..X:7}.
-  Monster      910 rows, all names present; diffs = col27 (no binary
-               counterpart in any representation — emitted '0'),
-               col18 last-digit (9-digit txt vs f32-shortest), velocity and
-               award/drop revision drifts, Siege/pattern rules verified.
-  SkillScript  187 groups / 855 rows; diffs = cooldown/value rebalances,
-               '?' placeholder glyphs vs newer localized text, prereq tree
-               present in binary but flattened in example.
-  Chemical     905 recipes; diffs = newer revision adds recipes/renames.
-  Abuse        129 words, alphabet-closed (leet/case/space variants).
-  MonsterChat  byte-identical passthrough.
+import struct
+import sys
+from pathlib import Path
 
-Usage:
-    python gsf_decompiler.py input --out out
-Outputs <Base>.txt files ONLY (Abuse.txt for Script1.gsf).
-"""
+from modules.logging import get_logger
+
+log = get_logger()
+
+MCF_KEY = 0x425529AC
+KB = struct.pack("<I", MCF_KEY)
+
+SIGS = {
+    "SetNPC": {6: (["i", "i", "i", "b", "s", "s"], 0, 2)},
+    "SetPosition": {5: (["i", "f", "f", "f", "f"], 1, 0)},
+    "SetNPCAttribute": {3: (["i", "i", "i"], 1, 0)},
+    "NPCDisplay": {5: (["i", "i", "b", "b", "b"], 1, 0)},
+    "AddWords": {2: (["i", "s"], 1, 0)},
+    "AddDialog": {4: (["i", "i", "i", "s"], 1, 0)},
+    "AddItem": {5: (["i", "i", "i", "i", "i"], 1, 0)},
+    "AddZoneMove": {5: (["i", "i", "f", "f", "f"], 1, 0)},
+    "AddQuest": {2: (["i", "i"], 1, 0)},
+    "AddQuestWords": {3: (["i", "i", "s"], 1, 0)},
+    "AddPopup": {7: (["i", "i", "i", "s", "i", "i", "i"], 1, 0)},
+    "SetDropGrade": {7: (["i"] * 7, 1, 0)},
+    "SetDropBase": {7: (["i"] * 7, 1, 0)},
+    "QuestStart": {7: (["i", "i", "i", "i", "i", "i", "b"], 0, 0)},
+    "QuestEnd": {0: ([], 0, 0)},
+    "QuestType": {2: (["i", "i"], 1, 0)},
+    "QuestCompleteSave": {1: (["b"], 1, 0)},
+    "QuestTitle": {1: (["s"], 1, 0)},
+    "QuestLevel": {1: (["s"], 1, 0)},
+    "QuestAward": {1: (["s"], 1, 0)},
+    "QuestDesc": {1: (["s"], 1, 0)},
+    "QuestShortDesc": {1: (["s"], 1, 0)},
+    "QuestArea": {5: (["i", "f", "f", "f", "f"], 1, 0)},
+    "QuestSkillPointBonus": {1: (["i"], 1, 0)},
+    "QuestIcon": {5: (["s", "i", "i", "i", "i"], 1, 0)},
+    "QuestCancelItemDel": {1: (["b"], 1, 0)},
+    "AddPhase": {3: (["i", "i", "s"], 1, 1)},
+    "Phase_Target": {2: (["i", "i"], 2, 0)},
+    "Trigger_Start": {0: ([], 2, 0)},
+    "Trigger_Puton": {6: (["i", "i", "f", "f", "f", "f"], 2, 0)},
+    "Trigger_Geton": {6: (["i", "i", "f", "f", "f", "f"], 2, 0)},
+    "Trigger_Talk": {1: (["i"], 2, 0)},
+    "Trigger_Kill": {2: (["i", "i"], 2, 0)},
+    "Trigger_Pick": {2: (["i", "i"], 2, 0)},
+    "Trigger_Fame": {1: (["i"], 2, 0)},
+    "Trigger_LevelTalk": {3: (["i", "i", "s"], 2, 0)},
+    "Else": {0: ([], 2, 0)},
+    "Event_Disappear": {3: (["i", "i", "i"], 3, 0)},
+    "Event_Get": {2: (["i", "i"], 3, 0)},
+    "Event_Spawn": {4: (["i", "f", "f", "f"], 3, 0)},
+    "Event_MonsterDrop": {2: (["i", "i"], 3, 0)},
+    "Event_Award": {4: (["i", "i", "i", "i"], 3, 0)},
+    "Event_MsgBox": {1: (["s"], 3, 0)},
+    "Event_Phase": {1: (["i"], 3, 0)},
+    "Event_End": {0: ([], 3, 0)},
+    "Event_AwardItem": {4: (["i", "i", "i", "i"], 3, 0)},
+    "Event_AddQuest": {2: (["i", "i"], 3, 0)},
+    "Event_Move": {3: (["i", "f", "f"], 3, 0)},
+    "Event_TheaterMode": {0: ([], 3, 0)},
+    "RylNation": {3: (["i", "i", "s"], 0, 0)},
+    "AddString": {
+        2: (["i", "s"], 0, 0),
+        1: (["s"], 0, 0),
+    },
+}
+
+KINDS = [
+    ("npc", "NPC Script"),
+    ("quest", "Quest"),
+    ("script", "Script"),
+]
+
+
+def target_kind(src_name: str) -> str:
+    low = src_name.lower()
+    for key, kind in KINDS:
+        if key in low:
+            return kind
+    return "Script"
+
+
+def output_name_for_mcf(filename: str) -> str:
+    return Path(filename).stem + ".txt"
+
+
+def decode(raw: bytes) -> bytes:
+    d0 = bytes(a ^ KB[0] for a in raw[0::4])
+    d1 = bytes(a ^ KB[1] for a in raw[1::4])
+    d2 = bytes(a ^ KB[2] for a in raw[2::4])
+    d3 = bytes(a ^ KB[3] for a in raw[3::4])
+    dec = bytearray(len(raw))
+    dec[0::4] = d0
+    dec[1::4] = d1
+    dec[2::4] = d2
+    dec[3::4] = d3
+    return bytes(dec)
+
+
+def parse(dec: bytes) -> dict:
+    g, s, f = struct.unpack_from("<iii", dec, 0)
+    p = 12
+    glo = [struct.unpack_from("<i", dec, p + 4 * i)[0] for i in range(g)]
+    p += 4 * g
+    srel = [struct.unpack_from("<i", dec, p + 4 * i)[0] for i in range(s)]
+    p += 4 * s
+    frel = []
+    for i in range(f):
+        fn, fo = struct.unpack_from("<ii", dec, p + 8 * i)
+        frel.append((fn, fo))
+    p += 8 * f
+    gv, sb, cs = struct.unpack_from("<iii", dec, p)
+    p += 12
+    strbuf = dec[p: p + sb]
+    p += sb
+    code = dec[p: p + cs]
+    p += cs
+    fmap_size = struct.unpack_from("<l", dec, p)[0]
+    p += 4
+    funcmap = {}
+    for _ in range(fmap_size):
+        end = dec.index(b"\n", p)
+        name = dec[p:end].decode("ascii")
+        p = end + 1
+        typ, offset = struct.unpack_from("<ll", dec, p)
+        p += 8
+        funcmap.setdefault(offset, []).append(name)
+    sysvars = struct.unpack_from("<iiii", dec, p)
+    p += 16
+    return {"glo": glo, "srel": set(srel), "frel": frel, "gv": gv,
+            "strbuf": strbuf, "code": code, "funcmap": funcmap,
+            "sysvars": sysvars, "consumed": p, "total": len(dec)}
+
+
+def fmt_int(v: int) -> str:
+    if v >= 0x100000:
+        return f"0x{v:X}"
+    return str(v)
+
+
+def fmt_float(bits: int) -> str:
+    v = struct.unpack("<f", struct.pack("<I", bits))[0]
+    for prec in range(0, 12):
+        cand = ("%.*f" % (prec, v)).rstrip("0").rstrip(".")
+        if cand in ("-0", "", "-"):
+            cand = "0"
+        try:
+            if struct.unpack("<I", struct.pack("<f", float(cand)))[0] == bits:
+                return cand
+        except OverflowError:
+            pass
+    return repr(float(v))
+
+
+def coerce_text(raw: bytes) -> bytes:
+    try:
+        raw.decode("utf-8")
+        return raw
+    except UnicodeDecodeError:
+        pass
+    try:
+        return raw.decode("cp1252").encode("utf-8")
+    except UnicodeDecodeError:
+        return raw.decode("latin-1").encode("utf-8")
+
+
+def fmt_str(raw: bytes) -> bytes:
+    return b'"' + coerce_text(raw) + b'"'
+
+
+def scan_calls(code: bytes, funcmap: dict, strbuf: bytes, srel: set):
+    calls = []
+    anomalies = []
+    offs = set(funcmap)
+    n = len(code)
+    for i in range(n):
+        if code[i] != 0xE8 or i + 5 > n:
+            continue
+        rel = struct.unpack_from("<i", code, i + 1)[0]
+        tgt = i + 5 + rel
+        if tgt not in offs:
+            continue
+        args = []
+        q = i
+        while q - 6 >= 0 and code[q - 1] == 0x51 and code[q - 6] == 0xB9 \
+                and len(args) < 8:
+            args.append(struct.unpack_from("<I", code, q - 5)[0])
+            q -= 6
+        args.reverse()
+        esp_ok = (i + 11 <= n and code[i + 5] == 0x81
+                  and code[i + 6] == 0xC4
+                  and struct.unpack_from("<I", code, i + 7)[0] == 4 * len(args))
+        names = funcmap[tgt]
+        cands = [nm for nm in names if len(args) in SIGS.get(nm, {})]
+        if len(cands) != 1:
+            anomalies.append((i, tgt, names, args))
+            continue
+        if not esp_ok:
+            anomalies.append((i, tgt, names, args, "esp"))
+            continue
+        calls.append((i, cands[0], args))
+    calls.sort()
+    return calls, anomalies
+
+
+def render_arg(typ: str, imm: int, strbuf: bytes, anomalies: list, where: str):
+    if typ == "s":
+        if imm >= len(strbuf):
+            anomalies.append((where, "stroff", imm))
+            return b'""'
+        end = strbuf.index(b"\x00", imm)
+        return fmt_str(strbuf[imm:end])
+    if typ == "b":
+        if imm not in (0, 1):
+            anomalies.append((where, "bool", imm))
+        return b"true" if imm else b"false"
+    if typ == "f":
+        return fmt_float(imm).encode("ascii")
+    v = imm if imm < 0x80000000 else imm - 0x100000000
+    return fmt_int(v).encode("ascii")
+
+
+def decompile_file(src: Path):
+    raw = src.read_bytes()
+    log.debug(f"{src.name}: read {len(raw):,} bytes.")
+    dec = decode(raw)
+    P = parse(dec)
+    log.debug(f"{src.name}: decoded into {len(P['code']):,} code bytes, "
+              f"{len(P['funcmap'])} functions and "
+              f"{len(P['strbuf']):,} string bytes.")
+    calls, anomalies = scan_calls(P["code"], P["funcmap"], P["strbuf"], P["srel"])
+    out = []
+    first = True
+    arg_anom = []
+    for addr, name, args in calls:
+        types, indent, blanks = SIGS[name][len(args)]
+        if not first:
+            if name == "SetNPC":
+                out.extend([b""] * 2)
+            elif blanks:
+                out.extend([b""] * blanks)
+        rendered = []
+        for t, imm in zip(types, args):
+            rendered.append(render_arg(t, imm, P["strbuf"], arg_anom,
+                                       f"{name}@{addr}"))
+        out.append(b"\t" * indent
+                   + f"{name}(".encode("ascii")
+                   + b", ".join(rendered)
+                   + b");")
+        first = False
+        if name == "QuestEnd":
+            out.extend([b"", b""])
+    while out and out[-1] == b"":
+        out.pop()
+    log.debug(f"{src.name}: recovered {len(calls):,} calls with "
+              f"{len(anomalies)} call anomalies and "
+              f"{len(arg_anom)} argument anomalies.")
+    from modules.banners import file_banner
+    L = [s.encode("ascii") for s in file_banner()]
+    L.append(b"")
+    L.extend(out)
+    return b"\r\n".join(L), P, calls, anomalies, arg_anom
+
+
+def mcf_main(argv):
+    from modules.logging import setup
+    slog = setup()
+    rest, out = [], None
+    i = 0
+    while i < len(argv):
+        if argv[i] == "--out" and i + 1 < len(argv):
+            out = Path(argv[i + 1])
+            i += 2
+            continue
+        if argv[i].startswith("--"):
+            i += 1
+            continue
+        rest.append(argv[i])
+        i += 1
+    if not rest:
+        print(__doc__)
+        return 2
+    srcs = []
+    for a in rest:
+        p = Path(a)
+        if p.is_dir():
+            srcs += sorted(p.glob("*.mcf"))
+        elif p.exists():
+            srcs.append(p)
+    if out is None:
+        slog.error("Missing required --out <directory>.")
+        return 1
+    out.mkdir(parents=True, exist_ok=True)
+    from collections import Counter
+    for src in srcs:
+        txt, P, calls, anomalies, arg_anom = decompile_file(src)
+        dest = out / (src.stem + ".txt")
+        if dest.exists() and b"mcf_decompiler.py" not in dest.read_bytes():
+            dest = out / (src.stem + ".gen.txt")
+            slog.warning(f"{src.stem}.txt already exists and looks foreign; "
+                         f"writing {dest.name} instead.")
+        dest.write_bytes(txt)
+        cc = Counter(nm for _, nm, _ in calls)
+        slog.info(f"{src.name}: {len(calls):,} calls, "
+                  f"{len(anomalies)} call anomalies, "
+                  f"{len(arg_anom)} argument anomalies "
+                  f"({P['consumed']:,}/{P['total']:,} bytes consumed).")
+        slog.info(f"Wrote {dest} ({len(txt):,} bytes).")
+        for nm, k in sorted(cc.items()):
+            slog.debug(f"    {nm:20s} x{k}")
+        for a in anomalies[:5]:
+            slog.debug(f"    call anomaly: {a}")
+        for a in arg_anom[:5]:
+            slog.debug(f"    argument anomaly: {a}")
+    return 0
+
+
 import re
 import struct
 import sys
@@ -52,10 +330,6 @@ from modules.logging import get_logger
 log = get_logger()
 
 HERE = Path(__file__).parent
-# XOR tables: ALWAYS parsed from the C++ source (authoritative). The Python
-# BIT_FIELDS copies in RYLGameConverter/modules belong to a different
-# revision and do NOT decode these files. Loaded lazily so that importing
-# this module never fails when lzo or the C++ tree is absent.
 _TABLES = None
 
 
@@ -78,20 +352,17 @@ def _tables():
     return _TABLES
 
 
-
 PAGES = {"ItemScript.gsf": (0, 2), "Chemical.gsf": (0, 2),
          "MonsterProtoType.gsf": (0, 3), "SkillScript.gsf": (0, 1),
          "Script1.gsf": (0, 1)}
 OUTNAME = {"Script1.gsf": "Abuse.txt"}
 
 
-def output_name_for(filename: str) -> str:
-    """Output file name for a GSF input (single source of truth)."""
+def output_name_for_gsf(filename: str) -> str:
     return OUTNAME.get(filename, Path(filename).stem + ".txt")
 
 
 def build_namemap(files) -> dict:
-    """Item ID -> name map from the ItemScript.gsf in files ({} if absent)."""
     for src in files:
         if Path(src).name == "ItemScript.gsf":
             return item_namemap(load_gsf(Path(src)))
@@ -99,15 +370,10 @@ def build_namemap(files) -> dict:
 
 
 def decompile_gsf(src: Path, namemap: dict) -> bytes:
-    """Decompile one GSF file to its text bytes.
-
-    Raises RuntimeError("SKIP: ...") when only the optional Lua toolchain
-    is missing; any other failure is a real error.
-    """
     src = Path(src)
     lowered = src.name.lower()
     if lowered == "monsterchat.gsf":
-        body = src.read_bytes()  # plaintext, byte passthrough
+        body = src.read_bytes()
         log.debug(f"MonsterChat.gsf: passing through {len(body):,} "
                   f"plaintext bytes.")
         return with_banner(body, _eol_of(body))
@@ -209,7 +475,6 @@ def ox(v: int) -> str:
     return "O" if v else "X"
 
 
-# ---------------- Item ----------------
 ITEMTYPE = {0: "NONE", 1: "SHIRT", 2: "TUNIC", 3: "CON_ARMOUR", 4: "CON_HELM",
             5: "CON_GLOVE", 6: "CON_BOOTS", 7: "DEX_ARMOUR", 8: "DEX_HELM",
             9: "DEX_GLOVE", 10: "DEX_BOOTS", 11: "ONEHANDED_SWORD",
@@ -238,11 +503,9 @@ ACCESSORY = {65, 66, 67}
 AVATA = {69, 70}
 USEITEM = {43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 57, 58, 59, 60, 61,
            62, 63, 64}
-# Grade enum of THIS data revision (no S grade; verified 2316/2316 rows)
 GRADE = {0: "AAA", 1: "AA", 2: "A", 3: "B", 4: "C", 5: "D", 6: "F", 7: "X"}
 LIMIT = {0: "NONE", 1: "STR", 2: "DEX", 3: "CON", 4: "INT", 5: "WIS",
          6: "LEVEL"}
-# attribute indices EXACTLY as C++ Item::Attribute::Type (NONE=0 first!)
 (NONE_A, MIN_DAMAGE, MAX_DAMAGE, ARMOR, HIT_RATE, EVADE, MAX_HP, HP_REGEN,
  MAX_MP, MP_REGEN, CRITICAL, BLOCK, SPEED, MAGIC_POWER, MAGIC_RESIST,
  LUCKCHANCE, COOLDOWN, SKILL_POINT, FROST, FIRE, ELECTRO,
@@ -332,7 +595,6 @@ def decompile_item(dec: bytes) -> bytes:
     return ("\n".join(lines) + "\n").encode("utf-8")
 
 
-# ---------------- Monster ----------------
 MONPAT = {0: "Common", 1: "Warrior", 2: "Defender", 3: "Mage", 4: "Acolyte",
           5: "Boss", 6: "BG", 7: "Summon", 8: "Structure", 9: "Named",
           10: "Chief", 11: "Object", 12: "Guard", 13: "Gather"}
@@ -340,8 +602,6 @@ MONSTATUE = {0: "0", 1: "HP", 2: "MP", 3: "EXP", 4: "DropRate"}
 
 
 def mon_vel(bits: int) -> str:
-    # txt stores velocity*100 (loader divides back); emit the shortest
-    # spelling whose /100 narrows to these exact f32 bits.
     v = struct.unpack("<f", struct.pack("<I", bits))[0] * 100.0
     for prec in range(0, 12):
         cand = ("%.*f" % (prec, v)).rstrip("0").rstrip(".")
@@ -379,9 +639,6 @@ def emit_monster(r: bytes):
     for col, o in ((21, 472), (22, 474), (23, 478), (24, 476), (25, 480),
                    (26, 492), (28, 490), (30, 500), (31, 502)):
         c[col] = str(struct.unpack_from("<H", r, o)[0])
-    # col27 has no binary counterpart in this revision (verified across
-    # f32/f64/f16/int/bool/hex/text/derived-offset searches); '0' is the
-    # faithful absence value (89 rows carry it in the reference too).
     c[27] = "0"
     c[27] = "0"
     c[29] = str(r[544])
@@ -435,7 +692,6 @@ def decompile_monster(dec: bytes) -> bytes:
     return ("\r\n".join(lines) + "\r\n").encode("utf-8")
 
 
-# ---------------- Skill ----------------
 SKILLTYPES = {0: "NONE", 1: "PASSIVE", 2: "INSTANCE", 3: "CAST", 4: "CHANT",
               5: "ENCHANT", 6: "ITEM", 7: "SET", 8: "ACTION", 9: "ABILITY",
               10: "GATHER"}
@@ -502,7 +758,6 @@ def emit_skill(g: bytes):
         desc = desc[:-1]
     if desc.endswith(b"\r"):
         desc = desc[:-1]
-    # NOTE: quotes are stored IN the buffer; emit verbatim (no wrapping)
     c.append(desc.decode("utf-8", errors="replace"))
     return c
 
@@ -520,7 +775,6 @@ def decompile_skill(dec: bytes) -> bytes:
     return ("\r\n".join(lines) + "\r\n").encode("utf-8")
 
 
-# ---------------- Chemical ----------------
 CHEM_HDR = (b"PickkingItem\t\t\tTargetItem\t\t\tResultItem\t\t\r\n"
             b"Name\tID\tNum\tName\tID\tNum\tName\tID\tNum\r\n")
 
@@ -561,13 +815,11 @@ def item_namemap(dec: bytes) -> dict:
 
 
 def with_banner(body: bytes, eol: bytes = b"\r\n") -> bytes:
-    """Prepend the rDec header block + one blank separator line."""
     from modules.banners import file_banner
     head = eol.join(s.encode("ascii") for s in file_banner())
     return head + eol + eol + body
 
 
-# ---------------- Script1 / MonsterChat ----------------
 def decompile_abuse(dec: bytes) -> bytes:
     words = []
     for i in range(len(dec) // 15):
@@ -577,7 +829,7 @@ def decompile_abuse(dec: bytes) -> bytes:
     return b"\r\n".join(words) + b"\r\n"
 
 
-def main(argv):
+def gsf_main(argv):
     from modules.logging import setup
     slog = setup()
     rest, out = [], None
@@ -608,8 +860,6 @@ def main(argv):
     if out.resolve() in forbid:
         slog.error(f"--out must not point at {out.resolve()}.")
         return 1
-    # NOTE: outputs are byte-clean by design (no marker), so reruns simply
-    # overwrite <Base>.txt.
     namemap = {}
     try:
         namemap = build_namemap(srcs)
@@ -626,11 +876,32 @@ def main(argv):
                 slog.warning(f"Skipped {src.name}: {reason}.")
                 continue
             raise
-        dest = out / output_name_for(src.name)
+        dest = out / output_name_for_gsf(src.name)
         dest.write_bytes(data)
         slog.info(f"Wrote {dest} ({len(data):,} bytes).")
     return 0
 
 
+def output_name_for_ryl(filename: str) -> str:
+    if Path(filename).suffix.lower() == ".mcf":
+        return output_name_for_mcf(filename)
+    return output_name_for_gsf(filename)
+
+
+def build_ryl_namemap(files) -> dict:
+    return build_namemap(files)
+
+
+def decompile_ryl_mcf(src: Path):
+    txt, _parsed, calls, anomalies, arg_anomalies = decompile_file(src)
+    return txt, len(calls), len(anomalies) + len(arg_anomalies)
+
+
+def decompile_ryl_gsf(src: Path, namemap: dict) -> bytes:
+    return decompile_gsf(src, namemap)
+
+
 if __name__ == "__main__":
-    sys.exit(main(sys.argv[1:]))
+    import sys as _sys
+    _sys.exit("use main.py --version RYL2 -d "
+              "(legacy entry points: mcf_main / gsf_main)")
