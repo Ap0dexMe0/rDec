@@ -1,0 +1,1070 @@
+////////////////////////////////////////////////////////
+// rDecompiler By Ap0dexMe0 10/11/2026 11:59:54 AM   //
+////////////////////////////////////////////////////////
+
+PickkingItem			TargetItem			ResultItem			Extra					
+Name	ID	Num	Name	ID	Num	Name	ID	Num	ItemID	AbilityID	AbilityLevel	QuestID	Percent
+Topaz Chip	1901	3	Fehu	1957	1	Small Topaz	1915	1	0	4133	0	0	100
+Topaz Chip	1901	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+BlackMoon Chip	1902	3	Fehu	1957	1	Small BlackMoon	1916	1	0	4133	0	0	100
+BlackMoon Chip	1902	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Pearl Chip	1903	3	Fehu	1957	1	Small Pearl	1917	1	0	4133	0	0	100
+Pearl Chip	1903	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Amber Chip	1904	3	Fehu	1957	1	Small Amber	1918	1	0	4133	0	0	100
+Amber Chip	1904	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Ruby Chip	1905	3	Fehu	1957	1	Small Ruby	1919	1	0	4133	0	0	100
+Ruby Chip	1905	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Sapphire Chip	1906	3	Fehu	1957	1	Small Sapphire	1920	1	0	4133	0	0	100
+Sapphire Chip	1906	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Garnet Chip	1907	3	Fehu	1957	1	Small Garnet	1921	1	0	4133	0	0	100
+Garnet Chip	1907	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Aquamarine Chip	1908	3	Fehu	1957	1	Small Aquamarine	1922	1	0	4133	0	0	100
+Aquamarine Chip	1908	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Diamond Chip	1909	3	Fehu	1957	1	Small Diamond	1923	1	0	4133	0	0	100
+Diamond Chip	1909	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Jade Chip	1910	3	Fehu	1957	1	Small Jade	1924	1	0	4133	0	0	100
+Jade Chip	1910	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Opal Chip	1911	3	Fehu	1957	1	Small Opal	1925	1	0	4133	0	0	100
+Opal Chip	1911	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Ametheyst Chip	1912	3	Fehu	1957	1	Small Ametheyst	1926	1	0	4133	0	0	100
+Ametheyst Chip	1912	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Emerald Chip	1913	3	Fehu	1957	1	Small Emerald	1927	1	0	4133	0	0	100
+Emerald Chip	1913	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Peridot Chip	1914	3	Fehu	1957	1	Small Peridot	1928	1	0	4133	0	0	100
+Peridot Chip	1914	2	Empty Kryo Box	1972	1	Light Kryo Box	1973	1	0	0	0	0	100
+Small Topaz	1915	3	Othila	1958	1	Topaz	1929	1	0	4133	1	0	100
+Small Topaz	1915	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small BlackMoon	1916	3	Othila	1958	1	BlackMoon	1930	1	0	4133	1	0	100
+Small BlackMoon	1916	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Pearl	1917	3	Othila	1958	1	Pearl	1931	1	0	4133	1	0	100
+Small Pearl	1917	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Amber	1918	3	Othila	1958	1	Amber	1932	1	0	4133	1	0	100
+Small Amber	1918	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Ruby	1919	3	Othila	1958	1	Ruby	1933	1	0	4133	1	0	100
+Small Ruby	1919	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Sapphire	1920	3	Othila	1958	1	Sapphire	1934	1	0	4133	1	0	100
+Small Sapphire	1920	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Garnet	1921	3	Othila	1958	1	Garnet	1935	1	0	4133	1	0	100
+Small Garnet	1921	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Aquamarine	1922	3	Othila	1958	1	Aquamarine	1936	1	0	4133	1	0	100
+Small Aquamarine	1922	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Diamond	1923	3	Othila	1958	1	Diamond	1937	1	0	4133	1	0	100
+Small Diamond	1923	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Jade	1924	3	Othila	1958	1	Jade	1938	1	0	4133	1	0	100
+Small Jade	1924	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Opal	1925	3	Othila	1958	1	Opal	1939	1	0	4133	1	0	100
+Small Opal	1925	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Ametheyst	1926	3	Othila	1958	1	Ametheyst	1940	1	0	4133	1	0	100
+Small Ametheyst	1926	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Emerald	1927	3	Othila	1958	1	Emerald	1941	1	0	4133	1	0	100
+Small Emerald	1927	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Small Peridot	1928	3	Othila	1958	1	Peridot	1942	1	0	4133	1	0	100
+Small Peridot	1928	2	Empty Kryo Box	1972	1	Medium Kryo Box	1974	1	0	0	0	0	100
+Topaz	1929	3	Jera	1959	1	Perfect Topaz	1943	1	0	4133	2	0	100
+Topaz	1929	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+BlackMoon	1930	3	Jera	1959	1	Perfect BlackMoon	1944	1	0	4133	2	0	100
+BlackMoon	1930	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Pearl	1931	3	Jera	1959	1	Perfect Pearl	1945	1	0	4133	2	0	100
+Pearl	1931	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Amber	1932	3	Jera	1959	1	Perfect Amber	1946	1	0	4133	2	0	100
+Amber	1932	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Ruby	1933	3	Jera	1959	1	Perfect Ruby	1947	1	0	4133	2	0	100
+Ruby	1933	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Sapphire	1934	3	Jera	1959	1	Perfect Sapphire	1948	1	0	4133	2	0	100
+Sapphire	1934	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Garnet	1935	3	Jera	1959	1	Perfect Garnet	1949	1	0	4133	2	0	100
+Garnet	1935	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Aquamarine	1936	3	Jera	1959	1	Perfect Aquamarine	1950	1	0	4133	2	0	100
+Aquamarine	1936	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Diamond	1937	3	Jera	1959	1	Perfect Diamond	1951	1	0	4133	2	0	100
+Diamond	1937	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Jade	1938	3	Jera	1959	1	Perfect Jade	1952	1	0	4133	2	0	100
+Jade	1938	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Opal	1939	3	Jera	1959	1	Perfect Opal	1953	1	0	4133	2	0	100
+Opal	1939	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Ametheyst	1940	3	Jera	1959	1	Perfect Ametheyst	1954	1	0	4133	2	0	100
+Ametheyst	1940	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Emerald	1941	3	Jera	1959	1	Perfect Emerald	1955	1	0	4133	2	0	100
+Emerald	1941	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Peridot	1942	3	Jera	1959	1	Perfect Peridot	1956	1	0	4133	2	0	100
+Peridot	1942	2	Empty Kryo Box	1972	1	Heavy Kryo Box	1975	1	0	0	0	0	100
+Fehu	1957	1	Topaz Chip	1901	3	Small Topaz	1915	1	0	4133	0	0	100
+Fehu	1957	1	BlackMoon Chip	1902	3	Small BlackMoon	1916	1	0	4133	0	0	100
+Fehu	1957	1	Pearl Chip	1903	3	Small Pearl	1917	1	0	4133	0	0	100
+Fehu	1957	1	Amber Chip	1904	3	Small Amber	1918	1	0	4133	0	0	100
+Fehu	1957	1	Ruby Chip	1905	3	Small Ruby	1919	1	0	4133	0	0	100
+Fehu	1957	1	Sapphire Chip	1906	3	Small Sapphire	1920	1	0	4133	0	0	100
+Fehu	1957	1	Garnet Chip	1907	3	Small Garnet	1921	1	0	4133	0	0	100
+Fehu	1957	1	Aquamarine Chip	1908	3	Small Aquamarine	1922	1	0	4133	0	0	100
+Fehu	1957	1	Diamond Chip	1909	3	Small Diamond	1923	1	0	4133	0	0	100
+Fehu	1957	1	Jade Chip	1910	3	Small Jade	1924	1	0	4133	0	0	100
+Fehu	1957	1	Opal Chip	1911	3	Small Opal	1925	1	0	4133	0	0	100
+Fehu	1957	1	Ametheyst Chip	1912	3	Small Ametheyst	1926	1	0	4133	0	0	100
+Fehu	1957	1	Emerald Chip	1913	3	Small Emerald	1927	1	0	4133	0	0	100
+Fehu	1957	1	Peridot Chip	1914	3	Small Peridot	1928	1	0	4133	0	0	100
+Fehu	1957	3	Slatestone	1969	1	Othila	1958	1	0	4118	0	0	100
+Othila	1958	1	Small Topaz	1915	3	Topaz	1929	1	0	4133	1	0	100
+Othila	1958	1	Small BlackMoon	1916	3	BlackMoon	1930	1	0	4133	1	0	100
+Othila	1958	1	Small Pearl	1917	3	Pearl	1931	1	0	4133	1	0	100
+Othila	1958	1	Small Amber	1918	3	Amber	1932	1	0	4133	1	0	100
+Othila	1958	1	Small Ruby	1919	3	Ruby	1933	1	0	4133	1	0	100
+Othila	1958	1	Small Sapphire	1920	3	Sapphire	1934	1	0	4133	1	0	100
+Othila	1958	1	Small Garnet	1921	3	Garnet	1935	1	0	4133	1	0	100
+Othila	1958	1	Small Aquamarine	1922	3	Aquamarine	1936	1	0	4133	1	0	100
+Othila	1958	1	Small Diamond	1923	3	Diamond	1937	1	0	4133	1	0	100
+Othila	1958	1	Small Jade	1924	3	Jade	1938	1	0	4133	1	0	100
+Othila	1958	1	Small Opal	1925	3	Opal	1939	1	0	4133	1	0	100
+Othila	1958	1	Small Ametheyst	1926	3	Ametheyst	1940	1	0	4133	1	0	100
+Othila	1958	1	Small Emerald	1927	3	Emerald	1941	1	0	4133	1	0	100
+Othila	1958	1	Small Peridot	1928	3	Peridot	1942	1	0	4133	1	0	100
+Othila	1958	3	Slatestone	1969	1	Jera	1959	1	0	4118	0	0	100
+Jera	1959	1	Topaz	1929	3	Perfect Topaz	1943	1	0	4133	2	0	100
+Jera	1959	1	BlackMoon	1930	3	Perfect BlackMoon	1944	1	0	4133	2	0	100
+Jera	1959	1	Pearl	1931	3	Perfect Pearl	1945	1	0	4133	2	0	100
+Jera	1959	1	Amber	1932	3	Perfect Amber	1946	1	0	4133	2	0	100
+Jera	1959	1	Ruby	1933	3	Perfect Ruby	1947	1	0	4133	2	0	100
+Jera	1959	1	Sapphire	1934	3	Perfect Sapphire	1948	1	0	4133	2	0	100
+Jera	1959	1	Garnet	1935	3	Perfect Garnet	1949	1	0	4133	2	0	100
+Jera	1959	1	Aquamarine	1936	3	Perfect Aquamarine	1950	1	0	4133	2	0	100
+Jera	1959	1	Diamond	1937	3	Perfect Diamond	1951	1	0	4133	2	0	100
+Jera	1959	1	Jade	1938	3	Perfect Jade	1952	1	0	4133	2	0	100
+Jera	1959	1	Opal	1939	3	Perfect Opal	1953	1	0	4133	2	0	100
+Jera	1959	1	Ametheyst	1940	3	Perfect Ametheyst	1954	1	0	4133	2	0	100
+Jera	1959	1	Emerald	1941	3	Perfect Emerald	1955	1	0	4133	2	0	100
+Jera	1959	1	Peridot	1942	3	Perfect Peridot	1956	1	0	4133	2	0	100
+Slatestone	1969	1	Fehu	1957	3	Othila	1958	1	0	4118	0	0	100
+Slatestone	1969	1	Othila	1958	3	Jera	1959	1	0	4118	0	0	100
+Empty Kryo Box	1972	1	Topaz Chip	1901	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	BlackMoon Chip	1902	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Pearl Chip	1903	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Amber Chip	1904	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Ruby Chip	1905	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Sapphire Chip	1906	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Garnet Chip	1907	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Aquamarine Chip	1908	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Diamond Chip	1909	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Jade Chip	1910	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Opal Chip	1911	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Ametheyst Chip	1912	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Emerald Chip	1913	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Peridot Chip	1914	2	Light Kryo Box	1973	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Topaz	1915	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small BlackMoon	1916	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Pearl	1917	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Amber	1918	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Ruby	1919	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Sapphire	1920	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Garnet	1921	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Aquamarine	1922	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Diamond	1923	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Jade	1924	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Opal	1925	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Ametheyst	1926	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Emerald	1927	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Small Peridot	1928	2	Medium Kryo Box	1974	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Topaz	1929	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	BlackMoon	1930	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Pearl	1931	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Amber	1932	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Ruby	1933	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Sapphire	1934	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Garnet	1935	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Aquamarine	1936	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Diamond	1937	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Jade	1938	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Opal	1939	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Ametheyst	1940	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Emerald	1941	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Empty Kryo Box	1972	1	Peridot	1942	2	Heavy Kryo Box	1975	1	0	0	0	0	100
+Silvin	2001	1	Bronze Dust	2021	10	Refined Silvin	2011	1	0	4132	0	0	100
+Mithril	2002	1	Silver Dust	2022	10	Refined Mithril	2012	1	0	4132	1	0	100
+Iternium	2003	1	Gold Dust	2023	10	Refined Iternium	2013	1	0	4132	2	0	100
+Soul Metal	2004	1	Platinum Dust	2024	10	Refined Soul Metal	2014	1	0	4132	3	0	100
+Bronze Dust	2021	10	Silvin	2001	1	Refined Silvin	2011	1	0	4132	0	0	100
+Silver Dust	2022	10	Mithril	2002	1	Refined Mithril	2012	1	0	4132	1	0	100
+Gold Dust	2023	10	Iternium	2003	1	Refined Iternium	2013	1	0	4132	2	0	100
+Platinum Dust	2024	10	Soul Metal	2004	1	Refined Soul Metal	2014	1	0	4132	3	0	100
+Bread	3020	1	Mild Spice	3352	1	Mild Spicy Bread	8960	1	0	4134	0	0	100
+Bread	3020	1	Strong Spice	3353	1	Strong Spicy Bread	8972	1	0	4134	1	0	100
+Bread	3020	1	Aromatic Spice	3354	1	Aromatic Spicy Bread	8984	1	0	4134	2	0	100
+Meat	3021	1	Mild Spice	3352	1	Mild Spicy Meat	8961	1	0	4134	0	0	100
+Meat	3021	1	Strong Spice	3353	1	Strong Spicy Meat	8973	1	0	4134	1	0	100
+Meat	3021	1	Aromatic Spice	3354	1	Aromatic Spicy Meat	8985	1	0	4134	2	0	100
+Roasted Meat	3022	1	Mild Spice	3352	1	Mild Spicy Roasted Meat	8962	1	0	4134	0	0	100
+Roasted Meat	3022	1	Strong Spice	3353	1	Strong Spicy Roasted Meat	8974	1	0	4134	1	0	100
+Roasted Meat	3022	1	Aromatic Spice	3354	1	Aromatic Spicy Roasted Meat	8986	1	0	4134	2	0	100
+Bacon	3023	1	Mild Spice	3352	1	Mild Spicy Bacon	8963	1	0	4134	0	0	100
+Bacon	3023	1	Strong Spice	3353	1	Strong Spicy Bacon	8975	1	0	4134	1	0	100
+Bacon	3023	1	Aromatic Spice	3354	1	Aromatic Spicy Bacon	8987	1	0	4134	2	0	100
+Plain Manna	3024	1	Mild Spice	3352	1	Mild Spicy Plain Manna	8964	1	0	4134	0	0	100
+Plain Manna	3024	1	Strong Spice	3353	1	Strong Spicy Plain Manna	8976	1	0	4134	1	0	100
+Plain Manna	3024	1	Aromatic Spice	3354	1	Aromatic Spicy Plain Manna	8988	1	0	4134	2	0	100
+Spinachi Manna	3025	1	Mild Spice	3352	1	Mild Spicy Spinachi Manna	8965	1	0	4134	0	0	100
+Spinachi Manna	3025	1	Strong Spice	3353	1	Strong Spicy Spinachi Manna	8977	1	0	4134	1	0	100
+Spinachi Manna	3025	1	Aromatic Spice	3354	1	Aromatic Spicy Spinachi Manna	8989	1	0	4134	2	0	100
+Carrot Manna	3026	1	Mild Spice	3352	1	Mild Spicy Carrot Manna	8966	1	0	4134	0	0	100
+Carrot Manna	3026	1	Strong Spice	3353	1	Strong Spicy Carrot Manna	8978	1	0	4134	1	0	100
+Carrot Manna	3026	1	Aromatic Spice	3354	1	Aromatic Spicy Carrot Manna	8990	1	0	4134	2	0	100
+Blackbean Manna	3027	1	Mild Spice	3352	1	Mild Spicy Blackbean Manna	8967	1	0	4134	0	0	100
+Blackbean Manna	3027	1	Strong Spice	3353	1	Strong Spicy Blackbean Manna	8979	1	0	4134	1	0	100
+Blackbean Manna	3027	1	Aromatic Spice	3354	1	Aromatic Spicy Blackbean Manna	8991	1	0	4134	2	0	100
+Redbean Soup	3028	1	Mild Spice	3352	1	Mild Spicy Redbean Soup	8968	1	0	4134	0	0	100
+Redbean Soup	3028	1	Strong Spice	3353	1	Strong Spicy Redbean Soup	8980	1	0	4134	1	0	100
+Redbean Soup	3028	1	Aromatic Spice	3354	1	Aromatic Spicy Redbean Soup	8992	1	0	4134	2	0	100
+Chicken Soup	3029	1	Mild Spice	3352	1	Mild Spicy Chicken Soup	8969	1	0	4134	0	0	100
+Chicken Soup	3029	1	Strong Spice	3353	1	Strong Spicy Chicken Soup	8981	1	0	4134	1	0	100
+Chicken Soup	3029	1	Aromatic Spice	3354	1	Aromatic Spicy Chicken Soup	8993	1	0	4134	2	0	100
+Chunky Soup	3030	1	Mild Spice	3352	1	Mild Spicy Chunky Soup	8970	1	0	4134	0	0	100
+Chunky Soup	3030	1	Strong Spice	3353	1	Strong Spicy Chunky Soup	8982	1	0	4134	1	0	100
+Chunky Soup	3030	1	Aromatic Spice	3354	1	Aromatic Spicy Chunky Soup	8994	1	0	4134	2	0	100
+Gourmet Soup	3031	1	Mild Spice	3352	1	Mild Spicy Gourmet Soup	8971	1	0	4134	0	0	100
+Gourmet Soup	3031	1	Strong Spice	3353	1	Strong Spicy Gourmet Soup	8983	1	0	4134	1	0	100
+Gourmet Soup	3031	1	Aromatic Spice	3354	1	Aromatic Spicy Gourmet Soup	8995	1	0	4134	2	0	100
+Crude Alchemist's Water	3101	1	Withered Basil	3401	1	Crude Potion of Attack	3105	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Chamomile	3402	1	Crude Potion of Defense	3109	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Cilantro	3403	1	Crude Potion of Accuracy	3113	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Fennel	3404	1	Crude Potion of Evasion	3117	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Hyssop	3405	1	Crude Potion of Max HP	3161	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Jasmine	3406	1	Crude Potion of Max MP	3165	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Majoram	3407	1	Crude Potion of Critical	3121	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Roket	3408	1	Crude Potion of Block	3169	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Rosemary	3409	1	Crude Potion of Speed	3176	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Sage	3410	1	Crude Potion of Magic Power	3184	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Withered Stevia	3411	1	Crude Potion of Magic Resistance	3188	1	0	4129	0	0	100
+Crude Alchemist's Water	3101	1	Ancient Guardian Core	8239	1	Potion of Patience	3196	1	0	0	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Attack	3105	3	Typical Potion of Attack	3106	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Defense	3109	3	Typical Potion of Defense	3110	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Accuracy	3113	3	Typical Potion of Accuracy	3114	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Evasion	3117	3	Typical Potion of Evasion	3118	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Critical	3121	3	Typical Potion of Critical	3122	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Healing	3153	3	Typical Potion of Healing	3154	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Mana	3157	3	Typical Potion of Mana	3158	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Max HP	3161	3	Typical Potion of Max HP	3162	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Max MP	3165	3	Typical Potion of Max MP	3166	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Block	3169	3	Typical Potion of Block	3170	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Speed	3176	3	Typical Potion of Speed	3177	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Cooldown	3180	3	Typical Potion of Cooldown	3181	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Magic Power	3184	3	Typical Potion of Magic Power	3185	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Crude Potion of Magic Resistance	3188	3	Typical Potion of Magic Resistance	3189	1	0	4114	0	0	100
+Typical Alchemist's Water	3102	1	Moist Basil	3412	1	Typical Potion of Attack	3106	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Chamomile	3413	1	Typical Potion of Defense	3110	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Cilantro	3414	1	Typical Potion of Accuracy	3114	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Fennel	3415	1	Typical Potion of Evasion	3118	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Hyssop	3416	1	Typical Potion of Max HP	3162	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Jasmine	3417	1	Typical Potion of Max MP	3166	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Majoram	3418	1	Typical Potion of Critical	3122	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Roket	3419	1	Typical Potion of Block	3170	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Rosemary	3420	1	Typical Potion of Speed	3177	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Sage	3421	1	Typical Potion of Magic Power	3185	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Moist Stevia	3422	1	Typical Potion of Magic Resistance	3189	1	0	4129	0	0	100
+Typical Alchemist's Water	3102	1	Ancient Guardian Core	8239	2	Potion of Greater Patience	3197	1	0	0	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Attack	3106	3	Fine Potion of Attack	3107	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Defense	3110	3	Fine Potion of Defense	3111	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Accuracy	3114	3	Fine Potion of Accuracy	3115	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Evasion	3118	3	Fine Potion of Evasion	3119	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Critical	3122	3	Fine Potion of Critical	3123	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Healing	3154	3	Fine Potion of Healing	3155	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Mana	3158	3	Fine Potion of Mana	3159	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Max HP	3162	3	Fine Potion of Max HP	3163	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Max MP	3166	3	Fine Potion of Max MP	3167	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Block	3170	3	Fine Potion of Block	3171	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Speed	3177	3	Fine Potion of Speed	3178	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Cooldown	3181	3	Fine Potion of Cooldown	3182	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Magic Power	3185	3	Fine Potion of Magic Power	3186	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Typical Potion of Magic Resistance	3189	3	Fine Potion of Magic Resistance	3190	1	0	4114	0	0	100
+Fine Alchemist's Water	3103	1	Vibrant Basil	3423	1	Fine Potion of Attack	3107	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Chamomile	3424	1	Fine Potion of Defense	3111	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Cilantro	3425	1	Fine Potion of Accuracy	3115	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Fennel	3426	1	Fine Potion of Evasion	3119	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Hyssop	3427	1	Fine Potion of Max HP	3163	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Jasmine	3428	1	Fine Potion of Max MP	3167	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Majoram	3429	1	Fine Potion of Critical	3123	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Roket	3430	1	Fine Potion of Block	3171	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Rosemary	3431	1	Fine Potion of Speed	3178	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Sage	3432	1	Fine Potion of Magic Power	3186	1	0	4129	1	0	100
+Fine Alchemist's Water	3103	1	Vibrant Stevia	3433	1	Fine Potion of Magic Resistance	3190	1	0	4129	1	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Attack	3107	3	Superior Potion of Attack	3108	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Defense	3111	3	Superior Potion of Defense	3112	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Accuracy	3115	3	Superior Potion of Accuracy	3116	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Evasion	3119	3	Superior Potion of Evasion	3120	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Critical	3123	3	Superior Potion of Critical	3124	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Healing	3155	3	Superior Potion of Healing	3156	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Mana	3159	3	Superior Potion of Mana	3160	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Max HP	3163	3	Superior Potion of Max HP	3164	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Max MP	3167	3	Superior Potion of Max MP	3168	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Block	3171	3	Superior Potion of Block	3172	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Speed	3178	3	Superior Potion of Speed	3179	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Cooldown	3182	3	Superior Potion of Cooldown	3183	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Magic Power	3186	3	Superior Potion of Magic Power	3187	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Fine Potion of Magic Resistance	3190	3	Superior Potion of Magic Resistance	3191	1	0	4114	0	0	100
+Superior Alchemist's Water	3104	1	Mystical Basil	3434	1	Superior Potion of Attack	3108	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Chamomile	3435	1	Superior Potion of Defense	3112	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Cilantro	3436	1	Superior Potion of Accuracy	3116	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Fennel	3437	1	Superior Potion of Evasion	3120	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Hyssop	3438	1	Superior Potion of Max HP	3164	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Jasmine	3439	1	Superior Potion of Max MP	3168	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Majoram	3440	1	Superior Potion of Critical	3124	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Roket	3441	1	Superior Potion of Block	3172	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Rosemary	3442	1	Superior Potion of Speed	3179	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Sage	3443	1	Superior Potion of Magic Power	3187	1	0	4129	2	0	100
+Superior Alchemist's Water	3104	1	Mystical Stevia	3444	1	Superior Potion of Magic Resistance	3191	1	0	4129	2	0	100
+Crude Potion of Attack	3105	3	Typical Alchemist's Water	3102	1	Typical Potion of Attack	3106	1	0	4114	0	0	100
+Typical Potion of Attack	3106	3	Fine Alchemist's Water	3103	1	Fine Potion of Attack	3107	1	0	4114	0	0	100
+Fine Potion of Attack	3107	3	Superior Alchemist's Water	3104	1	Superior Potion of Attack	3108	1	0	4114	0	0	100
+Superior Potion of Attack	3108	3	Holy Alchemist's Water	9034	1	Holy Potion of Attack	9007	1	0	4114	0	0	100
+Crude Potion of Defense	3109	3	Typical Alchemist's Water	3102	1	Typical Potion of Defense	3110	1	0	4114	0	0	100
+Typical Potion of Defense	3110	3	Fine Alchemist's Water	3103	1	Fine Potion of Defense	3111	1	0	4114	0	0	100
+Fine Potion of Defense	3111	3	Superior Alchemist's Water	3104	1	Superior Potion of Defense	3112	1	0	4114	0	0	100
+Superior Potion of Defense	3112	3	Holy Alchemist's Water	9034	1	Holy Potion of Defense	9009	1	0	4114	0	0	100
+Crude Potion of Accuracy	3113	3	Typical Alchemist's Water	3102	1	Typical Potion of Accuracy	3114	1	0	4114	0	0	100
+Typical Potion of Accuracy	3114	3	Fine Alchemist's Water	3103	1	Fine Potion of Accuracy	3115	1	0	4114	0	0	100
+Fine Potion of Accuracy	3115	3	Superior Alchemist's Water	3104	1	Superior Potion of Accuracy	3116	1	0	4114	0	0	100
+Superior Potion of Accuracy	3116	3	Holy Alchemist's Water	9034	1	Holy Potion of Accuracy	9011	1	0	4114	0	0	100
+Crude Potion of Evasion	3117	3	Typical Alchemist's Water	3102	1	Typical Potion of Evasion	3118	1	0	4114	0	0	100
+Typical Potion of Evasion	3118	3	Fine Alchemist's Water	3103	1	Fine Potion of Evasion	3119	1	0	4114	0	0	100
+Fine Potion of Evasion	3119	3	Superior Alchemist's Water	3104	1	Superior Potion of Evasion	3120	1	0	4114	0	0	100
+Superior Potion of Evasion	3120	3	Holy Alchemist's Water	9034	1	Holy Potion of Evasion	9013	1	0	4114	0	0	100
+Crude Potion of Critical	3121	3	Typical Alchemist's Water	3102	1	Typical Potion of Critical	3122	1	0	4114	0	0	100
+Typical Potion of Critical	3122	3	Fine Alchemist's Water	3103	1	Fine Potion of Critical	3123	1	0	4114	0	0	100
+Fine Potion of Critical	3123	3	Superior Alchemist's Water	3104	1	Superior Potion of Critical	3124	1	0	4114	0	0	100
+Superior Potion of Critical	3124	3	Holy Alchemist's Water	9034	1	Holy Potion of Critical	9019	1	0	4114	0	0	100
+Crude Potion of Healing	3153	3	Typical Alchemist's Water	3102	1	Typical Potion of Healing	3154	1	0	4114	0	0	100
+Typical Potion of Healing	3154	3	Fine Alchemist's Water	3103	1	Fine Potion of Healing	3155	1	0	4114	0	0	100
+Fine Potion of Healing	3155	3	Superior Alchemist's Water	3104	1	Superior Potion of Healing	3156	1	0	4114	0	0	100
+Superior Potion of Healing	3156	3	Holy Alchemist's Water	9034	1	Holy Potion of Healing	9001	1	0	4114	0	0	100
+Crude Potion of Mana	3157	3	Typical Alchemist's Water	3102	1	Typical Potion of Mana	3158	1	0	4114	0	0	100
+Typical Potion of Mana	3158	3	Fine Alchemist's Water	3103	1	Fine Potion of Mana	3159	1	0	4114	0	0	100
+Fine Potion of Mana	3159	3	Superior Alchemist's Water	3104	1	Superior Potion of Mana	3160	1	0	4114	0	0	100
+Superior Potion of Mana	3160	3	Holy Alchemist's Water	9034	1	Holy Potion of Mana	9003	1	0	4114	0	0	100
+Crude Potion of Max HP	3161	3	Typical Alchemist's Water	3102	1	Typical Potion of Max HP	3162	1	0	4114	0	0	100
+Typical Potion of Max HP	3162	3	Fine Alchemist's Water	3103	1	Fine Potion of Max HP	3163	1	0	4114	0	0	100
+Fine Potion of Max HP	3163	3	Superior Alchemist's Water	3104	1	Superior Potion of Max HP	3164	1	0	4114	0	0	100
+Superior Potion of Max HP	3164	3	Holy Alchemist's Water	9034	1	Holy Potion of Max HP	9015	1	0	4114	0	0	100
+Crude Potion of Max MP	3165	3	Typical Alchemist's Water	3102	1	Typical Potion of Max MP	3166	1	0	4114	0	0	100
+Typical Potion of Max MP	3166	3	Fine Alchemist's Water	3103	1	Fine Potion of Max MP	3167	1	0	4114	0	0	100
+Fine Potion of Max MP	3167	3	Superior Alchemist's Water	3104	1	Superior Potion of Max MP	3168	1	0	4114	0	0	100
+Superior Potion of Max MP	3168	3	Holy Alchemist's Water	9034	1	Holy Potion of Max MP	9017	1	0	4114	0	0	100
+Crude Potion of Block	3169	3	Typical Alchemist's Water	3102	1	Typical Potion of Block	3170	1	0	4114	0	0	100
+Typical Potion of Block	3170	3	Fine Alchemist's Water	3103	1	Fine Potion of Block	3171	1	0	4114	0	0	100
+Fine Potion of Block	3171	3	Superior Alchemist's Water	3104	1	Superior Potion of Block	3172	1	0	4114	0	0	100
+Superior Potion of Block	3172	3	Holy Alchemist's Water	9034	1	Holy Potion of Block	9021	1	0	4114	0	0	100
+Crude Potion of Speed	3176	3	Typical Alchemist's Water	3102	1	Typical Potion of Speed	3177	1	0	4114	0	0	100
+Typical Potion of Speed	3177	3	Fine Alchemist's Water	3103	1	Fine Potion of Speed	3178	1	0	4114	0	0	100
+Fine Potion of Speed	3178	3	Superior Alchemist's Water	3104	1	Superior Potion of Speed	3179	1	0	4114	0	0	100
+Superior Potion of Speed	3179	3	Holy Alchemist's Water	9034	1	Holy Potion of Speed	9023	1	0	4114	0	0	100
+Crude Potion of Cooldown	3180	3	Typical Alchemist's Water	3102	1	Typical Potion of Cooldown	3181	1	0	4114	0	0	100
+Typical Potion of Cooldown	3181	3	Fine Alchemist's Water	3103	1	Fine Potion of Cooldown	3182	1	0	4114	0	0	100
+Fine Potion of Cooldown	3182	3	Superior Alchemist's Water	3104	1	Superior Potion of Cooldown	3183	1	0	4114	0	0	100
+Superior Potion of Cooldown	3183	3	Holy Alchemist's Water	9034	1	Holy Potion of Cooldown	9025	1	0	4114	0	0	100
+Crude Potion of Magic Power	3184	3	Typical Alchemist's Water	3102	1	Typical Potion of Magic Power	3185	1	0	4114	0	0	100
+Typical Potion of Magic Power	3185	3	Fine Alchemist's Water	3103	1	Fine Potion of Magic Power	3186	1	0	4114	0	0	100
+Fine Potion of Magic Power	3186	3	Superior Alchemist's Water	3104	1	Superior Potion of Magic Power	3187	1	0	4114	0	0	100
+Superior Potion of Magic Power	3187	3	Holy Alchemist's Water	9034	1	Holy Potion of Magic Power	9027	1	0	4114	0	0	100
+Crude Potion of Magic Resistance	3188	3	Typical Alchemist's Water	3102	1	Typical Potion of Magic Resistance	3189	1	0	4114	0	0	100
+Typical Potion of Magic Resistance	3189	3	Fine Alchemist's Water	3103	1	Fine Potion of Magic Resistance	3190	1	0	4114	0	0	100
+Fine Potion of Magic Resistance	3190	3	Superior Alchemist's Water	3104	1	Superior Potion of Magic Resistance	3191	1	0	4114	0	0	100
+Superior Potion of Magic Resistance	3191	3	Holy Alchemist's Water	9034	1	Holy Potion of Magic Resistance	9029	1	0	4114	0	0	100
+Empty Cruet	3351	5	Withered Basil	3401	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Chamomile	3402	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Cilantro	3403	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Fennel	3404	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Hyssop	3405	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Jasmine	3406	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Majoram	3407	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Roket	3408	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Rosemary	3409	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Sage	3410	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Withered Stevia	3411	1	Mild Spice	3352	5	0	4134	0	0	100
+Empty Cruet	3351	5	Moist Basil	3412	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Chamomile	3413	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Cilantro	3414	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Fennel	3415	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Hyssop	3416	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Jasmine	3417	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Majoram	3418	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Roket	3419	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Rosemary	3420	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Sage	3421	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Moist Stevia	3422	1	Strong Spice	3353	5	0	4134	1	0	100
+Empty Cruet	3351	5	Vibrant Basil	3423	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Chamomile	3424	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Cilantro	3425	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Fennel	3426	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Hyssop	3427	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Jasmine	3428	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Majoram	3429	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Roket	3430	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Rosemary	3431	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Sage	3432	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Empty Cruet	3351	5	Vibrant Stevia	3433	1	Aromatic Spice	3354	5	0	4134	2	0	100
+Mild Spice	3352	1	Bread	3020	1	Mild Spicy Bread	8960	1	0	4134	0	0	100
+Mild Spice	3352	1	Meat	3021	1	Mild Spicy Meat	8961	1	0	4134	0	0	100
+Mild Spice	3352	1	Roasted Meat	3022	1	Mild Spicy Roasted Meat	8962	1	0	4134	0	0	100
+Mild Spice	3352	1	Bacon	3023	1	Mild Spicy Bacon	8963	1	0	4134	0	0	100
+Mild Spice	3352	1	Plain Manna	3024	1	Mild Spicy Plain Manna	8964	1	0	4134	0	0	100
+Mild Spice	3352	1	Spinachi Manna	3025	1	Mild Spicy Spinachi Manna	8965	1	0	4134	0	0	100
+Mild Spice	3352	1	Carrot Manna	3026	1	Mild Spicy Carrot Manna	8966	1	0	4134	0	0	100
+Mild Spice	3352	1	Blackbean Manna	3027	1	Mild Spicy Blackbean Manna	8967	1	0	4134	0	0	100
+Mild Spice	3352	1	Redbean Soup	3028	1	Mild Spicy Redbean Soup	8968	1	0	4134	0	0	100
+Mild Spice	3352	1	Chicken Soup	3029	1	Mild Spicy Chicken Soup	8969	1	0	4134	0	0	100
+Mild Spice	3352	1	Chunky Soup	3030	1	Mild Spicy Chunky Soup	8970	1	0	4134	0	0	100
+Mild Spice	3352	1	Gourmet Soup	3031	1	Mild Spicy Gourmet Soup	8971	1	0	4134	0	0	100
+Strong Spice	3353	1	Bread	3020	1	Strong Spicy Bread	8972	1	0	4134	1	0	100
+Strong Spice	3353	1	Meat	3021	1	Strong Spicy Meat	8973	1	0	4134	1	0	100
+Strong Spice	3353	1	Roasted Meat	3022	1	Strong Spicy Roasted Meat	8974	1	0	4134	1	0	100
+Strong Spice	3353	1	Bacon	3023	1	Strong Spicy Bacon	8975	1	0	4134	1	0	100
+Strong Spice	3353	1	Plain Manna	3024	1	Strong Spicy Plain Manna	8976	1	0	4134	1	0	100
+Strong Spice	3353	1	Spinachi Manna	3025	1	Strong Spicy Spinachi Manna	8977	1	0	4134	1	0	100
+Strong Spice	3353	1	Carrot Manna	3026	1	Strong Spicy Carrot Manna	8978	1	0	4134	1	0	100
+Strong Spice	3353	1	Blackbean Manna	3027	1	Strong Spicy Blackbean Manna	8979	1	0	4134	1	0	100
+Strong Spice	3353	1	Redbean Soup	3028	1	Strong Spicy Redbean Soup	8980	1	0	4134	1	0	100
+Strong Spice	3353	1	Chicken Soup	3029	1	Strong Spicy Chicken Soup	8981	1	0	4134	1	0	100
+Strong Spice	3353	1	Chunky Soup	3030	1	Strong Spicy Chunky Soup	8982	1	0	4134	1	0	100
+Strong Spice	3353	1	Gourmet Soup	3031	1	Strong Spicy Gourmet Soup	8983	1	0	4134	1	0	100
+Aromatic Spice	3354	1	Bread	3020	1	Aromatic Spicy Bread	8984	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Meat	3021	1	Aromatic Spicy Meat	8985	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Roasted Meat	3022	1	Aromatic Spicy Roasted Meat	8986	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Bacon	3023	1	Aromatic Spicy Bacon	8987	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Plain Manna	3024	1	Aromatic Spicy Plain Manna	8988	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Spinachi Manna	3025	1	Aromatic Spicy Spinachi Manna	8989	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Carrot Manna	3026	1	Aromatic Spicy Carrot Manna	8990	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Blackbean Manna	3027	1	Aromatic Spicy Blackbean Manna	8991	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Redbean Soup	3028	1	Aromatic Spicy Redbean Soup	8992	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Chicken Soup	3029	1	Aromatic Spicy Chicken Soup	8993	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Chunky Soup	3030	1	Aromatic Spicy Chunky Soup	8994	1	0	4134	2	0	100
+Aromatic Spice	3354	1	Gourmet Soup	3031	1	Aromatic Spicy Gourmet Soup	8995	1	0	4134	2	0	100
+Withered Basil	3401	1	Crude Alchemist's Water	3101	1	Crude Potion of Attack	3105	1	0	4129	0	0	100
+Withered Basil	3401	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Chamomile	3402	1	Crude Alchemist's Water	3101	1	Crude Potion of Defense	3109	1	0	4129	0	0	100
+Withered Chamomile	3402	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Cilantro	3403	1	Crude Alchemist's Water	3101	1	Crude Potion of Accuracy	3113	1	0	4129	0	0	100
+Withered Cilantro	3403	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Fennel	3404	1	Crude Alchemist's Water	3101	1	Crude Potion of Evasion	3117	1	0	4129	0	0	100
+Withered Fennel	3404	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Hyssop	3405	1	Crude Alchemist's Water	3101	1	Crude Potion of Max HP	3161	1	0	4129	0	0	100
+Withered Hyssop	3405	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Jasmine	3406	1	Crude Alchemist's Water	3101	1	Crude Potion of Max MP	3165	1	0	4129	0	0	100
+Withered Jasmine	3406	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Majoram	3407	1	Crude Alchemist's Water	3101	1	Crude Potion of Critical	3121	1	0	4129	0	0	100
+Withered Majoram	3407	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Roket	3408	1	Crude Alchemist's Water	3101	1	Crude Potion of Block	3169	1	0	4129	0	0	100
+Withered Roket	3408	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Rosemary	3409	1	Crude Alchemist's Water	3101	1	Crude Potion of Speed	3176	1	0	4129	0	0	100
+Withered Rosemary	3409	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Sage	3410	1	Crude Alchemist's Water	3101	1	Crude Potion of Magic Power	3184	1	0	4129	0	0	100
+Withered Sage	3410	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Withered Stevia	3411	1	Crude Alchemist's Water	3101	1	Crude Potion of Magic Resistance	3188	1	0	4129	0	0	100
+Withered Stevia	3411	1	Empty Cruet	3351	5	Mild Spice	3352	5	0	4134	0	0	100
+Moist Basil	3412	1	Typical Alchemist's Water	3102	1	Typical Potion of Attack	3106	1	0	4129	0	0	100
+Moist Basil	3412	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Chamomile	3413	1	Typical Alchemist's Water	3102	1	Typical Potion of Defense	3110	1	0	4129	0	0	100
+Moist Chamomile	3413	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Cilantro	3414	1	Typical Alchemist's Water	3102	1	Typical Potion of Accuracy	3114	1	0	4129	0	0	100
+Moist Cilantro	3414	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Fennel	3415	1	Typical Alchemist's Water	3102	1	Typical Potion of Evasion	3118	1	0	4129	0	0	100
+Moist Fennel	3415	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Hyssop	3416	1	Typical Alchemist's Water	3102	1	Typical Potion of Max HP	3162	1	0	4129	0	0	100
+Moist Hyssop	3416	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Jasmine	3417	1	Typical Alchemist's Water	3102	1	Typical Potion of Max MP	3166	1	0	4129	0	0	100
+Moist Jasmine	3417	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Majoram	3418	1	Typical Alchemist's Water	3102	1	Typical Potion of Critical	3122	1	0	4129	0	0	100
+Moist Majoram	3418	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Roket	3419	1	Typical Alchemist's Water	3102	1	Typical Potion of Block	3170	1	0	4129	0	0	100
+Moist Roket	3419	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Rosemary	3420	1	Typical Alchemist's Water	3102	1	Typical Potion of Speed	3177	1	0	4129	0	0	100
+Moist Rosemary	3420	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Sage	3421	1	Typical Alchemist's Water	3102	1	Typical Potion of Magic Power	3185	1	0	4129	0	0	100
+Moist Sage	3421	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Moist Stevia	3422	1	Typical Alchemist's Water	3102	1	Typical Potion of Magic Resistance	3189	1	0	4129	0	0	100
+Moist Stevia	3422	1	Empty Cruet	3351	5	Strong Spice	3353	5	0	4134	1	0	100
+Vibrant Basil	3423	1	Fine Alchemist's Water	3103	1	Fine Potion of Attack	3107	1	0	4129	1	0	100
+Vibrant Basil	3423	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Chamomile	3424	1	Fine Alchemist's Water	3103	1	Fine Potion of Defense	3111	1	0	4129	1	0	100
+Vibrant Chamomile	3424	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Cilantro	3425	1	Fine Alchemist's Water	3103	1	Fine Potion of Accuracy	3115	1	0	4129	1	0	100
+Vibrant Cilantro	3425	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Fennel	3426	1	Fine Alchemist's Water	3103	1	Fine Potion of Evasion	3119	1	0	4129	1	0	100
+Vibrant Fennel	3426	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Hyssop	3427	1	Fine Alchemist's Water	3103	1	Fine Potion of Max HP	3163	1	0	4129	1	0	100
+Vibrant Hyssop	3427	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Jasmine	3428	1	Fine Alchemist's Water	3103	1	Fine Potion of Max MP	3167	1	0	4129	1	0	100
+Vibrant Jasmine	3428	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Majoram	3429	1	Fine Alchemist's Water	3103	1	Fine Potion of Critical	3123	1	0	4129	1	0	100
+Vibrant Majoram	3429	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Roket	3430	1	Fine Alchemist's Water	3103	1	Fine Potion of Block	3171	1	0	4129	1	0	100
+Vibrant Roket	3430	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Rosemary	3431	1	Fine Alchemist's Water	3103	1	Fine Potion of Speed	3178	1	0	4129	1	0	100
+Vibrant Rosemary	3431	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Sage	3432	1	Fine Alchemist's Water	3103	1	Fine Potion of Magic Power	3186	1	0	4129	1	0	100
+Vibrant Sage	3432	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Vibrant Stevia	3433	1	Fine Alchemist's Water	3103	1	Fine Potion of Magic Resistance	3190	1	0	4129	1	0	100
+Vibrant Stevia	3433	1	Empty Cruet	3351	5	Aromatic Spice	3354	5	0	4134	2	0	100
+Mystical Basil	3434	1	Superior Alchemist's Water	3104	1	Superior Potion of Attack	3108	1	0	4129	2	0	100
+Mystical Chamomile	3435	1	Superior Alchemist's Water	3104	1	Superior Potion of Defense	3112	1	0	4129	2	0	100
+Mystical Cilantro	3436	1	Superior Alchemist's Water	3104	1	Superior Potion of Accuracy	3116	1	0	4129	2	0	100
+Mystical Fennel	3437	1	Superior Alchemist's Water	3104	1	Superior Potion of Evasion	3120	1	0	4129	2	0	100
+Mystical Hyssop	3438	1	Superior Alchemist's Water	3104	1	Superior Potion of Max HP	3164	1	0	4129	2	0	100
+Mystical Jasmine	3439	1	Superior Alchemist's Water	3104	1	Superior Potion of Max MP	3168	1	0	4129	2	0	100
+Mystical Majoram	3440	1	Superior Alchemist's Water	3104	1	Superior Potion of Critical	3124	1	0	4129	2	0	100
+Mystical Roket	3441	1	Superior Alchemist's Water	3104	1	Superior Potion of Block	3172	1	0	4129	2	0	100
+Mystical Rosemary	3442	1	Superior Alchemist's Water	3104	1	Superior Potion of Speed	3179	1	0	4129	2	0	100
+Mystical Sage	3443	1	Superior Alchemist's Water	3104	1	Superior Potion of Magic Power	3187	1	0	4129	2	0	100
+Mystical Stevia	3444	1	Superior Alchemist's Water	3104	1	Superior Potion of Magic Resistance	3191	1	0	4129	2	0	100
+Aged Ring of Attack	7201	1	Aged Ring of Attack	7201	1	Aged Ring of Attack	7202	1	0	4131	0	0	100
+Aged Ring of Attack	7202	1	Aged Ring of Attack	7202	1	Aged Ring of Attack	7203	1	0	4131	0	0	100
+Aged Ring of Attack	7203	1	Aged Ring of Attack	7203	1	Aged Ring of Attack	7204	1	0	4131	1	0	100
+Aged Ring of Attack	7204	1	Aged Ring of Attack	7204	1	Aged Ring of Attack	7205	1	0	4131	2	0	100
+Antique Ring of Attack	7206	1	Antique Ring of Attack	7206	1	Antique Ring of Attack	7207	1	0	4131	0	0	100
+Antique Ring of Attack	7207	1	Antique Ring of Attack	7207	1	Antique Ring of Attack	7208	1	0	4131	0	0	100
+Antique Ring of Attack	7208	1	Antique Ring of Attack	7208	1	Antique Ring of Attack	7209	1	0	4131	1	0	100
+Antique Ring of Attack	7209	1	Antique Ring of Attack	7209	1	Antique Ring of Attack	7210	1	0	4131	2	0	100
+Ancient Ring of Attack	7211	1	Ancient Ring of Attack	7211	1	Ancient Ring of Attack	7212	1	0	4131	0	0	100
+Ancient Ring of Attack	7212	1	Ancient Ring of Attack	7212	1	Ancient Ring of Attack	7213	1	0	4131	0	0	100
+Ancient Ring of Attack	7213	1	Ancient Ring of Attack	7213	1	Ancient Ring of Attack	7214	1	0	4131	1	0	100
+Ancient Ring of Attack	7214	1	Ancient Ring of Attack	7214	1	Ancient Ring of Attack	7215	1	0	4131	2	0	100
+Archaic Ring of Attack	7216	1	Archaic Ring of Attack	7216	1	Archaic Ring of Attack	7217	1	0	4131	0	0	100
+Archaic Ring of Attack	7217	1	Archaic Ring of Attack	7217	1	Archaic Ring of Attack	7218	1	0	4131	0	0	100
+Archaic Ring of Attack	7218	1	Archaic Ring of Attack	7218	1	Archaic Ring of Attack	7219	1	0	4131	1	0	100
+Archaic Ring of Attack	7219	1	Archaic Ring of Attack	7219	1	Archaic Ring of Attack	7220	1	0	4131	2	0	100
+Primeval Ring of Attack	7221	1	Primeval Ring of Attack	7221	1	Primeval Ring of Attack	7222	1	0	4131	0	0	100
+Primeval Ring of Attack	7222	1	Primeval Ring of Attack	7222	1	Primeval Ring of Attack	7223	1	0	4131	0	0	100
+Primeval Ring of Attack	7223	1	Primeval Ring of Attack	7223	1	Primeval Ring of Attack	7224	1	0	4131	1	0	100
+Primeval Ring of Attack	7224	1	Primeval Ring of Attack	7224	1	Primeval Ring of Attack	7225	1	0	4131	2	0	100
+Aged Ring of Defense	7226	1	Aged Ring of Defense	7226	1	Aged Ring of Defense	7227	1	0	4131	0	0	100
+Aged Ring of Defense	7227	1	Aged Ring of Defense	7227	1	Aged Ring of Defense	7228	1	0	4131	0	0	100
+Aged Ring of Defense	7228	1	Aged Ring of Defense	7228	1	Aged Ring of Defense	7229	1	0	4131	1	0	100
+Aged Ring of Defense	7229	1	Aged Ring of Defense	7229	1	Aged Ring of Defense	7230	1	0	4131	2	0	100
+Antique Ring of Defense	7231	1	Antique Ring of Defense	7231	1	Antique Ring of Defense	7232	1	0	4131	0	0	100
+Antique Ring of Defense	7232	1	Antique Ring of Defense	7232	1	Antique Ring of Defense	7233	1	0	4131	0	0	100
+Antique Ring of Defense	7233	1	Antique Ring of Defense	7233	1	Antique Ring of Defense	7234	1	0	4131	1	0	100
+Antique Ring of Defense	7234	1	Antique Ring of Defense	7234	1	Antique Ring of Defense	7235	1	0	4131	2	0	100
+Ancient Ring of Defense	7236	1	Ancient Ring of Defense	7236	1	Ancient Ring of Defense	7237	1	0	4131	0	0	100
+Ancient Ring of Defense	7237	1	Ancient Ring of Defense	7237	1	Ancient Ring of Defense	7238	1	0	4131	0	0	100
+Ancient Ring of Defense	7238	1	Ancient Ring of Defense	7238	1	Ancient Ring of Defense	7239	1	0	4131	1	0	100
+Ancient Ring of Defense	7239	1	Ancient Ring of Defense	7239	1	Ancient Ring of Defense	7240	1	0	4131	2	0	100
+Archaic Ring of Defense	7241	1	Archaic Ring of Defense	7241	1	Archaic Ring of Defense	7242	1	0	4131	0	0	100
+Archaic Ring of Defense	7242	1	Archaic Ring of Defense	7242	1	Archaic Ring of Defense	7243	1	0	4131	0	0	100
+Archaic Ring of Defense	7243	1	Archaic Ring of Defense	7243	1	Archaic Ring of Defense	7244	1	0	4131	1	0	100
+Archaic Ring of Defense	7244	1	Archaic Ring of Defense	7244	1	Archaic Ring of Defense	7245	1	0	4131	2	0	100
+Primeval Ring of Defense	7246	1	Primeval Ring of Defense	7246	1	Primeval Ring of Defense	7247	1	0	4131	0	0	100
+Primeval Ring of Defense	7247	1	Primeval Ring of Defense	7247	1	Primeval Ring of Defense	7248	1	0	4131	0	0	100
+Primeval Ring of Defense	7248	1	Primeval Ring of Defense	7248	1	Primeval Ring of Defense	7249	1	0	4131	1	0	100
+Primeval Ring of Defense	7249	1	Primeval Ring of Defense	7249	1	Primeval Ring of Defense	7250	1	0	4131	2	0	100
+Aged Ring of Accuracy	7251	1	Aged Ring of Accuracy	7251	1	Aged Ring of Accuracy	7252	1	0	4131	0	0	100
+Aged Ring of Accuracy	7252	1	Aged Ring of Accuracy	7252	1	Aged Ring of Accuracy	7253	1	0	4131	0	0	100
+Aged Ring of Accuracy	7253	1	Aged Ring of Accuracy	7253	1	Aged Ring of Accuracy	7254	1	0	4131	1	0	100
+Aged Ring of Accuracy	7254	1	Aged Ring of Accuracy	7254	1	Aged Ring of Accuracy	7255	1	0	4131	2	0	100
+Antique Ring of Accuracy	7256	1	Antique Ring of Accuracy	7256	1	Antique Ring of Accuracy	7257	1	0	4131	0	0	100
+Antique Ring of Accuracy	7257	1	Antique Ring of Accuracy	7257	1	Antique Ring of Accuracy	7258	1	0	4131	0	0	100
+Antique Ring of Accuracy	7258	1	Antique Ring of Accuracy	7258	1	Antique Ring of Accuracy	7259	1	0	4131	1	0	100
+Antique Ring of Accuracy	7259	1	Antique Ring of Accuracy	7259	1	Antique Ring of Accuracy	7260	1	0	4131	2	0	100
+Ancient Ring of Accuracy	7261	1	Ancient Ring of Accuracy	7261	1	Ancient Ring of Accuracy	7262	1	0	4131	0	0	100
+Ancient Ring of Accuracy	7262	1	Ancient Ring of Accuracy	7262	1	Ancient Ring of Accuracy	7263	1	0	4131	0	0	100
+Ancient Ring of Accuracy	7263	1	Ancient Ring of Accuracy	7263	1	Ancient Ring of Accuracy	7264	1	0	4131	1	0	100
+Ancient Ring of Accuracy	7264	1	Ancient Ring of Accuracy	7264	1	Ancient Ring of Accuracy	7265	1	0	4131	2	0	100
+Archaic Ring of Accuracy	7266	1	Archaic Ring of Accuracy	7266	1	Archaic Ring of Accuracy	7267	1	0	4131	0	0	100
+Archaic Ring of Accuracy	7267	1	Archaic Ring of Accuracy	7267	1	Archaic Ring of Accuracy	7268	1	0	4131	0	0	100
+Archaic Ring of Accuracy	7268	1	Archaic Ring of Accuracy	7268	1	Archaic Ring of Accuracy	7269	1	0	4131	1	0	100
+Archaic Ring of Accuracy	7269	1	Archaic Ring of Accuracy	7269	1	Archaic Ring of Accuracy	7270	1	0	4131	2	0	100
+Primeval Ring of Accuracy	7271	1	Primeval Ring of Accuracy	7271	1	Primeval Ring of Accuracy	7272	1	0	4131	0	0	100
+Primeval Ring of Accuracy	7272	1	Primeval Ring of Accuracy	7272	1	Primeval Ring of Accuracy	7273	1	0	4131	0	0	100
+Primeval Ring of Accuracy	7273	1	Primeval Ring of Accuracy	7273	1	Primeval Ring of Accuracy	7274	1	0	4131	1	0	100
+Primeval Ring of Accuracy	7274	1	Primeval Ring of Accuracy	7274	1	Primeval Ring of Accuracy	7275	1	0	4131	2	0	100
+Aged Ring of Evasion	7276	1	Aged Ring of Evasion	7276	1	Aged Ring of Evasion	7277	1	0	4131	0	0	100
+Aged Ring of Evasion	7277	1	Aged Ring of Evasion	7277	1	Aged Ring of Evasion	7278	1	0	4131	0	0	100
+Aged Ring of Evasion	7278	1	Aged Ring of Evasion	7278	1	Aged Ring of Evasion	7279	1	0	4131	1	0	100
+Aged Ring of Evasion	7279	1	Aged Ring of Evasion	7279	1	Aged Ring of Evasion	7280	1	0	4131	2	0	100
+Antique Ring of Evasion	7281	1	Antique Ring of Evasion	7281	1	Antique Ring of Evasion	7282	1	0	4131	0	0	100
+Antique Ring of Evasion	7282	1	Antique Ring of Evasion	7282	1	Antique Ring of Evasion	7283	1	0	4131	0	0	100
+Antique Ring of Evasion	7283	1	Antique Ring of Evasion	7283	1	Antique Ring of Evasion	7284	1	0	4131	1	0	100
+Antique Ring of Evasion	7284	1	Antique Ring of Evasion	7284	1	Antique Ring of Evasion	7285	1	0	4131	2	0	100
+Ancient Ring of Evasion	7286	1	Ancient Ring of Evasion	7286	1	Ancient Ring of Evasion	7287	1	0	4131	0	0	100
+Ancient Ring of Evasion	7287	1	Ancient Ring of Evasion	7287	1	Ancient Ring of Evasion	7288	1	0	4131	0	0	100
+Ancient Ring of Evasion	7288	1	Ancient Ring of Evasion	7288	1	Ancient Ring of Evasion	7289	1	0	4131	1	0	100
+Ancient Ring of Evasion	7289	1	Ancient Ring of Evasion	7289	1	Ancient Ring of Evasion	7290	1	0	4131	2	0	100
+Archaic Ring of Evasion	7291	1	Archaic Ring of Evasion	7291	1	Archaic Ring of Evasion	7292	1	0	4131	0	0	100
+Archaic Ring of Evasion	7292	1	Archaic Ring of Evasion	7292	1	Archaic Ring of Evasion	7293	1	0	4131	0	0	100
+Archaic Ring of Evasion	7293	1	Archaic Ring of Evasion	7293	1	Archaic Ring of Evasion	7294	1	0	4131	1	0	100
+Archaic Ring of Evasion	7294	1	Archaic Ring of Evasion	7294	1	Archaic Ring of Evasion	7295	1	0	4131	2	0	100
+Primeval Ring of Evasion	7296	1	Primeval Ring of Evasion	7296	1	Primeval Ring of Evasion	7297	1	0	4131	0	0	100
+Primeval Ring of Evasion	7297	1	Primeval Ring of Evasion	7297	1	Primeval Ring of Evasion	7298	1	0	4131	0	0	100
+Primeval Ring of Evasion	7298	1	Primeval Ring of Evasion	7298	1	Primeval Ring of Evasion	7299	1	0	4131	1	0	100
+Primeval Ring of Evasion	7299	1	Primeval Ring of Evasion	7299	1	Primeval Ring of Evasion	7300	1	0	4131	2	0	100
+Aged Ring of Max HP	7301	1	Aged Ring of Max HP	7301	1	Aged Ring of Max HP	7302	1	0	4131	0	0	100
+Aged Ring of Max HP	7302	1	Aged Ring of Max HP	7302	1	Aged Ring of Max HP	7303	1	0	4131	0	0	100
+Aged Ring of Max HP	7303	1	Aged Ring of Max HP	7303	1	Aged Ring of Max HP	7304	1	0	4131	1	0	100
+Aged Ring of Max HP	7304	1	Aged Ring of Max HP	7304	1	Aged Ring of Max HP	7305	1	0	4131	2	0	100
+Antique Ring of Max HP	7306	1	Antique Ring of Max HP	7306	1	Antique Ring of Max HP	7307	1	0	4131	0	0	100
+Antique Ring of Max HP	7307	1	Antique Ring of Max HP	7307	1	Antique Ring of Max HP	7308	1	0	4131	0	0	100
+Antique Ring of Max HP	7308	1	Antique Ring of Max HP	7308	1	Antique Ring of Max HP	7309	1	0	4131	1	0	100
+Antique Ring of Max HP	7309	1	Antique Ring of Max HP	7309	1	Antique Ring of Max HP	7310	1	0	4131	2	0	100
+Ancient Ring of Max HP	7311	1	Ancient Ring of Max HP	7311	1	Ancient Ring of Max HP	7312	1	0	4131	0	0	100
+Ancient Ring of Max HP	7312	1	Ancient Ring of Max HP	7312	1	Ancient Ring of Max HP	7313	1	0	4131	0	0	100
+Ancient Ring of Max HP	7313	1	Ancient Ring of Max HP	7313	1	Ancient Ring of Max HP	7314	1	0	4131	1	0	100
+Ancient Ring of Max HP	7314	1	Ancient Ring of Max HP	7314	1	Ancient Ring of Max HP	7315	1	0	4131	2	0	100
+Archaic Ring of Max HP	7316	1	Archaic Ring of Max HP	7316	1	Archaic Ring of Max HP	7317	1	0	4131	0	0	100
+Archaic Ring of Max HP	7317	1	Archaic Ring of Max HP	7317	1	Archaic Ring of Max HP	7318	1	0	4131	0	0	100
+Archaic Ring of Max HP	7318	1	Archaic Ring of Max HP	7318	1	Archaic Ring of Max HP	7319	1	0	4131	1	0	100
+Archaic Ring of Max HP	7319	1	Archaic Ring of Max HP	7319	1	Archaic Ring of Max HP	7320	1	0	4131	2	0	100
+Primeval Ring of Max HP	7321	1	Primeval Ring of Max HP	7321	1	Primeval Ring of Max HP	7322	1	0	4131	0	0	100
+Primeval Ring of Max HP	7322	1	Primeval Ring of Max HP	7322	1	Primeval Ring of Max HP	7323	1	0	4131	0	0	100
+Primeval Ring of Max HP	7323	1	Primeval Ring of Max HP	7323	1	Primeval Ring of Max HP	7324	1	0	4131	1	0	100
+Primeval Ring of Max HP	7324	1	Primeval Ring of Max HP	7324	1	Primeval Ring of Max HP	7325	1	0	4131	2	0	100
+Aged Ring of Max MP	7326	1	Aged Ring of Max MP	7326	1	Aged Ring of Max MP	7327	1	0	4131	0	0	100
+Aged Ring of Max MP	7327	1	Aged Ring of Max MP	7327	1	Aged Ring of Max MP	7328	1	0	4131	0	0	100
+Aged Ring of Max MP	7328	1	Aged Ring of Max MP	7328	1	Aged Ring of Max MP	7329	1	0	4131	1	0	100
+Aged Ring of Max MP	7329	1	Aged Ring of Max MP	7329	1	Aged Ring of Max MP	7330	1	0	4131	2	0	100
+Antique Ring of Max MP	7331	1	Antique Ring of Max MP	7331	1	Antique Ring of Max MP	7332	1	0	4131	0	0	100
+Antique Ring of Max MP	7332	1	Antique Ring of Max MP	7332	1	Antique Ring of Max MP	7333	1	0	4131	0	0	100
+Antique Ring of Max MP	7333	1	Antique Ring of Max MP	7333	1	Antique Ring of Max MP	7334	1	0	4131	1	0	100
+Antique Ring of Max MP	7334	1	Antique Ring of Max MP	7334	1	Antique Ring of Max MP	7335	1	0	4131	2	0	100
+Ancient Ring of Max MP	7336	1	Ancient Ring of Max MP	7336	1	Ancient Ring of Max MP	7337	1	0	4131	0	0	100
+Ancient Ring of Max MP	7337	1	Ancient Ring of Max MP	7337	1	Ancient Ring of Max MP	7338	1	0	4131	0	0	100
+Ancient Ring of Max MP	7338	1	Ancient Ring of Max MP	7338	1	Ancient Ring of Max MP	7339	1	0	4131	1	0	100
+Ancient Ring of Max MP	7339	1	Ancient Ring of Max MP	7339	1	Ancient Ring of Max MP	7340	1	0	4131	2	0	100
+Archaic Ring of Max MP	7341	1	Archaic Ring of Max MP	7341	1	Archaic Ring of Max MP	7342	1	0	4131	0	0	100
+Archaic Ring of Max MP	7342	1	Archaic Ring of Max MP	7342	1	Archaic Ring of Max MP	7343	1	0	4131	0	0	100
+Archaic Ring of Max MP	7343	1	Archaic Ring of Max MP	7343	1	Archaic Ring of Max MP	7344	1	0	4131	1	0	100
+Archaic Ring of Max MP	7344	1	Archaic Ring of Max MP	7344	1	Archaic Ring of Max MP	7345	1	0	4131	2	0	100
+Primeval Ring of Max MP	7346	1	Primeval Ring of Max MP	7346	1	Primeval Ring of Max MP	7347	1	0	4131	0	0	100
+Primeval Ring of Max MP	7347	1	Primeval Ring of Max MP	7347	1	Primeval Ring of Max MP	7348	1	0	4131	0	0	100
+Primeval Ring of Max MP	7348	1	Primeval Ring of Max MP	7348	1	Primeval Ring of Max MP	7349	1	0	4131	1	0	100
+Primeval Ring of Max MP	7349	1	Primeval Ring of Max MP	7349	1	Primeval Ring of Max MP	7350	1	0	4131	2	0	100
+Aged Ring of Critical	7351	1	Aged Ring of Critical	7351	1	Aged Ring of Critical	7352	1	0	4131	0	0	100
+Aged Ring of Critical	7352	1	Aged Ring of Critical	7352	1	Aged Ring of Critical	7353	1	0	4131	0	0	100
+Aged Ring of Critical	7353	1	Aged Ring of Critical	7353	1	Aged Ring of Critical	7354	1	0	4131	1	0	100
+Aged Ring of Critical	7354	1	Aged Ring of Critical	7354	1	Aged Ring of Critical	7355	1	0	4131	2	0	100
+Antique Ring of Critical	7356	1	Antique Ring of Critical	7356	1	Antique Ring of Critical	7357	1	0	4131	0	0	100
+Antique Ring of Critical	7357	1	Antique Ring of Critical	7357	1	Antique Ring of Critical	7358	1	0	4131	0	0	100
+Antique Ring of Critical	7358	1	Antique Ring of Critical	7358	1	Antique Ring of Critical	7359	1	0	4131	1	0	100
+Antique Ring of Critical	7359	1	Antique Ring of Critical	7359	1	Antique Ring of Critical	7360	1	0	4131	2	0	100
+Ancient Ring of Critical	7361	1	Ancient Ring of Critical	7361	1	Ancient Ring of Critical	7362	1	0	4131	0	0	100
+Ancient Ring of Critical	7362	1	Ancient Ring of Critical	7362	1	Ancient Ring of Critical	7363	1	0	4131	0	0	100
+Ancient Ring of Critical	7363	1	Ancient Ring of Critical	7363	1	Ancient Ring of Critical	7364	1	0	4131	1	0	100
+Ancient Ring of Critical	7364	1	Ancient Ring of Critical	7364	1	Ancient Ring of Critical	7365	1	0	4131	2	0	100
+Archaic Ring of Critical	7366	1	Archaic Ring of Critical	7366	1	Archaic Ring of Critical	7367	1	0	4131	0	0	100
+Archaic Ring of Critical	7367	1	Archaic Ring of Critical	7367	1	Archaic Ring of Critical	7368	1	0	4131	0	0	100
+Archaic Ring of Critical	7368	1	Archaic Ring of Critical	7368	1	Archaic Ring of Critical	7369	1	0	4131	1	0	100
+Archaic Ring of Critical	7369	1	Archaic Ring of Critical	7369	1	Archaic Ring of Critical	7370	1	0	4131	2	0	100
+Primeval Ring of Critical	7371	1	Primeval Ring of Critical	7371	1	Primeval Ring of Critical	7372	1	0	4131	0	0	100
+Primeval Ring of Critical	7372	1	Primeval Ring of Critical	7372	1	Primeval Ring of Critical	7373	1	0	4131	0	0	100
+Primeval Ring of Critical	7373	1	Primeval Ring of Critical	7373	1	Primeval Ring of Critical	7374	1	0	4131	1	0	100
+Primeval Ring of Critical	7374	1	Primeval Ring of Critical	7374	1	Primeval Ring of Critical	7375	1	0	4131	2	0	100
+Aged Ring of Block	7376	1	Aged Ring of Block	7376	1	Aged Ring of Block	7377	1	0	4131	0	0	100
+Aged Ring of Block	7377	1	Aged Ring of Block	7377	1	Aged Ring of Block	7378	1	0	4131	0	0	100
+Aged Ring of Block	7378	1	Aged Ring of Block	7378	1	Aged Ring of Block	7379	1	0	4131	1	0	100
+Aged Ring of Block	7379	1	Aged Ring of Block	7379	1	Aged Ring of Block	7380	1	0	4131	2	0	100
+Antique Ring of Block	7381	1	Antique Ring of Block	7381	1	Antique Ring of Block	7382	1	0	4131	0	0	100
+Antique Ring of Block	7382	1	Antique Ring of Block	7382	1	Antique Ring of Block	7383	1	0	4131	0	0	100
+Antique Ring of Block	7383	1	Antique Ring of Block	7383	1	Antique Ring of Block	7384	1	0	4131	1	0	100
+Antique Ring of Block	7384	1	Antique Ring of Block	7384	1	Antique Ring of Block	7385	1	0	4131	2	0	100
+Ancient Ring of Block	7386	1	Ancient Ring of Block	7386	1	Ancient Ring of Block	7387	1	0	4131	0	0	100
+Ancient Ring of Block	7387	1	Ancient Ring of Block	7387	1	Ancient Ring of Block	7388	1	0	4131	0	0	100
+Ancient Ring of Block	7388	1	Ancient Ring of Block	7388	1	Ancient Ring of Block	7389	1	0	4131	1	0	100
+Ancient Ring of Block	7389	1	Ancient Ring of Block	7389	1	Ancient Ring of Block	7390	1	0	4131	2	0	100
+Archaic Ring of Block	7391	1	Archaic Ring of Block	7391	1	Archaic Ring of Block	7392	1	0	4131	0	0	100
+Archaic Ring of Block	7392	1	Archaic Ring of Block	7392	1	Archaic Ring of Block	7393	1	0	4131	0	0	100
+Archaic Ring of Block	7393	1	Archaic Ring of Block	7393	1	Archaic Ring of Block	7394	1	0	4131	1	0	100
+Archaic Ring of Block	7394	1	Archaic Ring of Block	7394	1	Archaic Ring of Block	7395	1	0	4131	2	0	100
+Primeval Ring of Block	7396	1	Primeval Ring of Block	7396	1	Primeval Ring of Block	7397	1	0	4131	0	0	100
+Primeval Ring of Block	7397	1	Primeval Ring of Block	7397	1	Primeval Ring of Block	7398	1	0	4131	0	0	100
+Primeval Ring of Block	7398	1	Primeval Ring of Block	7398	1	Primeval Ring of Block	7399	1	0	4131	1	0	100
+Primeval Ring of Block	7399	1	Primeval Ring of Block	7399	1	Primeval Ring of Block	7400	1	0	4131	2	0	100
+Aged Ring of Magic Power	7451	1	Aged Ring of Magic Power	7451	1	Aged Ring of Magic Power	7452	1	0	4131	0	0	100
+Aged Ring of Magic Power	7452	1	Aged Ring of Magic Power	7452	1	Aged Ring of Magic Power	7453	1	0	4131	0	0	100
+Aged Ring of Magic Power	7453	1	Aged Ring of Magic Power	7453	1	Aged Ring of Magic Power	7454	1	0	4131	1	0	100
+Aged Ring of Magic Power	7454	1	Aged Ring of Magic Power	7454	1	Aged Ring of Magic Power	7455	1	0	4131	2	0	100
+Antique Ring of Magic Power	7456	1	Antique Ring of Magic Power	7456	1	Antique Ring of Magic Power	7457	1	0	4131	0	0	100
+Antique Ring of Magic Power	7457	1	Antique Ring of Magic Power	7457	1	Antique Ring of Magic Power	7458	1	0	4131	0	0	100
+Antique Ring of Magic Power	7458	1	Antique Ring of Magic Power	7458	1	Antique Ring of Magic Power	7459	1	0	4131	1	0	100
+Antique Ring of Magic Power	7459	1	Antique Ring of Magic Power	7459	1	Antique Ring of Magic Power	7460	1	0	4131	2	0	100
+Ancient Ring of Magic Power	7461	1	Ancient Ring of Magic Power	7461	1	Ancient Ring of Magic Power	7462	1	0	4131	0	0	100
+Ancient Ring of Magic Power	7462	1	Ancient Ring of Magic Power	7462	1	Ancient Ring of Magic Power	7463	1	0	4131	0	0	100
+Ancient Ring of Magic Power	7463	1	Ancient Ring of Magic Power	7463	1	Ancient Ring of Magic Power	7464	1	0	4131	1	0	100
+Ancient Ring of Magic Power	7464	1	Ancient Ring of Magic Power	7464	1	Ancient Ring of Magic Power	7465	1	0	4131	2	0	100
+Archaic Ring of Magic Power	7466	1	Archaic Ring of Magic Power	7466	1	Archaic Ring of Magic Power	7467	1	0	4131	0	0	100
+Archaic Ring of Magic Power	7467	1	Archaic Ring of Magic Power	7467	1	Archaic Ring of Magic Power	7468	1	0	4131	0	0	100
+Archaic Ring of Magic Power	7468	1	Archaic Ring of Magic Power	7468	1	Archaic Ring of Magic Power	7469	1	0	4131	1	0	100
+Archaic Ring of Magic Power	7469	1	Archaic Ring of Magic Power	7469	1	Archaic Ring of Magic Power	7470	1	0	4131	2	0	100
+Primeval Ring of Magic Power	7471	1	Primeval Ring of Magic Power	7471	1	Primeval Ring of Magic Power	7472	1	0	4131	0	0	100
+Primeval Ring of Magic Power	7472	1	Primeval Ring of Magic Power	7472	1	Primeval Ring of Magic Power	7473	1	0	4131	0	0	100
+Primeval Ring of Magic Power	7473	1	Primeval Ring of Magic Power	7473	1	Primeval Ring of Magic Power	7474	1	0	4131	1	0	100
+Primeval Ring of Magic Power	7474	1	Primeval Ring of Magic Power	7474	1	Primeval Ring of Magic Power	7475	1	0	4131	2	0	100
+Aged Ring of Magic Resistance	7476	1	Aged Ring of Magic Resistance	7476	1	Aged Ring of Magic Resistance	7477	1	0	4131	0	0	100
+Aged Ring of Magic Resistance	7477	1	Aged Ring of Magic Resistance	7477	1	Aged Ring of Magic Resistance	7478	1	0	4131	0	0	100
+Aged Ring of Magic Resistance	7478	1	Aged Ring of Magic Resistance	7478	1	Aged Ring of Magic Resistance	7479	1	0	4131	1	0	100
+Aged Ring of Magic Resistance	7479	1	Aged Ring of Magic Resistance	7479	1	Aged Ring of Magic Resistance	7480	1	0	4131	2	0	100
+Antique Ring of Magic Resistance	7481	1	Antique Ring of Magic Resistance	7481	1	Antique Ring of Magic Resistance	7482	1	0	4131	0	0	100
+Antique Ring of Magic Resistance	7482	1	Antique Ring of Magic Resistance	7482	1	Antique Ring of Magic Resistance	7483	1	0	4131	0	0	100
+Antique Ring of Magic Resistance	7483	1	Antique Ring of Magic Resistance	7483	1	Antique Ring of Magic Resistance	7484	1	0	4131	1	0	100
+Antique Ring of Magic Resistance	7484	1	Antique Ring of Magic Resistance	7484	1	Antique Ring of Magic Resistance	7485	1	0	4131	2	0	100
+Ancient Ring of Magic Resistance	7486	1	Ancient Ring of Magic Resistance	7486	1	Ancient Ring of Magic Resistance	7487	1	0	4131	0	0	100
+Ancient Ring of Magic Resistance	7487	1	Ancient Ring of Magic Resistance	7487	1	Ancient Ring of Magic Resistance	7488	1	0	4131	0	0	100
+Ancient Ring of Magic Resistance	7488	1	Ancient Ring of Magic Resistance	7488	1	Ancient Ring of Magic Resistance	7489	1	0	4131	1	0	100
+Ancient Ring of Magic Resistance	7489	1	Ancient Ring of Magic Resistance	7489	1	Ancient Ring of Magic Resistance	7490	1	0	4131	2	0	100
+Archaic Ring of Magic Resistance	7491	1	Archaic Ring of Magic Resistance	7491	1	Archaic Ring of Magic Resistance	7492	1	0	4131	0	0	100
+Archaic Ring of Magic Resistance	7492	1	Archaic Ring of Magic Resistance	7492	1	Archaic Ring of Magic Resistance	7493	1	0	4131	0	0	100
+Archaic Ring of Magic Resistance	7493	1	Archaic Ring of Magic Resistance	7493	1	Archaic Ring of Magic Resistance	7494	1	0	4131	1	0	100
+Archaic Ring of Magic Resistance	7494	1	Archaic Ring of Magic Resistance	7494	1	Archaic Ring of Magic Resistance	7495	1	0	4131	2	0	100
+Primeval Ring of Magic Resistance	7496	1	Primeval Ring of Magic Resistance	7496	1	Primeval Ring of Magic Resistance	7497	1	0	4131	0	0	100
+Primeval Ring of Magic Resistance	7497	1	Primeval Ring of Magic Resistance	7497	1	Primeval Ring of Magic Resistance	7498	1	0	4131	0	0	100
+Primeval Ring of Magic Resistance	7498	1	Primeval Ring of Magic Resistance	7498	1	Primeval Ring of Magic Resistance	7499	1	0	4131	1	0	100
+Primeval Ring of Magic Resistance	7499	1	Primeval Ring of Magic Resistance	7499	1	Primeval Ring of Magic Resistance	7500	1	0	4131	2	0	100
+Aged Necklace of Aggression	7501	1	Aged Necklace of Aggression	7501	1	Aged Necklace of Aggression	7502	1	0	4131	0	0	100
+Aged Necklace of Aggression	7502	1	Aged Necklace of Aggression	7502	1	Aged Necklace of Aggression	7503	1	0	4131	0	0	100
+Aged Necklace of Aggression	7503	1	Aged Necklace of Aggression	7503	1	Aged Necklace of Aggression	7504	1	0	4131	1	0	100
+Aged Necklace of Aggression	7504	1	Aged Necklace of Aggression	7504	1	Aged Necklace of Aggression	7505	1	0	4131	2	0	100
+Antique Necklace of Aggression	7506	1	Antique Necklace of Aggression	7506	1	Antique Necklace of Aggression	7507	1	0	4131	0	0	100
+Antique Necklace of Aggression	7507	1	Antique Necklace of Aggression	7507	1	Antique Necklace of Aggression	7508	1	0	4131	0	0	100
+Antique Necklace of Aggression	7508	1	Antique Necklace of Aggression	7508	1	Antique Necklace of Aggression	7509	1	0	4131	1	0	100
+Antique Necklace of Aggression	7509	1	Antique Necklace of Aggression	7509	1	Antique Necklace of Aggression	7510	1	0	4131	2	0	100
+Ancient Necklace of Aggression	7511	1	Ancient Necklace of Aggression	7511	1	Ancient Necklace of Aggression	7512	1	0	4131	0	0	100
+Ancient Necklace of Aggression	7512	1	Ancient Necklace of Aggression	7512	1	Ancient Necklace of Aggression	7513	1	0	4131	0	0	100
+Ancient Necklace of Aggression	7513	1	Ancient Necklace of Aggression	7513	1	Ancient Necklace of Aggression	7514	1	0	4131	1	0	100
+Ancient Necklace of Aggression	7514	1	Ancient Necklace of Aggression	7514	1	Ancient Necklace of Aggression	7515	1	0	4131	2	0	100
+Archaic Necklace of Aggression	7516	1	Archaic Necklace of Aggression	7516	1	Archaic Necklace of Aggression	7517	1	0	4131	0	0	100
+Archaic Necklace of Aggression	7517	1	Archaic Necklace of Aggression	7517	1	Archaic Necklace of Aggression	7518	1	0	4131	0	0	100
+Archaic Necklace of Aggression	7518	1	Archaic Necklace of Aggression	7518	1	Archaic Necklace of Aggression	7519	1	0	4131	1	0	100
+Archaic Necklace of Aggression	7519	1	Archaic Necklace of Aggression	7519	1	Archaic Necklace of Aggression	7520	1	0	4131	2	0	100
+Primeval Necklace of Aggression	7521	1	Primeval Necklace of Aggression	7521	1	Primeval Necklace of Aggression	7522	1	0	4131	0	0	100
+Primeval Necklace of Aggression	7522	1	Primeval Necklace of Aggression	7522	1	Primeval Necklace of Aggression	7523	1	0	4131	0	0	100
+Primeval Necklace of Aggression	7523	1	Primeval Necklace of Aggression	7523	1	Primeval Necklace of Aggression	7524	1	0	4131	1	0	100
+Primeval Necklace of Aggression	7524	1	Primeval Necklace of Aggression	7524	1	Primeval Necklace of Aggression	7525	1	0	4131	2	0	100
+Aged Necklace of Protection	7526	1	Aged Necklace of Protection	7526	1	Aged Necklace of Protection	7527	1	0	4131	0	0	100
+Aged Necklace of Protection	7527	1	Aged Necklace of Protection	7527	1	Aged Necklace of Protection	7528	1	0	4131	0	0	100
+Aged Necklace of Protection	7528	1	Aged Necklace of Protection	7528	1	Aged Necklace of Protection	7529	1	0	4131	1	0	100
+Aged Necklace of Protection	7529	1	Aged Necklace of Protection	7529	1	Aged Necklace of Protection	7530	1	0	4131	2	0	100
+Antique Necklace of Protection	7531	1	Antique Necklace of Protection	7531	1	Antique Necklace of Protection	7532	1	0	4131	0	0	100
+Antique Necklace of Protection	7532	1	Antique Necklace of Protection	7532	1	Antique Necklace of Protection	7533	1	0	4131	0	0	100
+Antique Necklace of Protection	7533	1	Antique Necklace of Protection	7533	1	Antique Necklace of Protection	7534	1	0	4131	1	0	100
+Antique Necklace of Protection	7534	1	Antique Necklace of Protection	7534	1	Antique Necklace of Protection	7535	1	0	4131	2	0	100
+Ancient Necklace of Protection	7536	1	Ancient Necklace of Protection	7536	1	Ancient Necklace of Protection	7537	1	0	4131	0	0	100
+Ancient Necklace of Protection	7537	1	Ancient Necklace of Protection	7537	1	Ancient Necklace of Protection	7538	1	0	4131	0	0	100
+Ancient Necklace of Protection	7538	1	Ancient Necklace of Protection	7538	1	Ancient Necklace of Protection	7539	1	0	4131	1	0	100
+Ancient Necklace of Protection	7539	1	Ancient Necklace of Protection	7539	1	Ancient Necklace of Protection	7540	1	0	4131	2	0	100
+Archaic Necklace of Protection	7541	1	Archaic Necklace of Protection	7541	1	Archaic Necklace of Protection	7542	1	0	4131	0	0	100
+Archaic Necklace of Protection	7542	1	Archaic Necklace of Protection	7542	1	Archaic Necklace of Protection	7543	1	0	4131	0	0	100
+Archaic Necklace of Protection	7543	1	Archaic Necklace of Protection	7543	1	Archaic Necklace of Protection	7544	1	0	4131	1	0	100
+Archaic Necklace of Protection	7544	1	Archaic Necklace of Protection	7544	1	Archaic Necklace of Protection	7545	1	0	4131	2	0	100
+Primeval Necklace of Protection	7546	1	Primeval Necklace of Protection	7546	1	Primeval Necklace of Protection	7547	1	0	4131	0	0	100
+Primeval Necklace of Protection	7547	1	Primeval Necklace of Protection	7547	1	Primeval Necklace of Protection	7548	1	0	4131	0	0	100
+Primeval Necklace of Protection	7548	1	Primeval Necklace of Protection	7548	1	Primeval Necklace of Protection	7549	1	0	4131	1	0	100
+Primeval Necklace of Protection	7549	1	Primeval Necklace of Protection	7549	1	Primeval Necklace of Protection	7550	1	0	4131	2	0	100
+Aged Necklace of Agility	7551	1	Aged Necklace of Agility	7551	1	Aged Necklace of Agility	7552	1	0	4131	0	0	100
+Aged Necklace of Agility	7552	1	Aged Necklace of Agility	7552	1	Aged Necklace of Agility	7553	1	0	4131	0	0	100
+Aged Necklace of Agility	7553	1	Aged Necklace of Agility	7553	1	Aged Necklace of Agility	7554	1	0	4131	1	0	100
+Aged Necklace of Agility	7554	1	Aged Necklace of Agility	7554	1	Aged Necklace of Agility	7555	1	0	4131	2	0	100
+Antique Necklace of Agility	7556	1	Antique Necklace of Agility	7556	1	Antique Necklace of Agility	7557	1	0	4131	0	0	100
+Antique Necklace of Agility	7557	1	Antique Necklace of Agility	7557	1	Antique Necklace of Agility	7558	1	0	4131	0	0	100
+Antique Necklace of Agility	7558	1	Antique Necklace of Agility	7558	1	Antique Necklace of Agility	7559	1	0	4131	1	0	100
+Antique Necklace of Agility	7559	1	Antique Necklace of Agility	7559	1	Antique Necklace of Agility	7560	1	0	4131	2	0	100
+Ancient Necklace of Agility	7561	1	Ancient Necklace of Agility	7561	1	Ancient Necklace of Agility	7562	1	0	4131	0	0	100
+Ancient Necklace of Agility	7562	1	Ancient Necklace of Agility	7562	1	Ancient Necklace of Agility	7563	1	0	4131	0	0	100
+Ancient Necklace of Agility	7563	1	Ancient Necklace of Agility	7563	1	Ancient Necklace of Agility	7564	1	0	4131	1	0	100
+Ancient Necklace of Agility	7564	1	Ancient Necklace of Agility	7564	1	Ancient Necklace of Agility	7565	1	0	4131	2	0	100
+Archaic Necklace of Agility	7566	1	Archaic Necklace of Agility	7566	1	Archaic Necklace of Agility	7567	1	0	4131	0	0	100
+Archaic Necklace of Agility	7567	1	Archaic Necklace of Agility	7567	1	Archaic Necklace of Agility	7568	1	0	4131	0	0	100
+Archaic Necklace of Agility	7568	1	Archaic Necklace of Agility	7568	1	Archaic Necklace of Agility	7569	1	0	4131	1	0	100
+Archaic Necklace of Agility	7569	1	Archaic Necklace of Agility	7569	1	Archaic Necklace of Agility	7570	1	0	4131	2	0	100
+Primeval Necklace of Agility	7571	1	Primeval Necklace of Agility	7571	1	Primeval Necklace of Agility	7572	1	0	4131	0	0	100
+Primeval Necklace of Agility	7572	1	Primeval Necklace of Agility	7572	1	Primeval Necklace of Agility	7573	1	0	4131	0	0	100
+Primeval Necklace of Agility	7573	1	Primeval Necklace of Agility	7573	1	Primeval Necklace of Agility	7574	1	0	4131	1	0	100
+Primeval Necklace of Agility	7574	1	Primeval Necklace of Agility	7574	1	Primeval Necklace of Agility	7575	1	0	4131	2	0	100
+Aged Necklace of Serenity	7576	1	Aged Necklace of Serenity	7576	1	Aged Necklace of Serenity	7577	1	0	4131	0	0	100
+Aged Necklace of Serenity	7577	1	Aged Necklace of Serenity	7577	1	Aged Necklace of Serenity	7578	1	0	4131	0	0	100
+Aged Necklace of Serenity	7578	1	Aged Necklace of Serenity	7578	1	Aged Necklace of Serenity	7579	1	0	4131	1	0	100
+Aged Necklace of Serenity	7579	1	Aged Necklace of Serenity	7579	1	Aged Necklace of Serenity	7580	1	0	4131	2	0	100
+Antique Necklace of Serenity	7581	1	Antique Necklace of Serenity	7581	1	Antique Necklace of Serenity	7582	1	0	4131	0	0	100
+Antique Necklace of Serenity	7582	1	Antique Necklace of Serenity	7582	1	Antique Necklace of Serenity	7583	1	0	4131	0	0	100
+Antique Necklace of Serenity	7583	1	Antique Necklace of Serenity	7583	1	Antique Necklace of Serenity	7584	1	0	4131	1	0	100
+Antique Necklace of Serenity	7584	1	Antique Necklace of Serenity	7584	1	Antique Necklace of Serenity	7585	1	0	4131	2	0	100
+Ancient Necklace of Serenity	7586	1	Ancient Necklace of Serenity	7586	1	Ancient Necklace of Serenity	7587	1	0	4131	0	0	100
+Ancient Necklace of Serenity	7587	1	Ancient Necklace of Serenity	7587	1	Ancient Necklace of Serenity	7588	1	0	4131	0	0	100
+Ancient Necklace of Serenity	7588	1	Ancient Necklace of Serenity	7588	1	Ancient Necklace of Serenity	7589	1	0	4131	1	0	100
+Ancient Necklace of Serenity	7589	1	Ancient Necklace of Serenity	7589	1	Ancient Necklace of Serenity	7590	1	0	4131	2	0	100
+Archaic Necklace of Serenity	7591	1	Archaic Necklace of Serenity	7591	1	Archaic Necklace of Serenity	7592	1	0	4131	0	0	100
+Archaic Necklace of Serenity	7592	1	Archaic Necklace of Serenity	7592	1	Archaic Necklace of Serenity	7593	1	0	4131	0	0	100
+Archaic Necklace of Serenity	7593	1	Archaic Necklace of Serenity	7593	1	Archaic Necklace of Serenity	7594	1	0	4131	1	0	100
+Archaic Necklace of Serenity	7594	1	Archaic Necklace of Serenity	7594	1	Archaic Necklace of Serenity	7595	1	0	4131	2	0	100
+Primeval Necklace of Serenity	7596	1	Primeval Necklace of Serenity	7596	1	Primeval Necklace of Serenity	7597	1	0	4131	0	0	100
+Primeval Necklace of Serenity	7597	1	Primeval Necklace of Serenity	7597	1	Primeval Necklace of Serenity	7598	1	0	4131	0	0	100
+Primeval Necklace of Serenity	7598	1	Primeval Necklace of Serenity	7598	1	Primeval Necklace of Serenity	7599	1	0	4131	1	0	100
+Primeval Necklace of Serenity	7599	1	Primeval Necklace of Serenity	7599	1	Primeval Necklace of Serenity	7600	1	0	4131	2	0	100
+Aged Necklace of Longevity	7601	1	Aged Necklace of Longevity	7601	1	Aged Necklace of Longevity	7602	1	0	4131	0	0	100
+Aged Necklace of Longevity	7602	1	Aged Necklace of Longevity	7602	1	Aged Necklace of Longevity	7603	1	0	4131	0	0	100
+Aged Necklace of Longevity	7603	1	Aged Necklace of Longevity	7603	1	Aged Necklace of Longevity	7604	1	0	4131	1	0	100
+Aged Necklace of Longevity	7604	1	Aged Necklace of Longevity	7604	1	Aged Necklace of Longevity	7605	1	0	4131	2	0	100
+Antique Necklace of Longevity	7606	1	Antique Necklace of Longevity	7606	1	Antique Necklace of Longevity	7607	1	0	4131	0	0	100
+Antique Necklace of Longevity	7607	1	Antique Necklace of Longevity	7607	1	Antique Necklace of Longevity	7608	1	0	4131	0	0	100
+Antique Necklace of Longevity	7608	1	Antique Necklace of Longevity	7608	1	Antique Necklace of Longevity	7609	1	0	4131	1	0	100
+Antique Necklace of Longevity	7609	1	Antique Necklace of Longevity	7609	1	Antique Necklace of Longevity	7610	1	0	4131	2	0	100
+Ancient Necklace of Longevity	7611	1	Ancient Necklace of Longevity	7611	1	Ancient Necklace of Longevity	7612	1	0	4131	0	0	100
+Ancient Necklace of Longevity	7612	1	Ancient Necklace of Longevity	7612	1	Ancient Necklace of Longevity	7613	1	0	4131	0	0	100
+Ancient Necklace of Longevity	7613	1	Ancient Necklace of Longevity	7613	1	Ancient Necklace of Longevity	7614	1	0	4131	1	0	100
+Ancient Necklace of Longevity	7614	1	Ancient Necklace of Longevity	7614	1	Ancient Necklace of Longevity	7615	1	0	4131	2	0	100
+Archaic Necklace of Longevity	7616	1	Archaic Necklace of Longevity	7616	1	Archaic Necklace of Longevity	7617	1	0	4131	0	0	100
+Archaic Necklace of Longevity	7617	1	Archaic Necklace of Longevity	7617	1	Archaic Necklace of Longevity	7618	1	0	4131	0	0	100
+Archaic Necklace of Longevity	7618	1	Archaic Necklace of Longevity	7618	1	Archaic Necklace of Longevity	7619	1	0	4131	1	0	100
+Archaic Necklace of Longevity	7619	1	Archaic Necklace of Longevity	7619	1	Archaic Necklace of Longevity	7620	1	0	4131	2	0	100
+Primeval Necklace of Longevity	7621	1	Primeval Necklace of Longevity	7621	1	Primeval Necklace of Longevity	7622	1	0	4131	0	0	100
+Primeval Necklace of Longevity	7622	1	Primeval Necklace of Longevity	7622	1	Primeval Necklace of Longevity	7623	1	0	4131	0	0	100
+Primeval Necklace of Longevity	7623	1	Primeval Necklace of Longevity	7623	1	Primeval Necklace of Longevity	7624	1	0	4131	1	0	100
+Primeval Necklace of Longevity	7624	1	Primeval Necklace of Longevity	7624	1	Primeval Necklace of Longevity	7625	1	0	4131	2	0	100
+Aged Necklace of Blessing	7651	1	Aged Necklace of Blessing	7651	1	Aged Necklace of Blessing	7652	1	0	4131	0	0	100
+Aged Necklace of Blessing	7652	1	Aged Necklace of Blessing	7652	1	Aged Necklace of Blessing	7653	1	0	4131	0	0	100
+Aged Necklace of Blessing	7653	1	Aged Necklace of Blessing	7653	1	Aged Necklace of Blessing	7654	1	0	4131	1	0	100
+Aged Necklace of Blessing	7654	1	Aged Necklace of Blessing	7654	1	Aged Necklace of Blessing	7655	1	0	4131	2	0	100
+Antique Necklace of Blessing	7656	1	Antique Necklace of Blessing	7656	1	Antique Necklace of Blessing	7657	1	0	4131	0	0	100
+Antique Necklace of Blessing	7657	1	Antique Necklace of Blessing	7657	1	Antique Necklace of Blessing	7658	1	0	4131	0	0	100
+Antique Necklace of Blessing	7658	1	Antique Necklace of Blessing	7658	1	Antique Necklace of Blessing	7659	1	0	4131	1	0	100
+Antique Necklace of Blessing	7659	1	Antique Necklace of Blessing	7659	1	Antique Necklace of Blessing	7660	1	0	4131	2	0	100
+Ancient Necklace of Blessing	7661	1	Ancient Necklace of Blessing	7661	1	Ancient Necklace of Blessing	7662	1	0	4131	0	0	100
+Ancient Necklace of Blessing	7662	1	Ancient Necklace of Blessing	7662	1	Ancient Necklace of Blessing	7663	1	0	4131	0	0	100
+Ancient Necklace of Blessing	7663	1	Ancient Necklace of Blessing	7663	1	Ancient Necklace of Blessing	7664	1	0	4131	1	0	100
+Ancient Necklace of Blessing	7664	1	Ancient Necklace of Blessing	7664	1	Ancient Necklace of Blessing	7665	1	0	4131	2	0	100
+Archaic Necklace of Blessing	7666	1	Archaic Necklace of Blessing	7666	1	Archaic Necklace of Blessing	7667	1	0	4131	0	0	100
+Archaic Necklace of Blessing	7667	1	Archaic Necklace of Blessing	7667	1	Archaic Necklace of Blessing	7668	1	0	4131	0	0	100
+Archaic Necklace of Blessing	7668	1	Archaic Necklace of Blessing	7668	1	Archaic Necklace of Blessing	7669	1	0	4131	1	0	100
+Archaic Necklace of Blessing	7669	1	Archaic Necklace of Blessing	7669	1	Archaic Necklace of Blessing	7670	1	0	4131	2	0	100
+Primeval Necklace of Blessing	7671	1	Primeval Necklace of Blessing	7671	1	Primeval Necklace of Blessing	7672	1	0	4131	0	0	100
+Primeval Necklace of Blessing	7672	1	Primeval Necklace of Blessing	7672	1	Primeval Necklace of Blessing	7673	1	0	4131	0	0	100
+Primeval Necklace of Blessing	7673	1	Primeval Necklace of Blessing	7673	1	Primeval Necklace of Blessing	7674	1	0	4131	1	0	100
+Primeval Necklace of Blessing	7674	1	Primeval Necklace of Blessing	7674	1	Primeval Necklace of Blessing	7675	1	0	4131	2	0	100
+Golden Age Ring of Attack	7676	1	Golden Age Ring of Attack	7676	1	Golden Age Ring of Attack	7677	1	0	4131	0	0	100
+Golden Age Ring of Attack	7677	1	Golden Age Ring of Attack	7677	1	Golden Age Ring of Attack	7678	1	0	4131	0	0	100
+Golden Age Ring of Attack	7678	1	Golden Age Ring of Attack	7678	1	Golden Age Ring of Attack	7679	1	0	4131	1	0	100
+Golden Age Ring of Attack	7679	1	Golden Age Ring of Attack	7679	1	Golden Age Ring of Attack	7680	1	0	4131	2	0	100
+Dark Ages Ring of Attack	7681	1	Dark Ages Ring of Attack	7681	1	Dark Ages Ring of Attack	7682	1	0	4131	0	0	100
+Dark Ages Ring of Attack	7682	1	Dark Ages Ring of Attack	7682	1	Dark Ages Ring of Attack	7683	1	0	4131	0	0	100
+Dark Ages Ring of Attack	7683	1	Dark Ages Ring of Attack	7683	1	Dark Ages Ring of Attack	7684	1	0	4131	1	0	100
+Dark Ages Ring of Attack	7684	1	Dark Ages Ring of Attack	7684	1	Dark Ages Ring of Attack	7685	1	0	4131	2	0	100
+Golden Age Ring of Defense	7686	1	Golden Age Ring of Defense	7686	1	Golden Age Ring of Defense	7687	1	0	4131	0	0	100
+Golden Age Ring of Defense	7687	1	Golden Age Ring of Defense	7687	1	Golden Age Ring of Defense	7688	1	0	4131	0	0	100
+Golden Age Ring of Defense	7688	1	Golden Age Ring of Defense	7688	1	Golden Age Ring of Defense	7689	1	0	4131	1	0	100
+Golden Age Ring of Defense	7689	1	Golden Age Ring of Defense	7689	1	Golden Age Ring of Defense	7690	1	0	4131	2	0	100
+Dark Ages Ring of Defense	7691	1	Dark Ages Ring of Defense	7691	1	Dark Ages Ring of Defense	7692	1	0	4131	0	0	100
+Dark Ages Ring of Defense	7692	1	Dark Ages Ring of Defense	7692	1	Dark Ages Ring of Defense	7693	1	0	4131	0	0	100
+Dark Ages Ring of Defense	7693	1	Dark Ages Ring of Defense	7693	1	Dark Ages Ring of Defense	7694	1	0	4131	1	0	100
+Dark Ages Ring of Defense	7694	1	Dark Ages Ring of Defense	7694	1	Dark Ages Ring of Defense	7695	1	0	4131	2	0	100
+Golden Age Ring of Accuracy	7696	1	Golden Age Ring of Accuracy	7696	1	Golden Age Ring of Accuracy	7697	1	0	4131	0	0	100
+Golden Age Ring of Accuracy	7697	1	Golden Age Ring of Accuracy	7697	1	Golden Age Ring of Accuracy	7698	1	0	4131	0	0	100
+Golden Age Ring of Accuracy	7698	1	Golden Age Ring of Accuracy	7698	1	Golden Age Ring of Accuracy	7699	1	0	4131	1	0	100
+Golden Age Ring of Accuracy	7699	1	Golden Age Ring of Accuracy	7699	1	Golden Age Ring of Accuracy	7700	1	0	4131	2	0	100
+Dark Ages Ring of Accuracy	7701	1	Dark Ages Ring of Accuracy	7701	1	Dark Ages Ring of Accuracy	7702	1	0	4131	0	0	100
+Dark Ages Ring of Accuracy	7702	1	Dark Ages Ring of Accuracy	7702	1	Dark Ages Ring of Accuracy	7703	1	0	4131	0	0	100
+Dark Ages Ring of Accuracy	7703	1	Dark Ages Ring of Accuracy	7703	1	Dark Ages Ring of Accuracy	7704	1	0	4131	1	0	100
+Dark Ages Ring of Accuracy	7704	1	Dark Ages Ring of Accuracy	7704	1	Dark Ages Ring of Accuracy	7705	1	0	4131	2	0	100
+Golden Age Ring of Evasion	7706	1	Golden Age Ring of Evasion	7706	1	Golden Age Ring of Evasion	7707	1	0	4131	0	0	100
+Golden Age Ring of Evasion	7707	1	Golden Age Ring of Evasion	7707	1	Golden Age Ring of Evasion	7708	1	0	4131	0	0	100
+Golden Age Ring of Evasion	7708	1	Golden Age Ring of Evasion	7708	1	Golden Age Ring of Evasion	7709	1	0	4131	1	0	100
+Golden Age Ring of Evasion	7709	1	Golden Age Ring of Evasion	7709	1	Golden Age Ring of Evasion	7710	1	0	4131	2	0	100
+Dark Ages Ring of Evasion	7711	1	Dark Ages Ring of Evasion	7711	1	Dark Ages Ring of Evasion	7712	1	0	4131	0	0	100
+Dark Ages Ring of Evasion	7712	1	Dark Ages Ring of Evasion	7712	1	Dark Ages Ring of Evasion	7713	1	0	4131	0	0	100
+Dark Ages Ring of Evasion	7713	1	Dark Ages Ring of Evasion	7713	1	Dark Ages Ring of Evasion	7714	1	0	4131	1	0	100
+Dark Ages Ring of Evasion	7714	1	Dark Ages Ring of Evasion	7714	1	Dark Ages Ring of Evasion	7715	1	0	4131	2	0	100
+Golden Age Ring of Max HP	7716	1	Golden Age Ring of Max HP	7716	1	Golden Age Ring of Max HP	7717	1	0	4131	0	0	100
+Golden Age Ring of Max HP	7717	1	Golden Age Ring of Max HP	7717	1	Golden Age Ring of Max HP	7718	1	0	4131	0	0	100
+Golden Age Ring of Max HP	7718	1	Golden Age Ring of Max HP	7718	1	Golden Age Ring of Max HP	7719	1	0	4131	1	0	100
+Golden Age Ring of Max HP	7719	1	Golden Age Ring of Max HP	7719	1	Golden Age Ring of Max HP	7720	1	0	4131	2	0	100
+Dark Ages Ring of Max HP	7721	1	Dark Ages Ring of Max HP	7721	1	Dark Ages Ring of Max HP	7722	1	0	4131	0	0	100
+Dark Ages Ring of Max HP	7722	1	Dark Ages Ring of Max HP	7722	1	Dark Ages Ring of Max HP	7723	1	0	4131	0	0	100
+Dark Ages Ring of Max HP	7723	1	Dark Ages Ring of Max HP	7723	1	Dark Ages Ring of Max HP	7724	1	0	4131	1	0	100
+Dark Ages Ring of Max HP	7724	1	Dark Ages Ring of Max HP	7724	1	Dark Ages Ring of Max HP	7725	1	0	4131	2	0	100
+Golden Age Ring of Max MP	7726	1	Golden Age Ring of Max MP	7726	1	Golden Age Ring of Max MP	7727	1	0	4131	0	0	100
+Golden Age Ring of Max MP	7727	1	Golden Age Ring of Max MP	7727	1	Golden Age Ring of Max MP	7728	1	0	4131	0	0	100
+Golden Age Ring of Max MP	7728	1	Golden Age Ring of Max MP	7728	1	Golden Age Ring of Max MP	7729	1	0	4131	1	0	100
+Golden Age Ring of Max MP	7729	1	Golden Age Ring of Max MP	7729	1	Golden Age Ring of Max MP	7730	1	0	4131	2	0	100
+Dark Ages Ring of Max MP	7731	1	Dark Ages Ring of Max MP	7731	1	Dark Ages Ring of Max MP	7732	1	0	4131	0	0	100
+Dark Ages Ring of Max MP	7732	1	Dark Ages Ring of Max MP	7732	1	Dark Ages Ring of Max MP	7733	1	0	4131	0	0	100
+Dark Ages Ring of Max MP	7733	1	Dark Ages Ring of Max MP	7733	1	Dark Ages Ring of Max MP	7734	1	0	4131	1	0	100
+Dark Ages Ring of Max MP	7734	1	Dark Ages Ring of Max MP	7734	1	Dark Ages Ring of Max MP	7735	1	0	4131	2	0	100
+Golden Age Ring of Critical	7736	1	Golden Age Ring of Critical	7736	1	Golden Age Ring of Critical	7737	1	0	4131	0	0	100
+Golden Age Ring of Critical	7737	1	Golden Age Ring of Critical	7737	1	Golden Age Ring of Critical	7738	1	0	4131	0	0	100
+Golden Age Ring of Critical	7738	1	Golden Age Ring of Critical	7738	1	Golden Age Ring of Critical	7739	1	0	4131	1	0	100
+Golden Age Ring of Critical	7739	1	Golden Age Ring of Critical	7739	1	Golden Age Ring of Critical	7740	1	0	4131	2	0	100
+Dark Ages Ring of Critical	7741	1	Dark Ages Ring of Critical	7741	1	Dark Ages Ring of Critical	7742	1	0	4131	0	0	100
+Dark Ages Ring of Critical	7742	1	Dark Ages Ring of Critical	7742	1	Dark Ages Ring of Critical	7743	1	0	4131	0	0	100
+Dark Ages Ring of Critical	7743	1	Dark Ages Ring of Critical	7743	1	Dark Ages Ring of Critical	7744	1	0	4131	1	0	100
+Dark Ages Ring of Critical	7744	1	Dark Ages Ring of Critical	7744	1	Dark Ages Ring of Critical	7745	1	0	4131	2	0	100
+Golden Age Ring of Block	7746	1	Golden Age Ring of Block	7746	1	Golden Age Ring of Block	7747	1	0	4131	0	0	100
+Golden Age Ring of Block	7747	1	Golden Age Ring of Block	7747	1	Golden Age Ring of Block	7748	1	0	4131	0	0	100
+Golden Age Ring of Block	7748	1	Golden Age Ring of Block	7748	1	Golden Age Ring of Block	7749	1	0	4131	1	0	100
+Golden Age Ring of Block	7749	1	Golden Age Ring of Block	7749	1	Golden Age Ring of Block	7750	1	0	4131	2	0	100
+Dark Ages Ring of Block	7751	1	Dark Ages Ring of Block	7751	1	Dark Ages Ring of Block	7752	1	0	4131	0	0	100
+Dark Ages Ring of Block	7752	1	Dark Ages Ring of Block	7752	1	Dark Ages Ring of Block	7753	1	0	4131	0	0	100
+Dark Ages Ring of Block	7753	1	Dark Ages Ring of Block	7753	1	Dark Ages Ring of Block	7754	1	0	4131	1	0	100
+Dark Ages Ring of Block	7754	1	Dark Ages Ring of Block	7754	1	Dark Ages Ring of Block	7755	1	0	4131	2	0	100
+Golden Age Ring of Magic Power	7756	1	Golden Age Ring of Magic Power	7756	1	Golden Age Ring of Magic Power	7757	1	0	4131	0	0	100
+Golden Age Ring of Magic Power	7757	1	Golden Age Ring of Magic Power	7757	1	Golden Age Ring of Magic Power	7758	1	0	4131	0	0	100
+Golden Age Ring of Magic Power	7758	1	Golden Age Ring of Magic Power	7758	1	Golden Age Ring of Magic Power	7759	1	0	4131	1	0	100
+Golden Age Ring of Magic Power	7759	1	Golden Age Ring of Magic Power	7759	1	Golden Age Ring of Magic Power	7760	1	0	4131	2	0	100
+Dark Ages Ring of Magic Power	7761	1	Dark Ages Ring of Magic Power	7761	1	Dark Ages Ring of Magic Power	7762	1	0	4131	0	0	100
+Dark Ages Ring of Magic Power	7762	1	Dark Ages Ring of Magic Power	7762	1	Dark Ages Ring of Magic Power	7763	1	0	4131	0	0	100
+Dark Ages Ring of Magic Power	7763	1	Dark Ages Ring of Magic Power	7763	1	Dark Ages Ring of Magic Power	7764	1	0	4131	1	0	100
+Dark Ages Ring of Magic Power	7764	1	Dark Ages Ring of Magic Power	7764	1	Dark Ages Ring of Magic Power	7765	1	0	4131	2	0	100
+Golden Age Ring of Magic Resistance	7766	1	Golden Age Ring of Magic Resistance	7766	1	Golden Age Ring of Magic Resistance	7767	1	0	4131	0	0	100
+Golden Age Ring of Magic Resistance	7767	1	Golden Age Ring of Magic Resistance	7767	1	Golden Age Ring of Magic Resistance	7768	1	0	4131	0	0	100
+Golden Age Ring of Magic Resistance	7768	1	Golden Age Ring of Magic Resistance	7768	1	Golden Age Ring of Magic Resistance	7769	1	0	4131	1	0	100
+Golden Age Ring of Magic Resistance	7769	1	Golden Age Ring of Magic Resistance	7769	1	Golden Age Ring of Magic Resistance	7770	1	0	4131	2	0	100
+Dark Ages Ring of Magic Resistance	7771	1	Dark Ages Ring of Magic Resistance	7771	1	Dark Ages Ring of Magic Resistance	7772	1	0	4131	0	0	100
+Dark Ages Ring of Magic Resistance	7772	1	Dark Ages Ring of Magic Resistance	7772	1	Dark Ages Ring of Magic Resistance	7773	1	0	4131	0	0	100
+Dark Ages Ring of Magic Resistance	7773	1	Dark Ages Ring of Magic Resistance	7773	1	Dark Ages Ring of Magic Resistance	7774	1	0	4131	1	0	100
+Dark Ages Ring of Magic Resistance	7774	1	Dark Ages Ring of Magic Resistance	7774	1	Dark Ages Ring of Magic Resistance	7775	1	0	4131	2	0	100
+Golden Age Necklace of Aggression	7776	1	Golden Age Necklace of Aggression	7776	1	Golden Age Necklace of Aggression	7777	1	0	4131	0	0	100
+Golden Age Necklace of Aggression	7777	1	Golden Age Necklace of Aggression	7777	1	Golden Age Necklace of Aggression	7778	1	0	4131	0	0	100
+Golden Age Necklace of Aggression	7778	1	Golden Age Necklace of Aggression	7778	1	Golden Age Necklace of Aggression	7779	1	0	4131	1	0	100
+Golden Age Necklace of Aggression	7779	1	Golden Age Necklace of Aggression	7779	1	Golden Age Necklace of Aggression	7780	1	0	4131	2	0	100
+Dark Ages Necklace of Aggression	7781	1	Dark Ages Necklace of Aggression	7781	1	Dark Ages Necklace of Aggression	7782	1	0	4131	0	0	100
+Dark Ages Necklace of Aggression	7782	1	Dark Ages Necklace of Aggression	7782	1	Dark Ages Necklace of Aggression	7783	1	0	4131	0	0	100
+Dark Ages Necklace of Aggression	7783	1	Dark Ages Necklace of Aggression	7783	1	Dark Ages Necklace of Aggression	7784	1	0	4131	1	0	100
+Dark Ages Necklace of Aggression	7784	1	Dark Ages Necklace of Aggression	7784	1	Dark Ages Necklace of Aggression	7785	1	0	4131	2	0	100
+Golden Age Necklace of Protection	7786	1	Golden Age Necklace of Protection	7786	1	Golden Age Necklace of Protection	7787	1	0	4131	0	0	100
+Golden Age Necklace of Protection	7787	1	Golden Age Necklace of Protection	7787	1	Golden Age Necklace of Protection	7788	1	0	4131	0	0	100
+Golden Age Necklace of Protection	7788	1	Golden Age Necklace of Protection	7788	1	Golden Age Necklace of Protection	7789	1	0	4131	1	0	100
+Golden Age Necklace of Protection	7789	1	Golden Age Necklace of Protection	7789	1	Golden Age Necklace of Protection	7790	1	0	4131	2	0	100
+Dark Ages Necklace of Protection	7791	1	Dark Ages Necklace of Protection	7791	1	Dark Ages Necklace of Protection	7792	1	0	4131	0	0	100
+Dark Ages Necklace of Protection	7792	1	Dark Ages Necklace of Protection	7792	1	Dark Ages Necklace of Protection	7793	1	0	4131	0	0	100
+Dark Ages Necklace of Protection	7793	1	Dark Ages Necklace of Protection	7793	1	Dark Ages Necklace of Protection	7794	1	0	4131	1	0	100
+Dark Ages Necklace of Protection	7794	1	Dark Ages Necklace of Protection	7794	1	Dark Ages Necklace of Protection	7795	1	0	4131	2	0	100
+Golden Age Necklace of Agility	7796	1	Golden Age Necklace of Agility	7796	1	Golden Age Necklace of Agility	7797	1	0	4131	0	0	100
+Golden Age Necklace of Agility	7797	1	Golden Age Necklace of Agility	7797	1	Golden Age Necklace of Agility	7798	1	0	4131	0	0	100
+Golden Age Necklace of Agility	7798	1	Golden Age Necklace of Agility	7798	1	Golden Age Necklace of Agility	7799	1	0	4131	1	0	100
+Golden Age Necklace of Agility	7799	1	Golden Age Necklace of Agility	7799	1	Golden Age Necklace of Agility	7800	1	0	4131	2	0	100
+Dark Ages Necklace of Agility	7801	1	Dark Ages Necklace of Agility	7801	1	Dark Ages Necklace of Agility	7802	1	0	4131	0	0	100
+Dark Ages Necklace of Agility	7802	1	Dark Ages Necklace of Agility	7802	1	Dark Ages Necklace of Agility	7803	1	0	4131	0	0	100
+Dark Ages Necklace of Agility	7803	1	Dark Ages Necklace of Agility	7803	1	Dark Ages Necklace of Agility	7804	1	0	4131	1	0	100
+Dark Ages Necklace of Agility	7804	1	Dark Ages Necklace of Agility	7804	1	Dark Ages Necklace of Agility	7805	1	0	4131	2	0	100
+Golden Age Necklace of Serenity	7806	1	Golden Age Necklace of Serenity	7806	1	Golden Age Necklace of Serenity	7807	1	0	4131	0	0	100
+Golden Age Necklace of Serenity	7807	1	Golden Age Necklace of Serenity	7807	1	Golden Age Necklace of Serenity	7808	1	0	4131	0	0	100
+Golden Age Necklace of Serenity	7808	1	Golden Age Necklace of Serenity	7808	1	Golden Age Necklace of Serenity	7809	1	0	4131	1	0	100
+Golden Age Necklace of Serenity	7809	1	Golden Age Necklace of Serenity	7809	1	Golden Age Necklace of Serenity	7810	1	0	4131	2	0	100
+Dark Ages Necklace of Serenity	7811	1	Dark Ages Necklace of Serenity	7811	1	Dark Ages Necklace of Serenity	7812	1	0	4131	0	0	100
+Dark Ages Necklace of Serenity	7812	1	Dark Ages Necklace of Serenity	7812	1	Dark Ages Necklace of Serenity	7813	1	0	4131	0	0	100
+Dark Ages Necklace of Serenity	7813	1	Dark Ages Necklace of Serenity	7813	1	Dark Ages Necklace of Serenity	7814	1	0	4131	1	0	100
+Dark Ages Necklace of Serenity	7814	1	Dark Ages Necklace of Serenity	7814	1	Dark Ages Necklace of Serenity	7815	1	0	4131	2	0	100
+Golden Age Necklace of Longevity	7816	1	Golden Age Necklace of Longevity	7816	1	Golden Age Necklace of Longevity	7817	1	0	4131	0	0	100
+Golden Age Necklace of Longevity	7817	1	Golden Age Necklace of Longevity	7817	1	Golden Age Necklace of Longevity	7818	1	0	4131	0	0	100
+Golden Age Necklace of Longevity	7818	1	Golden Age Necklace of Longevity	7818	1	Golden Age Necklace of Longevity	7819	1	0	4131	1	0	100
+Golden Age Necklace of Longevity	7819	1	Golden Age Necklace of Longevity	7819	1	Golden Age Necklace of Longevity	7820	1	0	4131	2	0	100
+Dark Ages Necklace of Longevity	7821	1	Dark Ages Necklace of Longevity	7821	1	Dark Ages Necklace of Longevity	7822	1	0	4131	0	0	100
+Dark Ages Necklace of Longevity	7822	1	Dark Ages Necklace of Longevity	7822	1	Dark Ages Necklace of Longevity	7823	1	0	4131	0	0	100
+Dark Ages Necklace of Longevity	7823	1	Dark Ages Necklace of Longevity	7823	1	Dark Ages Necklace of Longevity	7824	1	0	4131	1	0	100
+Dark Ages Necklace of Longevity	7824	1	Dark Ages Necklace of Longevity	7824	1	Dark Ages Necklace of Longevity	7825	1	0	4131	2	0	100
+Golden Age Necklace of Blessing	7826	1	Golden Age Necklace of Blessing	7826	1	Golden Age Necklace of Blessing	7827	1	0	4131	0	0	100
+Golden Age Necklace of Blessing	7827	1	Golden Age Necklace of Blessing	7827	1	Golden Age Necklace of Blessing	7828	1	0	4131	0	0	100
+Golden Age Necklace of Blessing	7828	1	Golden Age Necklace of Blessing	7828	1	Golden Age Necklace of Blessing	7829	1	0	4131	1	0	100
+Golden Age Necklace of Blessing	7829	1	Golden Age Necklace of Blessing	7829	1	Golden Age Necklace of Blessing	7830	1	0	4131	2	0	100
+Dark Ages Necklace of Blessing	7831	1	Dark Ages Necklace of Blessing	7831	1	Dark Ages Necklace of Blessing	7832	1	0	4131	0	0	100
+Dark Ages Necklace of Blessing	7832	1	Dark Ages Necklace of Blessing	7832	1	Dark Ages Necklace of Blessing	7833	1	0	4131	0	0	100
+Dark Ages Necklace of Blessing	7833	1	Dark Ages Necklace of Blessing	7833	1	Dark Ages Necklace of Blessing	7834	1	0	4131	1	0	100
+Dark Ages Necklace of Blessing	7834	1	Dark Ages Necklace of Blessing	7834	1	Dark Ages Necklace of Blessing	7835	1	0	4131	2	0	100
+Ragnarok Ring of Attack	7836	1	Ragnarok Ring of Attack	7836	1	Ragnarok Ring of Attack	7837	1	0	4131	0	0	100
+Ragnarok Ring of Attack	7837	1	Ragnarok Ring of Attack	7837	1	Ragnarok Ring of Attack	7838	1	0	4131	0	0	100
+Ragnarok Ring of Attack	7838	1	Ragnarok Ring of Attack	7838	1	Ragnarok Ring of Attack	7839	1	0	4131	1	0	100
+Ragnarok Ring of Attack	7839	1	Ragnarok Ring of Attack	7839	1	Ragnarok Ring of Attack	7840	1	0	4131	2	0	100
+Ragnarok Ring of Defense	7841	1	Ragnarok Ring of Defense	7841	1	Ragnarok Ring of Defense	7842	1	0	4131	0	0	100
+Ragnarok Ring of Defense	7842	1	Ragnarok Ring of Defense	7842	1	Ragnarok Ring of Defense	7843	1	0	4131	0	0	100
+Ragnarok Ring of Defense	7843	1	Ragnarok Ring of Defense	7843	1	Ragnarok Ring of Defense	7844	1	0	4131	1	0	100
+Ragnarok Ring of Defense	7844	1	Ragnarok Ring of Defense	7844	1	Ragnarok Ring of Defense	7845	1	0	4131	2	0	100
+Ragnarok Ring of Accuracy	7846	1	Ragnarok Ring of Accuracy	7846	1	Ragnarok Ring of Accuracy	7847	1	0	4131	0	0	100
+Ragnarok Ring of Accuracy	7847	1	Ragnarok Ring of Accuracy	7847	1	Ragnarok Ring of Accuracy	7848	1	0	4131	0	0	100
+Ragnarok Ring of Accuracy	7848	1	Ragnarok Ring of Accuracy	7848	1	Ragnarok Ring of Accuracy	7849	1	0	4131	1	0	100
+Ragnarok Ring of Accuracy	7849	1	Ragnarok Ring of Accuracy	7849	1	Ragnarok Ring of Accuracy	7850	1	0	4131	2	0	100
+Ragnarok Ring of Evasion	7851	1	Ragnarok Ring of Evasion	7851	1	Ragnarok Ring of Evasion	7852	1	0	4131	0	0	100
+Ragnarok Ring of Evasion	7852	1	Ragnarok Ring of Evasion	7852	1	Ragnarok Ring of Evasion	7853	1	0	4131	0	0	100
+Ragnarok Ring of Evasion	7853	1	Ragnarok Ring of Evasion	7853	1	Ragnarok Ring of Evasion	7854	1	0	4131	1	0	100
+Ragnarok Ring of Evasion	7854	1	Ragnarok Ring of Evasion	7854	1	Ragnarok Ring of Evasion	7855	1	0	4131	2	0	100
+Ragnarok Ring of Max HP	7856	1	Ragnarok Ring of Max HP	7856	1	Ragnarok Ring of Max HP	7857	1	0	4131	0	0	100
+Ragnarok Ring of Max HP	7857	1	Ragnarok Ring of Max HP	7857	1	Ragnarok Ring of Max HP	7858	1	0	4131	0	0	100
+Ragnarok Ring of Max HP	7858	1	Ragnarok Ring of Max HP	7858	1	Ragnarok Ring of Max HP	7859	1	0	4131	1	0	100
+Ragnarok Ring of Max HP	7859	1	Ragnarok Ring of Max HP	7859	1	Ragnarok Ring of Max HP	7860	1	0	4131	2	0	100
+Ragnarok Ring of Max MP	7861	1	Ragnarok Ring of Max MP	7861	1	Ragnarok Ring of Max MP	7862	1	0	4131	0	0	100
+Ragnarok Ring of Max MP	7862	1	Ragnarok Ring of Max MP	7862	1	Ragnarok Ring of Max MP	7863	1	0	4131	0	0	100
+Ragnarok Ring of Max MP	7863	1	Ragnarok Ring of Max MP	7863	1	Ragnarok Ring of Max MP	7864	1	0	4131	1	0	100
+Ragnarok Ring of Max MP	7864	1	Ragnarok Ring of Max MP	7864	1	Ragnarok Ring of Max MP	7865	1	0	4131	2	0	100
+Ragnarok Ring of Critical	7866	1	Ragnarok Ring of Critical	7866	1	Ragnarok Ring of Critical	7867	1	0	4131	0	0	100
+Ragnarok Ring of Critical	7867	1	Ragnarok Ring of Critical	7867	1	Ragnarok Ring of Critical	7868	1	0	4131	0	0	100
+Ragnarok Ring of Critical	7868	1	Ragnarok Ring of Critical	7868	1	Ragnarok Ring of Critical	7869	1	0	4131	1	0	100
+Ragnarok Ring of Critical	7869	1	Ragnarok Ring of Critical	7869	1	Ragnarok Ring of Critical	7870	1	0	4131	2	0	100
+Ragnarok Ring of Block	7871	1	Ragnarok Ring of Block	7871	1	Ragnarok Ring of Block	7872	1	0	4131	0	0	100
+Ragnarok Ring of Block	7872	1	Ragnarok Ring of Block	7872	1	Ragnarok Ring of Block	7873	1	0	4131	0	0	100
+Ragnarok Ring of Block	7873	1	Ragnarok Ring of Block	7873	1	Ragnarok Ring of Block	7874	1	0	4131	1	0	100
+Ragnarok Ring of Block	7874	1	Ragnarok Ring of Block	7874	1	Ragnarok Ring of Block	7875	1	0	4131	2	0	100
+Ragnarok Ring of Magic Power	7876	1	Ragnarok Ring of Magic Power	7876	1	Ragnarok Ring of Magic Power	7877	1	0	4131	0	0	100
+Ragnarok Ring of Magic Power	7877	1	Ragnarok Ring of Magic Power	7877	1	Ragnarok Ring of Magic Power	7878	1	0	4131	0	0	100
+Ragnarok Ring of Magic Power	7878	1	Ragnarok Ring of Magic Power	7878	1	Ragnarok Ring of Magic Power	7879	1	0	4131	1	0	100
+Ragnarok Ring of Magic Power	7879	1	Ragnarok Ring of Magic Power	7879	1	Ragnarok Ring of Magic Power	7880	1	0	4131	2	0	100
+Ragnarok Ring of Magic Resistance	7881	1	Ragnarok Ring of Magic Resistance	7881	1	Ragnarok Ring of Magic Resistance	7882	1	0	4131	0	0	100
+Ragnarok Ring of Magic Resistance	7882	1	Ragnarok Ring of Magic Resistance	7882	1	Ragnarok Ring of Magic Resistance	7883	1	0	4131	0	0	100
+Ragnarok Ring of Magic Resistance	7883	1	Ragnarok Ring of Magic Resistance	7883	1	Ragnarok Ring of Magic Resistance	7884	1	0	4131	1	0	100
+Ragnarok Ring of Magic Resistance	7884	1	Ragnarok Ring of Magic Resistance	7884	1	Ragnarok Ring of Magic Resistance	7885	1	0	4131	2	0	100
+Ragnarok Necklace of Aggression	7886	1	Ragnarok Necklace of Aggression	7886	1	Ragnarok Necklace of Aggression	7887	1	0	4131	0	0	100
+Ragnarok Necklace of Aggression	7887	1	Ragnarok Necklace of Aggression	7887	1	Ragnarok Necklace of Aggression	7888	1	0	4131	0	0	100
+Ragnarok Necklace of Aggression	7888	1	Ragnarok Necklace of Aggression	7888	1	Ragnarok Necklace of Aggression	7889	1	0	4131	1	0	100
+Ragnarok Necklace of Aggression	7889	1	Ragnarok Necklace of Aggression	7889	1	Ragnarok Necklace of Aggression	7890	1	0	4131	2	0	100
+Ragnarok Necklace of Protection	7891	1	Ragnarok Necklace of Protection	7891	1	Ragnarok Necklace of Protection	7892	1	0	4131	0	0	100
+Ragnarok Necklace of Protection	7892	1	Ragnarok Necklace of Protection	7892	1	Ragnarok Necklace of Protection	7893	1	0	4131	0	0	100
+Ragnarok Necklace of Protection	7893	1	Ragnarok Necklace of Protection	7893	1	Ragnarok Necklace of Protection	7894	1	0	4131	1	0	100
+Ragnarok Necklace of Protection	7894	1	Ragnarok Necklace of Protection	7894	1	Ragnarok Necklace of Protection	7895	1	0	4131	2	0	100
+Ragnarok Necklace of Agility	7896	1	Ragnarok Necklace of Agility	7896	1	Ragnarok Necklace of Agility	7897	1	0	4131	0	0	100
+Ragnarok Necklace of Agility	7897	1	Ragnarok Necklace of Agility	7897	1	Ragnarok Necklace of Agility	7898	1	0	4131	0	0	100
+Ragnarok Necklace of Agility	7898	1	Ragnarok Necklace of Agility	7898	1	Ragnarok Necklace of Agility	7899	1	0	4131	1	0	100
+Ragnarok Necklace of Agility	7899	1	Ragnarok Necklace of Agility	7899	1	Ragnarok Necklace of Agility	7900	1	0	4131	2	0	100
+Ragnarok Necklace of Serenity	7901	1	Ragnarok Necklace of Serenity	7901	1	Ragnarok Necklace of Serenity	7902	1	0	4131	0	0	100
+Ragnarok Necklace of Serenity	7902	1	Ragnarok Necklace of Serenity	7902	1	Ragnarok Necklace of Serenity	7903	1	0	4131	0	0	100
+Ragnarok Necklace of Serenity	7903	1	Ragnarok Necklace of Serenity	7903	1	Ragnarok Necklace of Serenity	7904	1	0	4131	1	0	100
+Ragnarok Necklace of Serenity	7904	1	Ragnarok Necklace of Serenity	7904	1	Ragnarok Necklace of Serenity	7905	1	0	4131	2	0	100
+Ragnarok Necklace of Longevity	7906	1	Ragnarok Necklace of Longevity	7906	1	Ragnarok Necklace of Longevity	7907	1	0	4131	0	0	100
+Ragnarok Necklace of Longevity	7907	1	Ragnarok Necklace of Longevity	7907	1	Ragnarok Necklace of Longevity	7908	1	0	4131	0	0	100
+Ragnarok Necklace of Longevity	7908	1	Ragnarok Necklace of Longevity	7908	1	Ragnarok Necklace of Longevity	7909	1	0	4131	1	0	100
+Ragnarok Necklace of Longevity	7909	1	Ragnarok Necklace of Longevity	7909	1	Ragnarok Necklace of Longevity	7910	1	0	4131	2	0	100
+Ragnarok Necklace of Blessing	7911	1	Ragnarok Necklace of Blessing	7911	1	Ragnarok Necklace of Blessing	7912	1	0	4131	0	0	100
+Ragnarok Necklace of Blessing	7912	1	Ragnarok Necklace of Blessing	7912	1	Ragnarok Necklace of Blessing	7913	1	0	4131	0	0	100
+Ragnarok Necklace of Blessing	7913	1	Ragnarok Necklace of Blessing	7913	1	Ragnarok Necklace of Blessing	7914	1	0	4131	1	0	100
+Ragnarok Necklace of Blessing	7914	1	Ragnarok Necklace of Blessing	7914	1	Ragnarok Necklace of Blessing	7915	1	0	4131	2	0	100
+Boguh Poison	8068	1	Empty Test Tube	10415	1	Boguh Poison Sample	10421	1	0	0	0	0	100
+Ancient Guardian Core	8239	1	Crude Alchemist's Water	3101	1	Potion of Patience	3196	1	0	0	0	0	100
+Ancient Guardian Core	8239	2	Typical Alchemist's Water	3102	1	Potion of Greater Patience	3197	1	0	0	0	0	100
+Holy Potion of Healing	9001	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Healing	9002	1	0	4114	0	0	100
+Holy Potion of Mana	9003	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Mana	9004	1	0	4114	0	0	100
+Holy Potion of Attack	9007	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Attack	9008	1	0	4114	0	0	100
+Holy Potion of Defense	9009	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Defense	9010	1	0	4114	0	0	100
+Holy Potion of Accuracy	9011	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Accuracy	9012	1	0	4114	0	0	100
+Holy Potion of Evasion	9013	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Evasion	9014	1	0	4114	0	0	100
+Holy Potion of Max HP	9015	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Max HP	9016	1	0	4114	0	0	100
+Holy Potion of Max MP	9017	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Max MP	9018	1	0	4114	0	0	100
+Holy Potion of Critical	9019	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Critical	9020	1	0	4114	0	0	100
+Holy Potion of Block	9021	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Block	9022	1	0	4114	0	0	100
+Holy Potion of Speed	9023	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Speed	9024	1	0	4114	0	0	100
+Holy Potion of Cooldown	9025	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Cooldown	9026	1	0	4114	0	0	100
+Holy Potion of Magic Power	9027	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Magic Power	9028	1	0	4114	0	0	100
+Holy Potion of Magic Resistance	9029	3	Almighty Alchemist's Water	9035	1	Almighty Potion of Magic Resistance	9030	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Attack	3108	3	Holy Potion of Attack	9007	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Defense	3112	3	Holy Potion of Defense	9009	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Accuracy	3116	3	Holy Potion of Accuracy	9011	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Evasion	3120	3	Holy Potion of Evasion	9013	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Critical	3124	3	Holy Potion of Critical	9019	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Healing	3156	3	Holy Potion of Healing	9001	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Mana	3160	3	Holy Potion of Mana	9003	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Max HP	3164	3	Holy Potion of Max HP	9015	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Max MP	3168	3	Holy Potion of Max MP	9017	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Block	3172	3	Holy Potion of Block	9021	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Speed	3179	3	Holy Potion of Speed	9023	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Cooldown	3183	3	Holy Potion of Cooldown	9025	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Magic Power	3187	3	Holy Potion of Magic Power	9027	1	0	4114	0	0	100
+Holy Alchemist's Water	9034	1	Superior Potion of Magic Resistance	3191	3	Holy Potion of Magic Resistance	9029	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Healing	9001	3	Almighty Potion of Healing	9002	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Mana	9003	3	Almighty Potion of Mana	9004	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Attack	9007	3	Almighty Potion of Attack	9008	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Defense	9009	3	Almighty Potion of Defense	9010	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Accuracy	9011	3	Almighty Potion of Accuracy	9012	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Evasion	9013	3	Almighty Potion of Evasion	9014	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Max HP	9015	3	Almighty Potion of Max HP	9016	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Max MP	9017	3	Almighty Potion of Max MP	9018	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Critical	9019	3	Almighty Potion of Critical	9020	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Block	9021	3	Almighty Potion of Block	9022	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Speed	9023	3	Almighty Potion of Speed	9024	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Cooldown	9025	3	Almighty Potion of Cooldown	9026	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Magic Power	9027	3	Almighty Potion of Magic Power	9028	1	0	4114	0	0	100
+Almighty Alchemist's Water	9035	1	Holy Potion of Magic Resistance	9029	3	Almighty Potion of Magic Resistance	9030	1	0	4114	0	0	100
+Empty Test Tube	10415	1	Boguh Poison	8068	1	Boguh Poison Sample	10421	1	0	0	0	0	100
