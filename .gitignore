@@ -1,4 +1,6 @@
 venv/
+__pycache__/
+modules/__pycache__/
 script/ROW
 script/RYL1
 script/RYL2

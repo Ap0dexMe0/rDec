@@ -5,13 +5,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-try:
-    from modules.banners import clear_and_print
-except Exception:
-    def clear_and_print():
-        pass
-from modules.cli import (build_parser, discover_files, resolve_version,
-                         version_lines)
+from modules.cli import (discover_files, menu_loop, resolve_version)
 from modules.logging import setup
 
 log = setup()
@@ -40,9 +34,9 @@ def _decompile_mcf(src: Path):
     return decompile_ryl_mcf(src)
 
 
-def _decompile_gsf(src: Path, namemap: dict) -> bytes:
+def _decompile_gsf(src: Path, namemap: dict, version=None) -> bytes:
     from modules.ryl_decompiler import decompile_ryl_gsf
-    return decompile_ryl_gsf(src, namemap)
+    return decompile_ryl_gsf(src, namemap, version)
 
 
 def _decompile_row_gsf(src: Path, namemap: dict) -> bytes:
@@ -88,7 +82,8 @@ def run(version: str, base_dir=None) -> int:
         else:
             try:
                 from modules.ryl_decompiler import build_ryl_namemap
-                namemap = build_ryl_namemap([p for p, _ in supported])
+                namemap = build_ryl_namemap([p for p, _ in supported],
+                                            version)
                 if namemap:
                     log.info(f"Loaded {len(namemap):,} item names "
                              f"for Chemical lookups.")
@@ -143,7 +138,7 @@ def run(version: str, base_dir=None) -> int:
                 detail = f"{len(data):,} bytes"
             else:
                 try:
-                    data = _decompile_gsf(path, namemap)
+                    data = _decompile_gsf(path, namemap, version)
                 except RuntimeError as e:
                     if str(e).startswith("SKIP:"):
                         reason = str(e)[len("SKIP:"):].strip()
@@ -180,27 +175,15 @@ def run(version: str, base_dir=None) -> int:
     return 1 if counts["failed"] else 0
 
 
-def main(argv=None) -> int:
-    parser = build_parser()
-    args = parser.parse_args(argv)
-    if args.list or not args.decompile:
-        for line in version_lines():
-            log.info(line)
-        if not args.decompile:
-            return 0
-    if not args.version:
-        parser.error("-v/--version is required with -d/--decompile")
-    return run(args.version)
+def main() -> int:
+    """Interactive entry point - shows the prompt menu and runs it."""
+    return menu_loop(run)
 
 
 if __name__ == "__main__":
     try:
         sys.stdout.reconfigure(encoding="utf-8")
         sys.stderr.reconfigure(encoding="utf-8")
-    except Exception:
-        pass
-    try:
-        clear_and_print()
     except Exception:
         pass
     sys.exit(main())

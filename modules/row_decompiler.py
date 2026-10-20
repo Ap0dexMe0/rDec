@@ -9,6 +9,7 @@ from modules.ryl_decompiler import (
     cstr,
     emit_item,
     emit_monster,
+    field,
     with_banner,
     ITEM_HDR,
     SKILL_HDR,
@@ -114,7 +115,7 @@ def row_item_namemap(dec: bytes) -> dict:
     for i in range(len(dec) // ROW_ITEM_ROW):
         r = dec[i * ROW_ITEM_ROW:(i + 1) * ROW_ITEM_ROW]
         m[struct.unpack_from("<H", r, 0)[0]] = \
-            cstr(r[52:116]).decode("utf-8", errors="replace")
+            field(cstr(r[52:116]))
     return m
 
 
@@ -241,11 +242,11 @@ def decompile_row_itemex(dec: bytes) -> bytes:
     for i in range(n):
         r = dec[i * ROW_ITEMEX_ROW:(i + 1) * ROW_ITEMEX_ROW]
         sid, f1, f2, f3, f4 = struct.unpack_from("<IHHII", r, 0)
-        name = cstr(r[16:]).decode("utf-8", errors="replace")
+        name = field(cstr(r[16:]))
         p = 16 + len(cstr(r[16:])) + 1
         while p < len(r) and r[p] == 0:
             p += 1
-        desc = cstr(r[p:]).decode("utf-8", errors="replace")
+        desc = field(cstr(r[p:]))
         desc = desc.strip("\r\n").replace("\r\n", "\\n").replace("\n", "\\n")
         lines.append("\t".join([str(sid), str(f1), str(f2), str(f3),
                                  str(f4), name, desc]))
@@ -316,6 +317,8 @@ def _check_text(line: bytes, where: str):
 
 def decompile_ncf(src: Path) -> bytes:
     from modules.banners import file_banner
+    from modules.ryl_decompiler import clean_text, smart_str
+    from modules.translations import translate_text
     src = Path(src)
     raw = src.read_bytes()
     log.debug(f"{src.name}: read {len(raw):,} bytes.")
@@ -329,12 +332,18 @@ def decompile_ncf(src: Path) -> bytes:
     for i, body in enumerate(blocks):
         line = autokey_decrypt(body)
         _check_text(line, f"{src.name} block {i}")
-        out.append(coerce_text(line) if line else b"")
+        if line:
+            text = clean_text(smart_str(line))
+            text = text.replace("\r\n", "\\n").replace("\n", "\\n")
+            text = translate_text(text)
+            out.append(text)
+        else:
+            out.append("")
     log.debug(f"{src.name}: recovered {len(out):,} lines.")
-    head = [s.encode("ascii") for s in file_banner()]
-    head.append(b"")
+    head = list(file_banner())
+    head.append("")
     head.extend(out)
-    return b"\r\n".join(head)
+    return "\r\n".join(head).encode("utf-8")
 
 
 def decompile_row(src: Path, namemap: dict) -> bytes:

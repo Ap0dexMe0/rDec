@@ -1,11 +1,11 @@
-////////////////////////////////////////////////////////
-// rDecompiler By Ap0dexMe0 10/11/2026 11:59:56 AM   //
-////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+// rDecompiler By Ap0dexMe0 10/21/2026 3:08:52 AM   //
+///////////////////////////////////////////////////////
 
-void RylNation(int, int, string);   // "±¹°¡ÄÚµå, ¼­¹öÁ¾·ù, °ÔÀÓ°¡µå ½ºÆ®¸µ"
+void RylNation(int, int, string);   // "국가코드, 서버종류, 게임가드 스트링"
 void AddString(string);
 void AddString(int, string);
-RylNation(1, 1, "RYLYouxi");  // "´ë¸¸ Á¤¼·"
+RylNation(1, 1, "RYLYouxi");  // "대만 정섭"
 AddString(0, "Invite to Party");															// 0
 AddString("Transfer leadership");															// 1
 AddString("Remove from Party");														// 2
@@ -269,8 +269,8 @@ AddString("Incorrect Password");															// 235
 AddString("Enter Password:");																// 236
 
 AddString("The selected stat has exceeded the maximum value for the equipment.\\Do you still want to stat-transfer?  (The item can still be upgraded and gain sockets.)");	// 237
-AddString("Lucky");																			// 238	¸ÅÂù¿ë Á¢µÎ»ç
-AddString("Lucky Chance : ");																// 239	¸ÅÁ÷Âù½º
+AddString("Lucky");																			// 238	매찬용 접두사
+AddString("Lucky Chance : ");																// 239	매직찬스
 
 AddString(240, "Close");																	// 240
 AddString("Required points : %d");															// 241
@@ -1925,7 +1925,7 @@ AddString("You do not have a corresponding quest.");		// 2718
 AddString("This quest cannot be cancelled.");				// 2719
 
 AddString("You are now in the [%s] Guild. If this is a registered Guild, you cannot change between Battle mode and Peace mode.");	// 2720
-AddString("You are in a guild. You cannot change the War Mode/Peace Mode if you’re in a guild.");	// 2721
+AddString("You are in a guild. You cannot change the War Mode/Peace Mode if you're in a guild.");	// 2721
 
 AddString("Stealth skill cannot be used.");				// 2722
 AddString("There is a problem in using this skill.");	// 2723
@@ -3254,7 +3254,7 @@ AddString("Ballistar");								// 4075
 AddString("Long-Range defending castle Weapon");				// 4076
 AddString("Another Player has already started to develop a weapon.");		// 4077
 AddString("You do not have enough corresponding amount.");			// 4078
-AddString("You successfully developed the Weapon. If you do not get aboard on weapon for %d Min, it will self-destruct. If Owner selected ‘Destroy Weapon?from Menu, it will immediately destruct, and owner will receive back half of the development cost.");	// 4079
+AddString("You successfully developed the Weapon. If you do not get aboard on weapon for %d Min, it will self-destruct. If Owner selected 'Destroy Weapon?from Menu, it will immediately destruct, and owner will receive back half of the development cost.");	// 4079
 AddString("You can't develop more than 1 Defending Castle Weapon.");		// 4080
 AddString("[%s]'s [%s]");								// 4081
 AddString("Who is it");								// 4082
@@ -3463,7 +3463,7 @@ AddString("Killed [%s] %d/%d.");						// 4265
 AddString("[%s] bought [%s] for [%s] gold.");				// 4266
 AddString(4301, "Awakened");								// 4301  Awakend Core title
 AddString("Awaken Level : %d");								// 4302
-AddString(4321, "* Abilities are automatically applied");	// 4321 ¾îºô¸®Æ¼ ÅøÆÁÀ©µµ¿ì ÇÏ´Ü ¼³¸í
+AddString(4321, "* Abilities are automatically applied");	// 4321 어빌리티 툴팁윈도우 하단 설명
 AddString("  like passive skills once you learn them.");	// 4322
 AddString("  ");											// 4323
 AddString(" ");												// 4324
@@ -3473,7 +3473,7 @@ AddString("This ability is already memorized.");			// 4327
 AddString("Not enough ability points.");					// 4328
 AddString("Ability slot is full.");							// 4329
 AddString("Not enough ability points.");					// 4330
-AddString(4361, "* Place frequently used emotes in your");	// 4361 ¾×¼Ç ÅøÆÁÀ©µµ¿ì ÇÏ´Ü ¼³¸í
+AddString(4361, "* Place frequently used emotes in your");	// 4361 액션 툴팁윈도우 하단 설명
 AddString("  quickslot, then select an emote and");			// 4362
 AddString("  right-click to use it.");						// 4363
 AddString("* You can also use emote commands. ");			// 4364
@@ -3481,9 +3481,9 @@ AddString(4401, "EXP & DROP-RATE Boost Event is over.");						// 4401
 AddString("Boost Event started!!! EXP & DROP-RATE 20 percent UP!!!");			// 4402
 AddString("Boost Event started!!! EXP & DROP-RATE 50 percent UP!!!");			// 4403
 AddString("%s has been blessed to earn %d Gold.");								// 4404
-AddString(4411, "Human Stall");													// 4411	¾ÆÄ­ÀÌ ÈÞ¸Õ³ëÁ¡»ó º¼¶§
-AddString("Ak'kan Stall");														// 4412	ÈÞ¸ÕÀÌ ¾ÆÄ­ ³ëÁ¡»ó º¼¶§
-AddString("Your level must be higher than 39 to participate in Statue War.");	// 4413	¼®»óÀüÀï¿¡ Âü¿©ÇÏ±â À§ÇØ¼± 41·¹º§ ÀÌ»óÀÌ µÇ¾î¾ß ÇÕ´Ï´Ù.
+AddString(4411, "Human Stall");													// 4411	아칸이 휴먼노점상 볼때
+AddString("Ak'kan Stall");														// 4412	휴먼이 아칸 노점상 볼때
+AddString("Your level must be higher than 39 to participate in Statue War.");	// 4413	석상전쟁에 참여하기 위해선 41레벨 이상이 되어야 합니다.
 AddString(4451, "You have been blessed to have + %d Attack.");			// 4451
 AddString("You have been blessed to have + %d Defense.");				// 4452
 AddString("You have been blessed to have + %d Max HP.");				// 4453
@@ -3505,8 +3505,8 @@ AddString("Rage Chant\\Boosts the party's attack and MP recovery.\\+ %d Damage\\
 AddString("Life Aura\\Increases the party's HP and MP recovery rate.\\+ %d HP Recovery\\+ %d MP Recovery");			// 4604
 AddString("Speedy\\Makes you move faster.\\+ %d Speed");						// 4605
 AddString("Regeneration\\Increases the HP Recovery rate.\\+ %d HP Recovery");	// 4606
-AddString("Slow Cool\\Reduces the speed by 75%.");			// 4607  Shatter °ü·Ã
-AddString("Broken Armor\\Reduced the defence by %d.");		// 4608  ÇÏµåÈ÷Æ® °ü·Ã
+AddString("Slow Cool\\Reduces the speed by 75%.");			// 4607  Shatter 관련
+AddString("Broken Armor\\Reduced the defence by %d.");		// 4608  하드히트 관련
 AddString("Blaze\\Dispels all negative effects.\\+ %d Speed\\+ %d Accuracy\\- %d Evasion\\+ %d Magic Resistance");	// 4609
 AddString("Charging\\Dispels all negative effects.\\+ %d Speed\\+ %d Defense\\+ %d Magic Resistance");	// 4610
 AddString("Invisible\\Moves faster while undetected by enemies");		// 4611

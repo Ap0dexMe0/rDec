@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 
+import re
 import struct
 import sys
 from pathlib import Path
@@ -156,20 +157,81 @@ def fmt_float(bits: int) -> str:
     return repr(float(v))
 
 
-def coerce_text(raw: bytes) -> bytes:
+# ---------------------------------------------------------------------------
+# Text decoding: game binaries store KS X 1001 / CP949 (Korean) text.  Decoding
+# with utf-8+replace or plain cp1252 destroys it (U+FFFD garbage or mojibake),
+# so every text field must go through smart_str().
+# ---------------------------------------------------------------------------
+_HANGUL = re.compile(r"[\uac00-\ud7a3\u3130-\u318f\u3018-\u301f\u3008-\u300b]")
+_KS_SYMBOL = re.compile("[\u2014\u2018\u2019\u201c\u201d\u2025\u2030\u2032\u2033"
+                        "\u2190-\u2193\u2200-\u22ff\u2460-\u2473"
+                        "\u2500-\u257f\u25a0-\u25ff\u3010\u3011\u3000]")
+_CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+
+
+def smart_str(raw: bytes) -> str:
+    """Decode game text: utf-8 first, then EUC-KR (Korean games), then cp1252.
+
+    EUC-KR only wins when the bytes really are Korean or Korean punctuation;
+    lone cp1252 bytes such as 0x92 (curly apostrophe in English text) stay on
+    the cp1252 branch.
+    """
     try:
-        raw.decode("utf-8")
-        return raw
+        return raw.decode("utf-8")
     except UnicodeDecodeError:
         pass
     try:
-        return raw.decode("cp1252").encode("utf-8")
+        return _kr_evidence(raw)
     except UnicodeDecodeError:
-        return raw.decode("latin-1").encode("utf-8")
+        pass
+    try:
+        return raw.decode("cp1252")
+    except UnicodeDecodeError:
+        return raw.decode("latin-1")
+
+
+def _kr_evidence(raw: bytes) -> str:
+    """Decode as strict KS X 1001 (EUC-KR, the subset RYL actually stores).
+
+    Apostrophe-like cp1252 bytes (0x92 + an ASCII letter) form valid CP949
+    *extension* (UHC) pairs but never valid KS X 1001 pairs, so EUC-KR keeps
+    English text on the cp1252 branch.
+    """
+    s = raw.decode("euc-kr")
+    non_ascii = [c for c in s if ord(c) > 127]
+    if not non_ascii:
+        raise UnicodeDecodeError("euc-kr", raw, 0, 1, "no Korean evidence")
+    if all(_KS_SYMBOL.match(c) or _HANGUL.match(c) for c in non_ascii):
+        return s
+    raise UnicodeDecodeError("euc-kr", raw, 0, 1, "no Korean evidence")
+
+
+def clean_text(s: str) -> str:
+    """Normalise decoded text: drop control junk, map smart punctuation."""
+    s = _CTRL_RE.sub("", s)
+    for a, b in (("\u2018", "'"), ("\u2019", "'"), ("\u201c", '"'),
+                 ("\u201d", '"'), ("\u201e", '"'), ("\u2026", "..."),
+                 ("\u2025", ".."), ("\u2014", "-"), ("\u2013", "-"),
+                 ("\u201a", ","), ("\u2022", "*"), ("\u00a0", " "),
+                 ("\u3000", " ")):
+        s = s.replace(a, b)
+    return s
+
+
+def coerce_text(raw: bytes) -> bytes:
+    return smart_str(raw).encode("utf-8", errors="replace")
+
+
+def text_out(s: str) -> str:
+    """Translate + keep one physical cell for tab-separated output."""
+    from modules.translations import translate_text
+    text = translate_text(clean_text(s))
+    return text.replace("\t", "    ").replace("\r\n", "\\n").replace("\n", "\\n")
 
 
 def fmt_str(raw: bytes) -> bytes:
-    return b'"' + coerce_text(raw) + b'"'
+    text = text_out(smart_str(raw))
+    return b'"' + text.encode("utf-8") + b'"'
 
 
 def scan_calls(code: bytes, funcmap: dict, strbuf: bytes, srel: set):
@@ -356,27 +418,113 @@ PAGES = {"ItemScript.gsf": (0, 2), "Chemical.gsf": (0, 2),
          "MonsterProtoType.gsf": (0, 3), "SkillScript.gsf": (0, 1),
          "Script1.gsf": (0, 1)}
 OUTNAME = {"Script1.gsf": "Abuse.txt"}
+# Files whose crypt page exists only in a newer game build's XORCryptoCodeList
+# (the bundled RYLGameConverter table does not have these pages yet).
+PENDING_PAGES = {
+    "SpeacialCompensation.gsf":
+        "crypt page (3, 4) of the RYL2 V2000+ XORCryptoCodeList "
+        "(per RylServerProject ItemMgr.cpp SaveItemSpeacialCompensationBinary)",
+}
 
 
 def output_name_for_gsf(filename: str) -> str:
     return OUTNAME.get(filename, Path(filename).stem + ".txt")
 
 
-def build_namemap(files) -> dict:
+def build_namemap(files, version=None) -> dict:
     for src in files:
         if Path(src).name == "ItemScript.gsf":
+            if version == "RYL1":
+                return ryl1_item_namemap(load_gsf(Path(src)))
             return item_namemap(load_gsf(Path(src)))
     return {}
 
 
-def decompile_gsf(src: Path, namemap: dict) -> bytes:
+# MonsterChat.gsf ships as plaintext whose header comments were mangled in the
+# source binary (Korean notes already lost to '?').  The RYL2 build of the same
+# script documents the identical format in English, so we rebuild the header
+# faithfully from that surviving documentation instead of printing '?...' lines.
+_MC_DECO = b"??Monster Chat Script ??"
+_MC_RYL1_SIGN = b"void MonsterChat(int, int, int, int, int, string); // KID, ?????"
+_MC_DOC = (
+    "void MonsterChat(int, int, int, int, int, string); // KID, MonsterAction, "
+    "Monster SkillsID, Chattingtypes, Probability, ChattingMessage",
+    "",
+    "//////\tChattingtypes ID\t//////////",
+    "//\t\t\t\t\t//",
+    "//\tGeneral attack\t\t\t\t=0\t//",
+    "//\tWhen getting attacked by general attack\t=1\t//",
+    "//\tWhen attacking with skill attack\t\t=2\t//",
+    "//\tWhen getting attacked by skill attack\t=3\t//",
+    "//\tWhen attacking with crit attack\t\t=4\t//",
+    "//\tWhen getting attacked by crit attack\t=5\t//",
+    "//\tLisphone\t\t\t\t\t=6\t//",
+    "//\tDeath\t\t\t\t\t\t=7\t//",
+    "//\t\t\t\t\t//",
+    "//////////////////////////",
+    "",
+    "//////\tChattingtypes ID\t//////",
+    "//\t\t\t\t//",
+    "//\tCommon Knowledge\t=255\t//",
+    "//\tGeneral\t\t\t\t=0\t\t//",
+    "//\tScreaming\t\t\t=7\t\t//",
+    "//\t\t\t\t//",
+    "///////////////////////",
+    "",
+    "////\tSkill ID\t//////",
+    "//\t\t\t\t\t//",
+    "//\tAll Skill\t=0xFFFF\t//",
+    "//\t\t\t\t\t//",
+    "//////////////////////////",
+    "",
+    "// $KILLERNAME$\tSubstitute with killer(player) name. It's only possible "
+    "when Action ID matches number 7 (death).",
+    "// $ATTNAME$\t\tSubstitute with hitter(player) name. It's only possible "
+    "when Action ID matches number 1, 3, 5 (when the monster got hit).",
+    "// $DEFNAME$\t\tSubstitute with the player name who got hit by the "
+    "monster. It's only possible when Action ID matches number 0, 2, 4 "
+    "(when the monster hits) (When two or more exist, chosen at random).",
+    "",
+    "// KID, Monster Action, Monster skill ID. When the chatting kinds are "
+    "the same kind, the probability is calculated by adding them together.",
+    "",
+    "// ex ",
+    '//MonsterChat(4001, 2, 0xFFFF, 0, 20, "Monster chat example text 1");',
+    '//MonsterChat(4001, 2, 0xFFFF, 0, 20, "Monster chat example text 2");',
+    "// (A random number is chosen from 1~100: the first message is covered "
+    "by 1~20, the second by 21~40. Other numbers say nothing.) ",
+    "",
+    "// Note: this header was reconstructed in English - the original notes "
+    "were lost to text corruption in the source binary.",
+)
+
+
+def repair_monsterchat(body: bytes) -> bytes:
+    if _MC_DECO in body:
+        body = body.replace(_MC_DECO, b"Monster Chat Script")
+    if not body.startswith(_MC_RYL1_SIGN):
+        return body
+    lines = body.split(b"\r\n")
+    idx = None
+    for i, line in enumerate(lines):
+        if b"Named Monster-Boss" in line:
+            idx = i - 1  # the plain banner line above the title line
+            break
+    if idx is None:
+        return body
+    out = [s.encode("utf-8") for s in _MC_DOC]
+    out += [b"", b""]
+    return b"\r\n".join(out) + b"\r\n".join(lines[idx:])
+
+
+def decompile_gsf(src: Path, namemap: dict, version=None) -> bytes:
     src = Path(src)
     lowered = src.name.lower()
     if lowered == "monsterchat.gsf":
         body = src.read_bytes()
         log.debug(f"MonsterChat.gsf: passing through {len(body):,} "
                   f"plaintext bytes.")
-        return with_banner(body, _eol_of(body))
+        return with_banner(repair_monsterchat(body), _eol_of(body))
     if lowered == "skillscriptex.gsf":
         import shutil
         import subprocess
@@ -397,6 +545,19 @@ def decompile_gsf(src: Path, namemap: dict) -> bytes:
                       f"bytes.")
             return with_banner(body, _eol_of(body))
     dec = load_gsf(src)
+    if version == "RYL1":
+        # RYL1 item layout = the 644-byte OldItem::ItemInfo struct
+        # (RebalanceConvert/OldItemStructure.h), not the 616-byte
+        # RYL2/ROW CItemMgr. MonsterChat.gsf never reaches this point.
+        if src.name == "ItemScript.gsf":
+            return with_banner(decompile_ryl1_item(dec), b"\n")
+        if src.name == "MonsterProtoType.gsf":
+            return with_banner(decompile_ryl1_monster(dec), b"\n")
+        if src.name == "Chemical.gsf":
+            return with_banner(decompile_chemical(dec, namemap))
+        if src.name == "SpeacialCompensation.gsf":
+            return with_banner(decompile_compensation(dec, namemap))
+        raise ValueError(f"{src.name}: no RYL1 GSF handler registered")
     if src.name == "ItemScript.gsf":
         S, N = 616, len(dec) // 616
         log.debug(f"ItemScript.gsf: {N:,} item rows.")
@@ -416,6 +577,8 @@ def decompile_gsf(src: Path, namemap: dict) -> bytes:
         return with_banner(decompile_chemical(dec, namemap))
     if src.name == "Script1.gsf":
         return with_banner(decompile_abuse(dec))
+    if src.name == "SpeacialCompensation.gsf":
+        return with_banner(decompile_compensation(dec, namemap))
     raise ValueError(f"{src.name}: no GSF handler registered")
 
 
@@ -447,6 +610,9 @@ def load_gsf(path: Path):
     try:
         ver, page = PAGES[path.name]
     except KeyError:
+        if path.name in PENDING_PAGES:
+            raise RuntimeError(f"SKIP: {PENDING_PAGES[path.name]} is "
+                               f"missing from the bundled XORCryptoCodeList.")
         raise ValueError(f"No crypt page is registered for {path.name} "
                          f"(known: {sorted(PAGES)}).")
     row = _tables()[(ver, page)]
@@ -469,6 +635,17 @@ def f32short(bits: int) -> str:
 
 def cstr(b: bytes) -> bytes:
     return b.split(b"\x00")[0]
+
+
+def field(raw: bytes) -> str:
+    """One text cell for a tab-separated output line.
+
+    Decode via smart_str(), normalise punctuation, translate known Korean
+    strings, then keep everything in a single physical cell (tabs become
+    spaces, line breaks become \\n) so the loader's strtok-style column
+    split keeps working.
+    """
+    return text_out(smart_str(raw))
 
 
 def ox(v: int) -> str:
@@ -512,25 +689,57 @@ LIMIT = {0: "NONE", 1: "STR", 2: "DEX", 3: "CON", 4: "INT", 5: "WIS",
  DARKNESS) = range(22)
 
 
+def _all_qmark(s: str) -> bool:
+    """True when a field only holds lost-character '?' padding."""
+    return bool(s) and "?" in s and set(s) <= {"?"}
+
+
+def _pretty_word(w: str) -> str:
+    return w.replace("_", " ").title()
+
+
+def pretty_itemtype(itype: int) -> str:
+    """English display class for items whose TypeName cell was corrupted."""
+    base = ITEMTYPE.get(itype)
+    if base is None:
+        return "Unknown"
+    if "HANDED" in base:
+        return base.replace("ONEHANDED", "One-Handed")\
+            .replace("TWOHANDED", "Two-Handed")\
+            .replace("_", " ").title().replace("And", "and")
+    return _pretty_word(base)
+
+
+def pretty_ryl1_type(itype: int) -> str:
+    """English display class for RYL1 items whose TypeName was corrupted."""
+    base = RYL1_ITEMTYPE.get(itype)
+    if base is None:
+        return "Unknown"
+    return _pretty_word(base)
+
+
 def hexid(v: int) -> str:
     return f"0x{v:04X}" if v >= 0x8000 else str(v)
 
 
 def emit_item(r: bytes):
     itype = r[21]
+    tn = field(cstr(r[252:284]))
+    if "?" in tn:  # corrupted TypeName in old binaries -> derive from type
+        tn = pretty_itemtype(itype)
     c = [str(struct.unpack_from("<H", r, 0)[0]),
-         cstr(r[52:116]).decode("utf-8", errors="replace"),
-         cstr(r[156:188]).decode("utf-8", errors="replace"),
-         cstr(r[188:220]).decode("utf-8", errors="replace"),
-         cstr(r[116:148]).decode("utf-8", errors="replace"),
+         field(cstr(r[52:116])),
+         field(cstr(r[156:188])),
+         field(cstr(r[188:220])),
+         field(cstr(r[116:148])),
          str(struct.unpack_from("<H", r, 148)[0]),
          str(struct.unpack_from("<H", r, 150)[0]),
          str(struct.unpack_from("<H", r, 152)[0]),
          str(struct.unpack_from("<H", r, 154)[0]),
          str(r[22]), str(r[23]),
-         cstr(r[220:252]).decode("utf-8", errors="replace"),
+         field(cstr(r[220:252])),
          ITEMTYPE.get(itype, str(itype)),
-         cstr(r[252:284]).decode("utf-8", errors="replace"),
+         tn,
          ox(r[34]), ox(r[35]), str(r[27]), str(r[28]),
          str(struct.unpack_from("<I", r, 4)[0]), ox(r[36]),
          str(struct.unpack_from("<I", r, 8)[0]),
@@ -568,9 +777,9 @@ def emit_item(r: bytes):
               str(r[600]), pos[0], pos[1], pos[2],
               str(struct.unpack_from("<I", r, 604)[0]),
               hexid(struct.unpack_from("<H", r, 612)[0]),
-              cstr(r[284:540]).decode("utf-8", errors="replace")] + [""] * 11
+              field(cstr(r[284:540]))] + [""] * 11
     else:
-        c += [cstr(r[284:540]).decode("utf-8", errors="replace")] + [""] * 21
+        c += [field(cstr(r[284:540]))] + [""] * 21
     return c
 
 
@@ -618,8 +827,8 @@ def mon_vel(bits: int) -> str:
 def emit_monster(r: bytes):
     c = [""] * 116
     c[0] = str(struct.unpack_from("<H", r, 348)[0])
-    c[1] = cstr(r[64:128]).decode("utf-8", errors="replace")
-    c[2] = cstr(r[128:160]).decode("utf-8", errors="replace")
+    c[1] = field(cstr(r[64:128]))
+    c[2] = field(cstr(r[128:160]))
     c[3] = ox(r[396])
     c[4] = str(r[370])
     c[5] = "Siege" if r[392] else MONPAT.get(r[366], str(r[366]))
@@ -722,7 +931,7 @@ def emit_skill(g: bytes):
     c = [f"0x{struct.unpack_from('<H', g, 472)[0]:04X}",
          SKILLTYPES.get(struct.unpack_from("<I", g, 456)[0], "?"),
          str(1 if g[506] else 0),
-         cstr(g[96:160]).decode("utf-8", errors="replace"),
+         field(cstr(g[96:160])),
          USELIMITS.get(struct.unpack_from("<I", g, 464)[0], "?"),
          STATLIMITS.get(g[468], str(g[468])),
          str(sval(g[470])),
@@ -737,12 +946,12 @@ def emit_skill(g: bytes):
          str(struct.unpack_from("<H", g, 478)[0]),
          str(struct.unpack_from("<H", g, 480)[0]),
          str(struct.unpack_from("<H", g, 482)[0]),
-         cstr(g[64:96]).decode("utf-8", errors="replace"),
-         cstr(g[0:32]).decode("utf-8", errors="replace"),
-         cstr(g[32:64]).decode("utf-8", errors="replace"),
+         field(cstr(g[64:96])),
+         field(cstr(g[0:32])),
+         field(cstr(g[32:64])),
          str(struct.unpack_from("<I", g, 488)[0]),
          str(g[510]),
-         cstr(g[160:192]).decode("utf-8", errors="replace"),
+         field(cstr(g[160:192])),
          str(struct.unpack_from("<H", g, 192)[0]),
          str(struct.unpack_from("<H", g, 194)[0]),
          str(struct.unpack_from("<H", g, 196)[0]),
@@ -758,7 +967,7 @@ def emit_skill(g: bytes):
         desc = desc[:-1]
     if desc.endswith(b"\r"):
         desc = desc[:-1]
-    c.append(desc.decode("utf-8", errors="replace"))
+    c.append(field(desc).strip().strip('"'))
     return c
 
 
@@ -776,7 +985,309 @@ def decompile_skill(dec: bytes) -> bytes:
 
 
 CHEM_HDR = (b"PickkingItem\t\t\tTargetItem\t\t\tResultItem\t\t\r\n"
-            b"Name\tID\tNum\tName\tID\tNum\tName\tID\tNum\r\n")
+            b"Name\tID\tNum\tName\tID\tNum\r\n")
+
+
+# ---------------------------------------------------------------------------
+# RYL1 ("RYL Online") - reconstructed from the RYL1-era server sources
+# (RebalanceConvert/OldItemStructure.h, OldItemDataParser.cpp, OldItemMgr.cpp)
+#
+# struct OldItem::ItemInfo, pragma pack(8 outer) = 644 bytes:
+#   0   m_usProtoTypeID u16 (+2 pad)
+#   4   m_DetailData (32):
+#       4  m_cItemType        5  m_cXSize      6  m_cYSize
+#       7  m_cOptionLimit     8  m_cDefaultDurabilityOrStack
+#       9  m_cMaxDurabilityOrStack
+#       10 m_cMaterialType    11 m_cMaxSocketNum
+#       12 m_dwCraftExp u32   16 m_ItemGrade u32   20 m_dwPrice u32
+#       24 m_dwBlackPrice u32 28 m_dwMedalPrice u32 32 m_dwFlags u32
+#   36  m_UseLimit (24): m_nStatusLimit[7] u16 @36(slot0) 38(LEVEL) 40(STR)
+#       42(DEX) 44(CON) 46(INT) 48(WIS); m_nSkillType u16 @50;
+#       m_cSkillLevel u8 @52; m_cLevelLimit u8 @53; m_dwClassLimit u32 @56
+#   60  m_SpriteData (104): m_szName[64] @60, m_szSpriteName[32] @124,
+#       m_nSpriteMinX u16 @156, MinY @158, MaxX @160, MaxY @162
+#   164 m_StringData (384): m_szFieldModelName[32] @164,
+#       m_szEquipModelName[32] @196, m_szEffectSoundName[32] @228,
+#       m_szTypeName[32] @260, m_szItemDescribe[256] @292
+#   548 m_EquipAttribute (72): m_usAttributeValue[35] u16 @548..617,
+#       m_nAttibuteNum u16 @618 (count of Attr columns read in)
+#   620 m_UseItemInfo (24): m_usSkill_ID u16 @620, m_usSkill_LockCount u16 @622,
+#       m_cZone u8 @624, m_Pos 3f32 @628..639, m_dwAmount u32 @640
+# Attribute column order = OldItem::Attribute enum 1..33
+# (MAGIC_POWER=34 has no txt column). Class = equip/use/etc per OldItemConstants.
+RYL1_ITEM_ROW = 644
+
+RYL1_ITEMTYPE = {
+    0: "HELM", 1: "SHIRT", 2: "TUNIC", 3: "ARMOUR", 4: "GLOVE", 5: "BOOTS",
+    6: "ONEHANDED_SWORD", 7: "ONEHANDED_BLUNT", 8: "ONEHANDED_AXE",
+    9: "TWOHANDED_BLUNT", 10: "TWOHANDED_AXE", 11: "TWOHANDED_SWORD",
+    12: "BOW", 13: "CROSSBOW", 14: "STAFF", 15: "DAGGER", 16: "SHIELD",
+    17: "CLOAK", 18: "RING", 19: "NECKLACE", 20: "POTION", 21: "POISON",
+    22: "TRAP", 23: "SKILLBOOK", 24: "GEM", 25: "RUNE", 26: "ORE",
+    27: "AMMO", 28: "ETC", 29: "HEAD", 30: "BODY", 31: "PROTECT_A",
+    32: "PELVIS", 33: "COM_BLUNT", 34: "COM_SWORD", 35: "OPP_HAMMER",
+    36: "OPP_AXE", 37: "OPP_SLUSHER", 38: "OPP_TALON", 39: "OPP_SYTHE",
+    40: "SKILL_A_GUARD", 41: "SKILL_A_ATTACK", 42: "SKILL_A_GUN",
+    43: "SKILL_A_KNIFE", 44: "ACCESSORY", 45: "ARROW", 46: "BOLT",
+    47: "PORTAL", 48: "EVENT_DROP", 49: "EVENT_LOTTERY", 50: "EXPBOOK",
+    51: "CASHBOOK", 52: "FIRE_CRACKER", 53: "CAMP_KIT",
+    54: "SHORT_RANGE_ARMS_KIT", 55: "LONG_RANGE_ARMS_KIT",
+    56: "AIRSHIP_KIT",
+}
+RYL1_GRADE = {0: "ETC", 1: "NORMAL", 2: "ENHANCED", 3: "RARE"}
+# OldItem::CItemType m_ItemTypes[] (OldItemConstants.cpp)
+RYL1_EQUIP_TYPES = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                    17, 18, 19, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+                    41, 42, 43, 44, 45, 46}
+RYL1_USE_TYPES = {20, 21, 22, 23, 27, 47, 49, 50, 51, 52, 53, 54, 55, 56}
+
+# OldItemDataParser::SetDefaultData column order
+RYL1_ITEM_HDR = ["ID", "ItemName", "FieldModelName", "AttachedModelName",
+                 "SpriteDDS", "MinX", "MinY", "MaxX", "MaxY", "SizeX", "SizeY",
+                 "EffectSound", "ItemLevel", "ItemType", "TypeName", "Price",
+                 "BlackPrice", "MedalPrice", "OptionLimit", "Durability",
+                 "MaxDurability", "ClassLimit", "SkillLimitType",
+                 "SkillLimitLevel", "LevelLimit", "STRLimit", "DEXLimit",
+                 "CONLimit", "INTLimit", "WISLimit", "CraftExp",
+                 # ..SetEquipData (attribute columns follow Attribute enum)
+                 "CriticalType", "CriticalPercentage", "MinDamage", "MaxDamage",
+                 "DRC", "OffenceRevision", "Defence", "DefenceRevision",
+                 "Resistance", "BlockingPercentage", "AttackSpeed",
+                 "MoveSpeed", "AttackRange", "LongRangeAttack", "HpMaxPlus",
+                 "MpMaxPlus", "HPRegen", "MPRegen", "FireAttribute",
+                 "LightingAttribute", "ColdAttribute", "DrainAttribute",
+                 "PoisonAttribute", "FireResistance", "LightningResistance",
+                 "ColdResistance", "DrainResistance", "PoisonResistance",
+                 "STRAdd", "DEXAdd", "CONAdd", "INTAdd", "WISAdd",
+                 "MaterialValue", "MaxSocketNum"]
+
+
+def ryl1_text(r: bytes, off: int, size: int) -> str:
+    return field(cstr(r[off:off + size]))
+
+
+def emit_ryl1_item(r: bytes):
+    itype = r[4]
+    c = [str(struct.unpack_from("<H", r, 0)[0]),
+         ryl1_text(r, 60, 64), ryl1_text(r, 164, 32), ryl1_text(r, 196, 32),
+         ryl1_text(r, 124, 32),
+         str(struct.unpack_from("<H", r, 156)[0]),
+         str(struct.unpack_from("<H", r, 158)[0]),
+         str(struct.unpack_from("<H", r, 160)[0]),
+         str(struct.unpack_from("<H", r, 162)[0]),
+         str(r[5]), str(r[6]), ryl1_text(r, 228, 32),
+         RYL1_GRADE.get(struct.unpack_from("<I", r, 16)[0],
+                        f"[{struct.unpack_from('<I', r, 16)[0]:,}]"),
+         RYL1_ITEMTYPE.get(itype, f"[{itype}]"),
+         (ryl1_text(r, 260, 32)
+          if not _all_qmark(ryl1_text(r, 260, 32))
+          else pretty_ryl1_type(itype)),
+         str(struct.unpack_from("<I", r, 20)[0]),
+         str(struct.unpack_from("<I", r, 24)[0]),
+         str(struct.unpack_from("<I", r, 28)[0]),
+         str(r[7]), str(r[8]), str(r[9]),
+         str(struct.unpack_from("<I", r, 56)[0]),
+         str(struct.unpack_from("<H", r, 50)[0]),
+         str(r[52]), str(r[53]),
+         str(struct.unpack_from("<H", r, 40)[0]),
+         str(struct.unpack_from("<H", r, 42)[0]),
+         str(struct.unpack_from("<H", r, 44)[0]),
+         str(struct.unpack_from("<H", r, 46)[0]),
+         str(struct.unpack_from("<H", r, 48)[0]),
+         str(struct.unpack_from("<I", r, 12)[0])]
+    if itype in RYL1_EQUIP_TYPES:
+        # 33 attribute cells (Attribute enum 1..33), then material/socket
+        a = [struct.unpack_from("<H", r, 548 + 2 * k)[0] for k in range(1, 34)]
+        c += [str(v) for v in a]
+        c += [str(r[10]), str(r[11])]
+    elif itype in RYL1_USE_TYPES:
+        # authentic use-item reading order (SetUseItemData): Skill_ID goes in
+        # the CriticalType column ... Amount under "Defence" and the item
+        # description under "DefenceRevision"; the attribute columns the
+        # parser does not touch stay empty (atoi("") == 0).
+        c += [hexid(struct.unpack_from("<H", r, 620)[0]),
+              str(r[52]),
+              str(r[624]),
+              f32short(struct.unpack_from("<I", r, 628)[0]),
+              f32short(struct.unpack_from("<I", r, 632)[0]),
+              f32short(struct.unpack_from("<I", r, 636)[0]),
+              str(struct.unpack_from("<I", r, 640)[0]),
+              ryl1_text(r, 292, 256)]
+        c += [""] * 27
+    else:
+        # ETC: authentic SetEtcItemData only reads ItemDescribe (which the
+        # parser stores under "CriticalType"); everything else stays empty.
+        c += [ryl1_text(r, 292, 256)]
+        c += [""] * 34
+    return c
+
+
+def decompile_ryl1_item(dec: bytes) -> bytes:
+    n, rem = divmod(len(dec), RYL1_ITEM_ROW)
+    if rem:
+        raise ValueError(f"ItemScript.gsf payload is {len(dec):,} bytes; "
+                         f"not a multiple of the RYL1 {RYL1_ITEM_ROW}-byte "
+                         f"ItemInfo record.")
+    lines = ["\t".join(RYL1_ITEM_HDR)]
+    for i in range(n):
+        lines.append("\t".join(emit_ryl1_item(dec[i * RYL1_ITEM_ROW:
+                                              (i + 1) * RYL1_ITEM_ROW])))
+    log.debug(f"ItemScript.gsf (RYL1): {n:,} item rows "
+              f"({RYL1_ITEM_ROW}-byte ItemInfo).")
+    return ("\n".join(lines) + "\n").encode("utf-8")
+
+
+def ryl1_item_namemap(dec: bytes) -> dict:
+    m = {}
+    for i in range(len(dec) // RYL1_ITEM_ROW):
+        r = dec[i * RYL1_ITEM_ROW:(i + 1) * RYL1_ITEM_ROW]
+        m[struct.unpack_from("<H", r, 0)[0]] = \
+            field(cstr(r[60:124]))
+    return m
+
+
+# ---------------------------------------------------------------------------
+# MonsterProtoType.gsf (RYL1) - reverse engineered from the payload itself and
+# cross-checked against AlphA's authentic RYL1 MonsterProtoType dump
+# (example/MonsterProtoType.txt).  368 bytes per record, ID u32 @180.
+#
+# Verified offsets (record positions, semantic names from gsfStruct.xml):
+#   @0    u32 always 0          @64  char[32] Name   @96  char[32] Model
+#   @4    f32 speed (x100)      @12  u32 respawn/area  @20 f32 speed (x100)
+#   @28   u32 respawn/area      @44  u32 param (35)    @60  u32 param (35)
+#   @128..140 4 f32 zone/attack corners (30/-30/40/-40 for a Seaman)
+#   @164..175  u16 quint weights (1000, 80, 80, 80, 100, ...)
+#   @176  u32 boss/type toggle (2|0)          @180 u32 ID (1..5510, sparse)
+#   @184  u32 spawn time (15000/30000)        @188 f32 scale (1.0/1.02/...)
+#   @192  f32 velocity (0.19...)              @196 byte MonsterClass 0..12
+#   @197  byte skill related                  @198 byte (0..3)
+#   @199  byte toggle X/O                     @200 byte Nation 0/1/2
+#   @202  byte (0..6)                         @216/@220 f32 -0.0 sentinels
+#   @224  f32 ratio (0.1..1.0)                @228 byte toggle  @231 byte toggle
+#   @232  u32 toggle (O flag)                 @288 u32 base XP  @296 u32 level
+#   @306  u16 (=4)  @308 u16 min damage  @310 u16 max damage @312 u16 defense
+#   @316  f32 critical rate (0.7)             @320 u16 hit   @322 u16 evade
+#   @326/@328 u16 skill related (0..76)         @330/@332 u16 skill related
+#   @334  u16 value (140/148/180)             @338 u16 MP   @340 u16 HP
+#   @342  u16 HP regen  @344 u16 MP regen
+# Column order below reproduces the authentic dump (ragged trailing zeros).
+RYL1_MON_CLASS = {0: "Siege", 1: "Warrior", 2: "Defender", 3: "Mage",
+                  4: "Acolyte", 5: "Rogue", 6: "BG", 7: "Summon",
+                  8: "Structure", 9: "Named", 10: "Chief", 11: "Object",
+                  12: "Guard"}
+
+RYL1_MON_HDR = [
+    "ID", "Name", "Model", "Nation", "Class", "Toggle",
+    "RespawnArea1", "Speed1", "RespawnArea2", "Speed2",
+    "Param1", "Param2", "Zone1", "Zone2", "Zone3", "Zone4", "Value334",
+    "Velocity", "BaseXP", "Level", "MinDamage", "MaxDamage", "Defense",
+    "HitRate", "Evade", "Unk25", "CriticalRate", "Unk27", "Unk28", "Skill29",
+    "Skill30", "Unk31", "Unk32", "Unk33", "Unk34", "Unk35", "Unk36", "Unk37",
+    "Unk38", "Unk39", "Unk40", "Skill41", "Skill42", "MP", "HP", "Unk45",
+    "Unk46", "Scale", "SkillByte197", "Toggle229", "Unk50", "Toggle231",
+    "Unk52", "Toggle232", "Toggle199", "Byte198", "Byte202", "Unk57", "Unk58",
+    "Unk59", "Unk60", "Unk61", "Unk62", "Unk63", "Float224", "SpawnTime",
+    "Unk66", "Unk67", "Unk68", "Unk69", "Unk70", "Unk71", "Unk72", "Unk73",
+    "Unk74", "Unk75", "Weight164",
+    "Unk77", "Unk78", "Unk79", "Unk80", "Unk81", "Unk82", "Unk83", "Unk84",
+    "Unk85", "Unk86", "Unk87", "Unk88", "Unk89", "Unk90", "Unk91", "Unk92",
+    "Unk93", "Unk94", "Unk95", "Unk96",
+]
+
+
+def speed100(bits: int) -> str:
+    """Authentic speed rendering: the editor multiplies the float by 100."""
+    v = struct.unpack("<f", struct.pack("<I", bits))[0] * 100.0
+    s = "%.6g" % v
+    return s
+
+
+def emit_ryl1_monster(r: bytes):
+    c = [str(struct.unpack_from("<I", r, 180)[0]),          # 0  ID
+         field(cstr(r[64:96])),                            # 1  Name
+         field(cstr(r[96:128])),                           # 2  Model
+         str(r[200]),                                      # 3  Nation 0/1/2
+         RYL1_MON_CLASS.get(r[196], str(r[196])),          # 4  Class
+         ox(struct.unpack_from("<I", r, 0)[0]),            # 5  Toggle (always 0)
+         str(struct.unpack_from("<I", r, 12)[0]),          # 6  RespawnArea1
+         speed100(struct.unpack_from("<I", r, 4)[0]),      # 7  Speed1
+         str(struct.unpack_from("<I", r, 28)[0]),          # 8  RespawnArea2
+         speed100(struct.unpack_from("<I", r, 20)[0]),     # 9  Speed2
+         str(struct.unpack_from("<I", r, 44)[0]),          # 10 Param1
+         str(struct.unpack_from("<I", r, 60)[0])]          # 11 Param2
+    c += [f32short(struct.unpack_from("<I", r, 128 + 4 * k)[0])
+          for k in range(4)]                               # 12..15 Zone1..4
+    c += [str(struct.unpack_from("<H", r, 334)[0]),        # 16 Value334
+          f32short(struct.unpack_from("<I", r, 192)[0])]   # 17 Velocity (raw)
+    c += [str(struct.unpack_from("<I", r, 288)[0]),        # 18 BaseXP
+          str(struct.unpack_from("<I", r, 296)[0]),        # 19 Level
+          str(struct.unpack_from("<H", r, 308)[0]),        # 20 MinDamage
+          str(struct.unpack_from("<H", r, 310)[0]),        # 21 MaxDamage
+          str(struct.unpack_from("<H", r, 312)[0]),        # 22 Defense
+          str(struct.unpack_from("<H", r, 320)[0]),        # 23 HitRate
+          str(struct.unpack_from("<H", r, 322)[0]),        # 24 Evade
+          "0",                                             # 25 Unk25
+          f32short(struct.unpack_from("<I", r, 316)[0]),   # 26 CriticalRate
+          str(struct.unpack_from("<H", r, 306)[0]),        # 27 Unk27 (=4)
+          "0",                                             # 28 Unk28
+          str(struct.unpack_from("<H", r, 326)[0]),        # 29 Skill29
+          str(struct.unpack_from("<H", r, 328)[0])]        # 30 Skill30
+    c += ["0"] * 10                                        # 31..40 Unk31..40
+    c += [str(struct.unpack_from("<H", r, 330)[0]),        # 41 Skill41
+          str(struct.unpack_from("<H", r, 332)[0]),        # 42 Skill42
+          str(struct.unpack_from("<H", r, 338)[0]),        # 43 MP
+          str(struct.unpack_from("<H", r, 340)[0]),        # 44 HP
+          "0",                                             # 45 Unk45 (float, no cell)
+          "0"]                                             # 46 Unk46 (float, no cell)
+    c += [f32short(struct.unpack_from("<I", r, 188)[0]),   # 47 Scale
+          str(r[197]),                                     # 48 SkillByte197
+          ox(r[229]),                                      # 49 Toggle229
+          ox(0),                                           # 50 Unk50 (toggle X)
+          ox(r[231]),                                      # 51 Toggle231
+          ox(0),                                           # 52 Unk52 (toggle X)
+          ox(r[232]),                                      # 53 Toggle232
+          ox(r[199]),                                      # 54 Toggle199
+          str(r[198]),                                     # 55 Byte198
+          str(r[202])]                                     # 56 Byte202
+    c += ["0"] * 5                                         # 57..61 Unk57..61
+    c += ["0",                                             # 62 Unk62
+          str(struct.unpack_from("<H", r, 220)[0]),        # 63 Unk63 (u16@220)
+          f32short(struct.unpack_from("<I", r, 224)[0]),   # 64 Float224 ratio
+          str(struct.unpack_from("<I", r, 184)[0])]        # 65 SpawnTime
+    c += ["0"] * 10                                        # 66..75 Unk66..75
+    c += [str(struct.unpack_from("<H", r, 164)[0])]        # 76 Weight164
+    c += ["0"] * 20                                        # 77..96 Unk77..96
+    # ragged: strip trailing zero/empty cells like the authentic dump
+    while c and c[-1] in ("", "0"):
+        c.pop()
+    return c
+
+
+def decompile_ryl1_monster(dec: bytes) -> bytes:
+    S = 368
+    n, rem = divmod(len(dec), S)
+    if rem:
+        raise ValueError(f"MonsterProtoType.gsf payload is {len(dec):,} bytes; "
+                         f"not a multiple of the RYL1 368-byte record.")
+    lines = ["\t".join(RYL1_MON_HDR)]
+    for i in range(n):
+        lines.append("\t".join(emit_ryl1_monster(dec[i * S:(i + 1) * S])))
+    log.debug(f"MonsterProtoType.gsf (RYL1): {n:,} records "
+              f"(368-byte MonsterProto).")
+    return ("\n".join(lines) + "\n").encode("utf-8")
+
+
+def decompile_ryl1(dec: bytes, name: str, namemap: dict) -> bytes:
+    if name == "ItemScript.gsf":
+        return decompile_ryl1_item(dec)
+    if name == "MonsterProtoType.gsf":
+        return decompile_ryl1_monster(dec)
+    if name == "Chemical.gsf":
+        return decompile_chemical(dec, namemap)
+    if name == "SpeacialCompensation.gsf":
+        return decompile_compensation(dec, namemap)
+    raise ValueError(f"{name}: no RYL1 GSF handler registered")
+
 
 
 def decompile_chemical(dec: bytes, namemap: dict) -> bytes:
@@ -810,7 +1321,7 @@ def item_namemap(dec: bytes) -> dict:
     for i in range(len(dec) // 616):
         r = dec[i * 616:(i + 1) * 616]
         m[struct.unpack_from("<H", r, 0)[0]] = \
-            cstr(r[52:116]).decode("utf-8", errors="replace")
+            field(cstr(r[52:116]))
     return m
 
 
@@ -818,6 +1329,41 @@ def with_banner(body: bytes, eol: bytes = b"\r\n") -> bytes:
     from modules.banners import file_banner
     head = eol.join(s.encode("ascii") for s in file_banner())
     return head + eol + eol + body
+
+
+def decompile_compensation(dec: bytes, namemap: dict) -> bytes:
+    """SpeacialCompensation.gsf - plain u16 item-ID array in server order.
+
+    Layout per RylServerProject CItemMgr::LoadItemSpeacialCompensationBinary:
+    every 0 (ushort) separates one compensation case, ids before a 0 belong
+    to that case (one trailing 0 closes the final case).
+    """
+    out = ["CASE\tSEQ\tID\tITEM"]
+    case, seq, seen = 0, 0, 0
+    missing = Counter()
+    for offset in range(0, len(dec) - 1, 2):
+        vid = struct.unpack_from("<H", dec, offset)[0]
+        if vid == 0:
+            case += 1
+            seq = 0
+            continue
+        seq += 1
+        seen += 1
+        nm = namemap.get(vid)
+        if nm is None:
+            missing[vid] += 1
+            nm = f"ITEM_{vid}"
+        out.append(f"{case}\t{seq}\t{vid}\t{nm}")
+    if missing:
+        cells = sum(missing.values())
+        log.warning(f"SpeacialCompensation.gsf references {len(missing)} "
+                    f"unknown item IDs ({cells:,} cells); wrote ITEM_<id> "
+                    f"placeholders instead.")
+        log.debug(f"SpeacialCompensation.gsf most-missed IDs: "
+                  f"{missing.most_common(5)}.")
+    log.debug(f"SpeacialCompensation.gsf: {seen:,} item ids across "
+              f"{case + 1:,} case group(s).")
+    return with_banner(("\r\n".join(out) + "\r\n").encode("utf-8"))
 
 
 def decompile_abuse(dec: bytes) -> bytes:
@@ -888,8 +1434,8 @@ def output_name_for_ryl(filename: str) -> str:
     return output_name_for_gsf(filename)
 
 
-def build_ryl_namemap(files) -> dict:
-    return build_namemap(files)
+def build_ryl_namemap(files, version=None) -> dict:
+    return build_namemap(files, version)
 
 
 def decompile_ryl_mcf(src: Path):
@@ -897,11 +1443,11 @@ def decompile_ryl_mcf(src: Path):
     return txt, len(calls), len(anomalies) + len(arg_anomalies)
 
 
-def decompile_ryl_gsf(src: Path, namemap: dict) -> bytes:
-    return decompile_gsf(src, namemap)
+def decompile_ryl_gsf(src: Path, namemap: dict, version=None) -> bytes:
+    return decompile_gsf(src, namemap, version)
 
 
 if __name__ == "__main__":
     import sys as _sys
-    _sys.exit("use main.py --version RYL2 -d "
+    _sys.exit("run main.py instead "
               "(legacy entry points: mcf_main / gsf_main)")
