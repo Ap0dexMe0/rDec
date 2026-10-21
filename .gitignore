@@ -1,11 +1,13 @@
 venv/
 __pycache__/
 modules/__pycache__/
-script/ROW
-script/RYL1
-script/RYL2
 lsp-local-server.log
 mcgg.py
-# Ignore all GSF and MCF files
+# Ignore GSF and MCF files
 *.gsf
 *.mcf
+
+# Keep script directories tracked
+!script/ROW/
+!script/RYL1/
+!script/RYL2/
