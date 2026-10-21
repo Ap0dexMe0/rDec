@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 
 import sys
 import time
@@ -44,9 +43,9 @@ def _decompile_row_gsf(src: Path, namemap: dict) -> bytes:
     return decompile_row_gsf(src, namemap)
 
 
-def _decompile_ncf(src: Path) -> bytes:
+def _decompile_ncf(src: Path, namemap: dict) -> bytes:
     from modules.row_decompiler import decompile_ncf
-    return decompile_ncf(src)
+    return decompile_ncf(src, namemap)
 
 
 def run(version: str, base_dir=None) -> int:
@@ -116,7 +115,7 @@ def run(version: str, base_dir=None) -> int:
                               f"{_count(n_anom, 'anomaly', 'anomalies')}")
             elif handler == "ncf":
                 try:
-                    data = _decompile_ncf(path)
+                    data = _decompile_ncf(path, namemap)
                 except RuntimeError as e:
                     if str(e).startswith("SKIP:"):
                         reason = str(e)[len("SKIP:"):].strip()
@@ -176,7 +175,6 @@ def run(version: str, base_dir=None) -> int:
 
 
 def main() -> int:
-    """Interactive entry point - shows the prompt menu and runs it."""
     return menu_loop(run)
 
 

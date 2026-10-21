@@ -32,7 +32,7 @@ VERSIONS = {
 
 _MENU_WIDTH = 78
 _EXIT_WORDS = {"0", "q", "quit", "exit", "back"}
-_PROMPT = f"{Fore.GREEN}?{Fore.RESET} "
+_PROMPT = ""
 
 
 def project_root() -> Path:
@@ -44,14 +44,6 @@ def script_dir(root=None) -> Path:
 
 
 def list_versions(root=None) -> list:
-    """Version IDs relative to script/ - e.g. 'ROW', 'RYL2/V1700-V1900'.
-
-    A folder directly under script/ that contains only version folders
-    (e.g. script/RYL2 with its era builds) is a group: each sub-folder
-    becomes its own version ID as '<group>/<sub>'. A folder that holds
-    files of its own - or neither files nor sub-folders - is a single
-    version on its own.
-    """
     base = script_dir(root)
     if not base.is_dir():
         return []
@@ -73,12 +65,10 @@ def _has_files(directory: Path) -> bool:
 
 
 def _display_name(version_id: str) -> str:
-    """'RYL2/V1700-V1900' -> 'RYL2 V1700-V1900'."""
     return version_id.replace("/", " ")
 
 
 def version_row(version_id: str) -> str:
-    """Display text for a version in menus, e.g. 'ROW - Original ROW'."""
     return VERSIONS.get(version_id) or f"{_display_name(version_id)} - unverified"
 
 
@@ -96,7 +86,6 @@ def resolve_version(version_id, root=None) -> Path:
 
 
 def version_choices(root=None) -> list:
-    """(version ID, label) pairs for every known/discovered version."""
     discovered = set(list_versions(root))
     return [(vid, VERSIONS.get(vid, "unverified"))
             for vid in sorted(set(VERSIONS) | discovered)]
@@ -123,7 +112,6 @@ def discover_files(base: Path):
 
 
 def scan_summary(base: Path):
-    """Count supported files per handler before decompiling a version."""
     supported, unsupported = discover_files(base)
     groups = {}
     for _path, key in supported:
@@ -135,16 +123,12 @@ def scan_summary(base: Path):
     return len(supported), breakdown
 
 
-# ---------------------------------------------------------------------------
-# Interactive prompt menu (replaces the old argparse CLI)
-# ---------------------------------------------------------------------------
 
 def _fmt(n: int) -> str:
     return f"{n:,}"
 
 
 def _fresh() -> None:
-    """Clear the screen and redraw the banner."""
     try:
         clear_and_print()
     except Exception:
@@ -155,7 +139,7 @@ def _title(text: str) -> None:
     bar = "═" * _MENU_WIDTH
     pad = max(0, (_MENU_WIDTH - len(text)) // 2)
     right = " " * max(0, _MENU_WIDTH - len(text) - pad)
-    body = " " * pad + f"{Style.BRIGHT}{Fore.LIGHTWHITE_EX}" \
+    body = " " * pad + f"{Style.BRIGHT}{Fore.LIGHTYELLOW_EX}" \
         f"{text}{Style.RESET_ALL}" + right
     print(f"{Fore.YELLOW}╔{bar}╗")
     print(f"{Fore.YELLOW}║{body}║")
@@ -187,7 +171,6 @@ def _confirm(question: str, default: bool = True) -> bool:
 
 
 def _pick(prompt: str, high: int) -> int:
-    """Ask for a number 0..high; 0 (or q/exit/back) means 'go back'."""
     while True:
         raw = _input(prompt)
         if raw.isdigit() and int(raw) <= high:
@@ -206,13 +189,13 @@ def _pause() -> None:
 
 
 def menu_loop(run) -> int:
-    """Show the main menu until the user exits. `run(version)` decompiles."""
     while True:
         try:
-            _fresh()  # clear terminal + banner on every menu render
+            _fresh()
             _title("MAIN MENU")
             _rows(["Decompile a game version",
                    "List supported versions"], "Exit")
+            print()
             picked = _pick("Select an option", 2)
             if picked == 0:
                 log.info("Goodbye!")
@@ -227,7 +210,7 @@ def menu_loop(run) -> int:
 
 
 def _flow_versions() -> None:
-    _fresh()  # clear terminal + banner before the listing
+    _fresh()
     for line in version_lines():
         log.info(line)
     _pause()
@@ -241,15 +224,16 @@ def _flow_decompile(run) -> None:
                  "(e.g. script/RYL2).")
         _pause()
         return
-    _fresh()  # clear terminal + banner for the version picker
+    _fresh()
     _title("SELECT A GAME VERSION")
     _rows([version_row(name) for name, _ in choices], "Back")
+    print()
     picked = _pick("Select a version", len(choices))
     if picked == 0:
         log.info("Back to the menu - nothing was decompiled.")
         return
     name, _label = choices[picked - 1]
-    _fresh()  # clear terminal + banner for the scan/confirm screen
+    _fresh()
     try:
         base = resolve_version(name)
     except ValueError as e:

@@ -56,31 +56,4 @@ https://github.com/user-attachments/assets/9f93b2f0-4bb1-4729-a714-7363e54a8bcf
 | `ROW` | `script/ROW` | Original ROW - decompiles |
 | `RYL1` | `script/RYL1` | decompiles (4 GSF + 2 MCF); `SpeacialCompensation.gsf` needs crypt page `(3, 4)` |
 | `RYL2 V1700-V1900` | `script/RYL2/V1700-V1900` | decompiles |
-| `RYL2 V2000-V2240` | `script/RYL2/V2000-V2240` | 9/10 files; `SpeacialCompensation.gsf` needs crypt page `(3, 4)` from the V2000+ `XORCryptoCodeList` (decoder is ready, waits for the page) |
-
-### RYL1 notes
-
-The RYL1 folder is reverse engineered from the game's own server sources
-(`RebalanceConvert/OldItemStructure.h`, `OldItemDataParser.cpp`, `OldItemMgr.cpp`)
-and, for monsters, cross-checked against AlphA's authentic RYL1
-`MonsterProtoType.txt` dump (`example/MonsterProtoType.txt` in the folder):
-- `ItemScript.gsf` - 644-byte `OldItem::ItemInfo` records (`pragma pack(8)`),
-  emitted in the authentic 66-column parser layout (31 default + 33 equip
-  attribute columns + `MaterialValue` `MaxSocketNum`, no `Describe` column).
-  Use-item rows carry the skill ID as `0x…` hex under `CriticalType` and the
-  item description under `DefenceRevision`; ETC rows carry the description
-  under `CriticalType`; untouched columns stay empty so `atoi("") == 0`.
-- `MonsterProtoType.gsf` - 368-byte records (`u32` ID at `+0x0B4`), output
-  mirrors the authentic dump's 97-column plan (Name/Model `char[32]`,
-  Nation byte `+0xC8`, MonsterClass byte `+0xC4`, HP/MP/regs at `+0x154`
-  onwards, spawn time `+0x0B8`); a few columns only exist in later builds and
-  stay `0`.
-- `Chemical.gsf`, `MonsterChat.gsf` (plaintext pass-through), plus the two
-  `.mcf` scripts (npcscript, quest) decompile as in the other versions.
-- `gsfStruct.xml` is AlphA's editor configuration that stays in the folder -
-  it documents the era's cell sizes (ItemScript 1600=608/1700=616,
-  MonsterProtoType 1600=548/1700=552) and is only a field-order reference; the
-  actual RYL1 binaries differ (644-byte items, 368-byte monsters).
-
-### TODO
-- Implement for another version
+| `RYL2 V2000-V2240` | `script/RYL2/V2000-V2240` | 9/10 files; `SpeacialCompensation.gsf` needs crypt page `(3, 4)` from the V2000+

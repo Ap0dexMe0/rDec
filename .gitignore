@@ -5,3 +5,7 @@ script/ROW
 script/RYL1
 script/RYL2
 lsp-local-server.log
+# Ignore all GSF and MCF files
+*.gsf
+*.mcf
+mcgg.py

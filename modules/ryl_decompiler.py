@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 
 
 import re
@@ -157,11 +156,6 @@ def fmt_float(bits: int) -> str:
     return repr(float(v))
 
 
-# ---------------------------------------------------------------------------
-# Text decoding: game binaries store KS X 1001 / CP949 (Korean) text.  Decoding
-# with utf-8+replace or plain cp1252 destroys it (U+FFFD garbage or mojibake),
-# so every text field must go through smart_str().
-# ---------------------------------------------------------------------------
 _HANGUL = re.compile(r"[\uac00-\ud7a3\u3130-\u318f\u3018-\u301f\u3008-\u300b]")
 _KS_SYMBOL = re.compile("[\u2014\u2018\u2019\u201c\u201d\u2025\u2030\u2032\u2033"
                         "\u2190-\u2193\u2200-\u22ff\u2460-\u2473"
@@ -170,12 +164,6 @@ _CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 
 
 def smart_str(raw: bytes) -> str:
-    """Decode game text: utf-8 first, then EUC-KR (Korean games), then cp1252.
-
-    EUC-KR only wins when the bytes really are Korean or Korean punctuation;
-    lone cp1252 bytes such as 0x92 (curly apostrophe in English text) stay on
-    the cp1252 branch.
-    """
     try:
         return raw.decode("utf-8")
     except UnicodeDecodeError:
@@ -191,12 +179,6 @@ def smart_str(raw: bytes) -> str:
 
 
 def _kr_evidence(raw: bytes) -> str:
-    """Decode as strict KS X 1001 (EUC-KR, the subset RYL actually stores).
-
-    Apostrophe-like cp1252 bytes (0x92 + an ASCII letter) form valid CP949
-    *extension* (UHC) pairs but never valid KS X 1001 pairs, so EUC-KR keeps
-    English text on the cp1252 branch.
-    """
     s = raw.decode("euc-kr")
     non_ascii = [c for c in s if ord(c) > 127]
     if not non_ascii:
@@ -207,7 +189,6 @@ def _kr_evidence(raw: bytes) -> str:
 
 
 def clean_text(s: str) -> str:
-    """Normalise decoded text: drop control junk, map smart punctuation."""
     s = _CTRL_RE.sub("", s)
     for a, b in (("\u2018", "'"), ("\u2019", "'"), ("\u201c", '"'),
                  ("\u201d", '"'), ("\u201e", '"'), ("\u2026", "..."),
@@ -223,7 +204,6 @@ def coerce_text(raw: bytes) -> bytes:
 
 
 def text_out(s: str) -> str:
-    """Translate + keep one physical cell for tab-separated output."""
     from modules.translations import translate_text
     text = translate_text(clean_text(s))
     return text.replace("\t", "    ").replace("\r\n", "\\n").replace("\n", "\\n")
@@ -398,19 +378,9 @@ _TABLES = None
 def _tables():
     global _TABLES
     if _TABLES is None:
-        import re as _re
-        _src = (HERE.parent.parent / "RYLGameConverter" / "RylServerProject"
-                / "RylServerLibrary" / "Network" / "XORCrypt"
-                / "XORCryptoCodeList.cpp").read_text()
-        _vals = [int(x, 16) for x in _re.findall(r"0x([0-9A-Fa-f]{2})", _src)]
-        if len(_vals) != 1600:
-            raise ValueError(f"C++ table has {len(_vals)} bytes, want 1600")
-        _TABLES = {}
-        _k = 0
-        for _v in range(4):
-            for _p in range(10):
-                _TABLES[(_v, _p)] = _vals[_k:_k + 40]
-                _k += 40
+        from modules.xor_crypt import raw_page, PAGE_COUNT, VERSIONS
+        _TABLES = {(_v, _p): list(raw_page(_v, _p))
+                   for _v in range(VERSIONS) for _p in range(PAGE_COUNT)}
     return _TABLES
 
 
@@ -418,13 +388,9 @@ PAGES = {"ItemScript.gsf": (0, 2), "Chemical.gsf": (0, 2),
          "MonsterProtoType.gsf": (0, 3), "SkillScript.gsf": (0, 1),
          "Script1.gsf": (0, 1)}
 OUTNAME = {"Script1.gsf": "Abuse.txt"}
-# Files whose crypt page exists only in a newer game build's XORCryptoCodeList
-# (the bundled RYLGameConverter table does not have these pages yet).
 PENDING_PAGES = {
     "SpeacialCompensation.gsf":
-        "crypt page (3, 4) of the RYL2 V2000+ XORCryptoCodeList "
-        "(per RylServerProject ItemMgr.cpp SaveItemSpeacialCompensationBinary)",
-}
+        "crypt page (3, 4) of the RYL2 V2000+ XORCryptoCodeList "}
 
 
 def output_name_for_gsf(filename: str) -> str:
@@ -440,10 +406,6 @@ def build_namemap(files, version=None) -> dict:
     return {}
 
 
-# MonsterChat.gsf ships as plaintext whose header comments were mangled in the
-# source binary (Korean notes already lost to '?').  The RYL2 build of the same
-# script documents the identical format in English, so we rebuild the header
-# faithfully from that surviving documentation instead of printing '?...' lines.
 _MC_DECO = b"??Monster Chat Script ??"
 _MC_RYL1_SIGN = b"void MonsterChat(int, int, int, int, int, string); // KID, ?????"
 _MC_DOC = (
@@ -508,7 +470,7 @@ def repair_monsterchat(body: bytes) -> bytes:
     idx = None
     for i, line in enumerate(lines):
         if b"Named Monster-Boss" in line:
-            idx = i - 1  # the plain banner line above the title line
+            idx = i - 1
             break
     if idx is None:
         return body
@@ -546,9 +508,6 @@ def decompile_gsf(src: Path, namemap: dict, version=None) -> bytes:
             return with_banner(body, _eol_of(body))
     dec = load_gsf(src)
     if version == "RYL1":
-        # RYL1 item layout = the 644-byte OldItem::ItemInfo struct
-        # (RebalanceConvert/OldItemStructure.h), not the 616-byte
-        # RYL2/ROW CItemMgr. MonsterChat.gsf never reaches this point.
         if src.name == "ItemScript.gsf":
             return with_banner(decompile_ryl1_item(dec), b"\n")
         if src.name == "MonsterProtoType.gsf":
@@ -638,13 +597,6 @@ def cstr(b: bytes) -> bytes:
 
 
 def field(raw: bytes) -> str:
-    """One text cell for a tab-separated output line.
-
-    Decode via smart_str(), normalise punctuation, translate known Korean
-    strings, then keep everything in a single physical cell (tabs become
-    spaces, line breaks become \\n) so the loader's strtok-style column
-    split keeps working.
-    """
     return text_out(smart_str(raw))
 
 
@@ -690,7 +642,6 @@ LIMIT = {0: "NONE", 1: "STR", 2: "DEX", 3: "CON", 4: "INT", 5: "WIS",
 
 
 def _all_qmark(s: str) -> bool:
-    """True when a field only holds lost-character '?' padding."""
     return bool(s) and "?" in s and set(s) <= {"?"}
 
 
@@ -699,7 +650,6 @@ def _pretty_word(w: str) -> str:
 
 
 def pretty_itemtype(itype: int) -> str:
-    """English display class for items whose TypeName cell was corrupted."""
     base = ITEMTYPE.get(itype)
     if base is None:
         return "Unknown"
@@ -711,7 +661,6 @@ def pretty_itemtype(itype: int) -> str:
 
 
 def pretty_ryl1_type(itype: int) -> str:
-    """English display class for RYL1 items whose TypeName was corrupted."""
     base = RYL1_ITEMTYPE.get(itype)
     if base is None:
         return "Unknown"
@@ -725,7 +674,7 @@ def hexid(v: int) -> str:
 def emit_item(r: bytes):
     itype = r[21]
     tn = field(cstr(r[252:284]))
-    if "?" in tn:  # corrupted TypeName in old binaries -> derive from type
+    if "?" in tn:
         tn = pretty_itemtype(itype)
     c = [str(struct.unpack_from("<H", r, 0)[0]),
          field(cstr(r[52:116])),
@@ -988,33 +937,6 @@ CHEM_HDR = (b"PickkingItem\t\t\tTargetItem\t\t\tResultItem\t\t\r\n"
             b"Name\tID\tNum\tName\tID\tNum\r\n")
 
 
-# ---------------------------------------------------------------------------
-# RYL1 ("RYL Online") - reconstructed from the RYL1-era server sources
-# (RebalanceConvert/OldItemStructure.h, OldItemDataParser.cpp, OldItemMgr.cpp)
-#
-# struct OldItem::ItemInfo, pragma pack(8 outer) = 644 bytes:
-#   0   m_usProtoTypeID u16 (+2 pad)
-#   4   m_DetailData (32):
-#       4  m_cItemType        5  m_cXSize      6  m_cYSize
-#       7  m_cOptionLimit     8  m_cDefaultDurabilityOrStack
-#       9  m_cMaxDurabilityOrStack
-#       10 m_cMaterialType    11 m_cMaxSocketNum
-#       12 m_dwCraftExp u32   16 m_ItemGrade u32   20 m_dwPrice u32
-#       24 m_dwBlackPrice u32 28 m_dwMedalPrice u32 32 m_dwFlags u32
-#   36  m_UseLimit (24): m_nStatusLimit[7] u16 @36(slot0) 38(LEVEL) 40(STR)
-#       42(DEX) 44(CON) 46(INT) 48(WIS); m_nSkillType u16 @50;
-#       m_cSkillLevel u8 @52; m_cLevelLimit u8 @53; m_dwClassLimit u32 @56
-#   60  m_SpriteData (104): m_szName[64] @60, m_szSpriteName[32] @124,
-#       m_nSpriteMinX u16 @156, MinY @158, MaxX @160, MaxY @162
-#   164 m_StringData (384): m_szFieldModelName[32] @164,
-#       m_szEquipModelName[32] @196, m_szEffectSoundName[32] @228,
-#       m_szTypeName[32] @260, m_szItemDescribe[256] @292
-#   548 m_EquipAttribute (72): m_usAttributeValue[35] u16 @548..617,
-#       m_nAttibuteNum u16 @618 (count of Attr columns read in)
-#   620 m_UseItemInfo (24): m_usSkill_ID u16 @620, m_usSkill_LockCount u16 @622,
-#       m_cZone u8 @624, m_Pos 3f32 @628..639, m_dwAmount u32 @640
-# Attribute column order = OldItem::Attribute enum 1..33
-# (MAGIC_POWER=34 has no txt column). Class = equip/use/etc per OldItemConstants.
 RYL1_ITEM_ROW = 644
 
 RYL1_ITEMTYPE = {
@@ -1035,13 +957,11 @@ RYL1_ITEMTYPE = {
     56: "AIRSHIP_KIT",
 }
 RYL1_GRADE = {0: "ETC", 1: "NORMAL", 2: "ENHANCED", 3: "RARE"}
-# OldItem::CItemType m_ItemTypes[] (OldItemConstants.cpp)
 RYL1_EQUIP_TYPES = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                     17, 18, 19, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
                     41, 42, 43, 44, 45, 46}
 RYL1_USE_TYPES = {20, 21, 22, 23, 27, 47, 49, 50, 51, 52, 53, 54, 55, 56}
 
-# OldItemDataParser::SetDefaultData column order
 RYL1_ITEM_HDR = ["ID", "ItemName", "FieldModelName", "AttachedModelName",
                  "SpriteDDS", "MinX", "MinY", "MaxX", "MaxY", "SizeX", "SizeY",
                  "EffectSound", "ItemLevel", "ItemType", "TypeName", "Price",
@@ -1049,7 +969,6 @@ RYL1_ITEM_HDR = ["ID", "ItemName", "FieldModelName", "AttachedModelName",
                  "MaxDurability", "ClassLimit", "SkillLimitType",
                  "SkillLimitLevel", "LevelLimit", "STRLimit", "DEXLimit",
                  "CONLimit", "INTLimit", "WISLimit", "CraftExp",
-                 # ..SetEquipData (attribute columns follow Attribute enum)
                  "CriticalType", "CriticalPercentage", "MinDamage", "MaxDamage",
                  "DRC", "OffenceRevision", "Defence", "DefenceRevision",
                  "Resistance", "BlockingPercentage", "AttackSpeed",
@@ -1096,15 +1015,10 @@ def emit_ryl1_item(r: bytes):
          str(struct.unpack_from("<H", r, 48)[0]),
          str(struct.unpack_from("<I", r, 12)[0])]
     if itype in RYL1_EQUIP_TYPES:
-        # 33 attribute cells (Attribute enum 1..33), then material/socket
         a = [struct.unpack_from("<H", r, 548 + 2 * k)[0] for k in range(1, 34)]
         c += [str(v) for v in a]
         c += [str(r[10]), str(r[11])]
     elif itype in RYL1_USE_TYPES:
-        # authentic use-item reading order (SetUseItemData): Skill_ID goes in
-        # the CriticalType column ... Amount under "Defence" and the item
-        # description under "DefenceRevision"; the attribute columns the
-        # parser does not touch stay empty (atoi("") == 0).
         c += [hexid(struct.unpack_from("<H", r, 620)[0]),
               str(r[52]),
               str(r[624]),
@@ -1115,8 +1029,6 @@ def emit_ryl1_item(r: bytes):
               ryl1_text(r, 292, 256)]
         c += [""] * 27
     else:
-        # ETC: authentic SetEtcItemData only reads ItemDescribe (which the
-        # parser stores under "CriticalType"); everything else stays empty.
         c += [ryl1_text(r, 292, 256)]
         c += [""] * 34
     return c
@@ -1146,31 +1058,6 @@ def ryl1_item_namemap(dec: bytes) -> dict:
     return m
 
 
-# ---------------------------------------------------------------------------
-# MonsterProtoType.gsf (RYL1) - reverse engineered from the payload itself and
-# cross-checked against AlphA's authentic RYL1 MonsterProtoType dump
-# (example/MonsterProtoType.txt).  368 bytes per record, ID u32 @180.
-#
-# Verified offsets (record positions, semantic names from gsfStruct.xml):
-#   @0    u32 always 0          @64  char[32] Name   @96  char[32] Model
-#   @4    f32 speed (x100)      @12  u32 respawn/area  @20 f32 speed (x100)
-#   @28   u32 respawn/area      @44  u32 param (35)    @60  u32 param (35)
-#   @128..140 4 f32 zone/attack corners (30/-30/40/-40 for a Seaman)
-#   @164..175  u16 quint weights (1000, 80, 80, 80, 100, ...)
-#   @176  u32 boss/type toggle (2|0)          @180 u32 ID (1..5510, sparse)
-#   @184  u32 spawn time (15000/30000)        @188 f32 scale (1.0/1.02/...)
-#   @192  f32 velocity (0.19...)              @196 byte MonsterClass 0..12
-#   @197  byte skill related                  @198 byte (0..3)
-#   @199  byte toggle X/O                     @200 byte Nation 0/1/2
-#   @202  byte (0..6)                         @216/@220 f32 -0.0 sentinels
-#   @224  f32 ratio (0.1..1.0)                @228 byte toggle  @231 byte toggle
-#   @232  u32 toggle (O flag)                 @288 u32 base XP  @296 u32 level
-#   @306  u16 (=4)  @308 u16 min damage  @310 u16 max damage @312 u16 defense
-#   @316  f32 critical rate (0.7)             @320 u16 hit   @322 u16 evade
-#   @326/@328 u16 skill related (0..76)         @330/@332 u16 skill related
-#   @334  u16 value (140/148/180)             @338 u16 MP   @340 u16 HP
-#   @342  u16 HP regen  @344 u16 MP regen
-# Column order below reproduces the authentic dump (ragged trailing zeros).
 RYL1_MON_CLASS = {0: "Siege", 1: "Warrior", 2: "Defender", 3: "Mage",
                   4: "Acolyte", 5: "Rogue", 6: "BG", 7: "Summon",
                   8: "Structure", 9: "Named", 10: "Chief", 11: "Object",
@@ -1196,68 +1083,66 @@ RYL1_MON_HDR = [
 
 
 def speed100(bits: int) -> str:
-    """Authentic speed rendering: the editor multiplies the float by 100."""
     v = struct.unpack("<f", struct.pack("<I", bits))[0] * 100.0
     s = "%.6g" % v
     return s
 
 
 def emit_ryl1_monster(r: bytes):
-    c = [str(struct.unpack_from("<I", r, 180)[0]),          # 0  ID
-         field(cstr(r[64:96])),                            # 1  Name
-         field(cstr(r[96:128])),                           # 2  Model
-         str(r[200]),                                      # 3  Nation 0/1/2
-         RYL1_MON_CLASS.get(r[196], str(r[196])),          # 4  Class
-         ox(struct.unpack_from("<I", r, 0)[0]),            # 5  Toggle (always 0)
-         str(struct.unpack_from("<I", r, 12)[0]),          # 6  RespawnArea1
-         speed100(struct.unpack_from("<I", r, 4)[0]),      # 7  Speed1
-         str(struct.unpack_from("<I", r, 28)[0]),          # 8  RespawnArea2
-         speed100(struct.unpack_from("<I", r, 20)[0]),     # 9  Speed2
-         str(struct.unpack_from("<I", r, 44)[0]),          # 10 Param1
-         str(struct.unpack_from("<I", r, 60)[0])]          # 11 Param2
+    c = [str(struct.unpack_from("<I", r, 180)[0]),
+         field(cstr(r[64:96])),
+         field(cstr(r[96:128])),
+         str(r[200]),
+         RYL1_MON_CLASS.get(r[196], str(r[196])),
+         ox(struct.unpack_from("<I", r, 0)[0]),
+         str(struct.unpack_from("<I", r, 12)[0]),
+         speed100(struct.unpack_from("<I", r, 4)[0]),
+         str(struct.unpack_from("<I", r, 28)[0]),
+         speed100(struct.unpack_from("<I", r, 20)[0]),
+         str(struct.unpack_from("<I", r, 44)[0]),
+         str(struct.unpack_from("<I", r, 60)[0])]
     c += [f32short(struct.unpack_from("<I", r, 128 + 4 * k)[0])
-          for k in range(4)]                               # 12..15 Zone1..4
-    c += [str(struct.unpack_from("<H", r, 334)[0]),        # 16 Value334
-          f32short(struct.unpack_from("<I", r, 192)[0])]   # 17 Velocity (raw)
-    c += [str(struct.unpack_from("<I", r, 288)[0]),        # 18 BaseXP
-          str(struct.unpack_from("<I", r, 296)[0]),        # 19 Level
-          str(struct.unpack_from("<H", r, 308)[0]),        # 20 MinDamage
-          str(struct.unpack_from("<H", r, 310)[0]),        # 21 MaxDamage
-          str(struct.unpack_from("<H", r, 312)[0]),        # 22 Defense
-          str(struct.unpack_from("<H", r, 320)[0]),        # 23 HitRate
-          str(struct.unpack_from("<H", r, 322)[0]),        # 24 Evade
-          "0",                                             # 25 Unk25
-          f32short(struct.unpack_from("<I", r, 316)[0]),   # 26 CriticalRate
-          str(struct.unpack_from("<H", r, 306)[0]),        # 27 Unk27 (=4)
-          "0",                                             # 28 Unk28
-          str(struct.unpack_from("<H", r, 326)[0]),        # 29 Skill29
-          str(struct.unpack_from("<H", r, 328)[0])]        # 30 Skill30
-    c += ["0"] * 10                                        # 31..40 Unk31..40
-    c += [str(struct.unpack_from("<H", r, 330)[0]),        # 41 Skill41
-          str(struct.unpack_from("<H", r, 332)[0]),        # 42 Skill42
-          str(struct.unpack_from("<H", r, 338)[0]),        # 43 MP
-          str(struct.unpack_from("<H", r, 340)[0]),        # 44 HP
-          "0",                                             # 45 Unk45 (float, no cell)
-          "0"]                                             # 46 Unk46 (float, no cell)
-    c += [f32short(struct.unpack_from("<I", r, 188)[0]),   # 47 Scale
-          str(r[197]),                                     # 48 SkillByte197
-          ox(r[229]),                                      # 49 Toggle229
-          ox(0),                                           # 50 Unk50 (toggle X)
-          ox(r[231]),                                      # 51 Toggle231
-          ox(0),                                           # 52 Unk52 (toggle X)
-          ox(r[232]),                                      # 53 Toggle232
-          ox(r[199]),                                      # 54 Toggle199
-          str(r[198]),                                     # 55 Byte198
-          str(r[202])]                                     # 56 Byte202
-    c += ["0"] * 5                                         # 57..61 Unk57..61
-    c += ["0",                                             # 62 Unk62
-          str(struct.unpack_from("<H", r, 220)[0]),        # 63 Unk63 (u16@220)
-          f32short(struct.unpack_from("<I", r, 224)[0]),   # 64 Float224 ratio
-          str(struct.unpack_from("<I", r, 184)[0])]        # 65 SpawnTime
-    c += ["0"] * 10                                        # 66..75 Unk66..75
-    c += [str(struct.unpack_from("<H", r, 164)[0])]        # 76 Weight164
-    c += ["0"] * 20                                        # 77..96 Unk77..96
-    # ragged: strip trailing zero/empty cells like the authentic dump
+          for k in range(4)]
+    c += [str(struct.unpack_from("<H", r, 334)[0]),
+          f32short(struct.unpack_from("<I", r, 192)[0])]
+    c += [str(struct.unpack_from("<I", r, 288)[0]),
+          str(struct.unpack_from("<I", r, 296)[0]),
+          str(struct.unpack_from("<H", r, 308)[0]),
+          str(struct.unpack_from("<H", r, 310)[0]),
+          str(struct.unpack_from("<H", r, 312)[0]),
+          str(struct.unpack_from("<H", r, 320)[0]),
+          str(struct.unpack_from("<H", r, 322)[0]),
+          "0",
+          f32short(struct.unpack_from("<I", r, 316)[0]),
+          str(struct.unpack_from("<H", r, 306)[0]),
+          "0",
+          str(struct.unpack_from("<H", r, 326)[0]),
+          str(struct.unpack_from("<H", r, 328)[0])]
+    c += ["0"] * 10
+    c += [str(struct.unpack_from("<H", r, 330)[0]),
+          str(struct.unpack_from("<H", r, 332)[0]),
+          str(struct.unpack_from("<H", r, 338)[0]),
+          str(struct.unpack_from("<H", r, 340)[0]),
+          "0",
+          "0"]
+    c += [f32short(struct.unpack_from("<I", r, 188)[0]),
+          str(r[197]),
+          ox(r[229]),
+          ox(0),
+          ox(r[231]),
+          ox(0),
+          ox(r[232]),
+          ox(r[199]),
+          str(r[198]),
+          str(r[202])]
+    c += ["0"] * 5
+    c += ["0",
+          str(struct.unpack_from("<H", r, 220)[0]),
+          f32short(struct.unpack_from("<I", r, 224)[0]),
+          str(struct.unpack_from("<I", r, 184)[0])]
+    c += ["0"] * 10
+    c += [str(struct.unpack_from("<H", r, 164)[0])]
+    c += ["0"] * 20
     while c and c[-1] in ("", "0"):
         c.pop()
     return c
@@ -1332,12 +1217,6 @@ def with_banner(body: bytes, eol: bytes = b"\r\n") -> bytes:
 
 
 def decompile_compensation(dec: bytes, namemap: dict) -> bytes:
-    """SpeacialCompensation.gsf - plain u16 item-ID array in server order.
-
-    Layout per RylServerProject CItemMgr::LoadItemSpeacialCompensationBinary:
-    every 0 (ushort) separates one compensation case, ids before a 0 belong
-    to that case (one trailing 0 closes the final case).
-    """
     out = ["CASE\tSEQ\tID\tITEM"]
     case, seq, seen = 0, 0, 0
     missing = Counter()

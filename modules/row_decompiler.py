@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 
 import struct
 from pathlib import Path
@@ -26,22 +25,14 @@ _ROW_TABLES = None
 def _row_tables():
     global _ROW_TABLES
     if _ROW_TABLES is None:
-        import re as _re
-        _src = (HERE.parent.parent / "RYLGameConverter" / "RylServerProject"
-                / "RylServerLibrary" / "Network" / "XORCrypt"
-                / "XORCryptoCodeList.cpp").read_text()
-        _vals = [int(x, 16) for x in _re.findall(r"0x([0-9A-Fa-f]{2})", _src)]
-        if len(_vals) != 1600:
-            raise ValueError(f"C++ table has {len(_vals)} bytes, want 1600")
+        from modules.xor_crypt import raw_page, PAGE_COUNT, VERSIONS
         _raw = {}
-        _k = 0
-        for _v in range(4):
-            for _p in range(10):
-                _raw[(_v, _p)] = bytes(_vals[_k:_k + 40])
-                _k += 40
+        for _v in range(VERSIONS):
+            for _p in range(PAGE_COUNT):
+                _raw[(_v, _p)] = bytes(raw_page(_v, _p))
         _ROW_TABLES = {}
-        for _v in range(4):
-            for _p in range(10):
+        for _v in range(VERSIONS):
+            for _p in range(PAGE_COUNT):
                 if _v in (2, 3):
                     _ROW_TABLES[(_v, _p)] = bytes(
                         a ^ b for a, b in zip(_raw[(_v, _p)], _raw[(0, _p)]))
@@ -315,7 +306,7 @@ def _check_text(line: bytes, where: str):
                              f"(byte 0x{c:02X} in {line[:48]!r}).")
 
 
-def decompile_ncf(src: Path) -> bytes:
+def decompile_ncf(src: Path, namemap: dict = None) -> bytes:
     from modules.banners import file_banner
     from modules.ryl_decompiler import clean_text, smart_str
     from modules.translations import translate_text
@@ -335,7 +326,7 @@ def decompile_ncf(src: Path) -> bytes:
         if line:
             text = clean_text(smart_str(line))
             text = text.replace("\r\n", "\\n").replace("\n", "\\n")
-            text = translate_text(text)
+            text = translate_text(text, namemap)
             out.append(text)
         else:
             out.append("")
@@ -349,5 +340,5 @@ def decompile_ncf(src: Path) -> bytes:
 def decompile_row(src: Path, namemap: dict) -> bytes:
     src = Path(src)
     if src.suffix.lower() == ".ncf":
-        return decompile_ncf(src)
+        return decompile_ncf(src, namemap)
     return decompile_row_gsf(src, namemap)

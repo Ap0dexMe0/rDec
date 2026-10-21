@@ -27,7 +27,7 @@ def banners():
     stdout.write(""+Fore.YELLOW   +"╔════════════════════════════════════════════════════════════════════════════╝\n")
     stdout.write(""+Fore.YELLOW   +"║ \x1b[38;2;255;20;147m• "+Fore.GREEN+"GITHUB             "+Fore.RED+"    |"+Fore.LIGHTWHITE_EX+"   GITHUB.COM/AP0DEXME0                          "+Fore.YELLOW+"║\n")
     stdout.write(""+Fore.YELLOW   +"╚════════════════════════════════════════════════════════════════════════════╝\n") 
-    print(f"{Fore.YELLOW}[RDEC] - {Fore.GREEN}Decompiling Return Of Warrior (ROW) & Risk Your Life (RYL) MMORPG{Fore.RED} [V0.1] \n{Fore.RESET}")
+    print(f"{Fore.YELLOW}[RDEC] - {Fore.GREEN}Decompiling Return Of Warrior (ROW) & Risk Your Life (RYL) MMORPG{Fore.RED} [V0.3] \n{Fore.RESET}")
 
 
 def clear_and_print():
