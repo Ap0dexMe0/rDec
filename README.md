@@ -41,13 +41,9 @@ pip install -r requirements.txt
 ```
 ## Current Testing
 
-- RYL2 (V1700-V1900 build):
-
-https://github.com/user-attachments/assets/a3564af6-7405-41b3-93f7-aa8b5170821b
-
-- Origin ROW:
-
-https://github.com/user-attachments/assets/9f93b2f0-4bb1-4729-a714-7363e54a8bcf
+- ROW
+- RYL1
+- RYL2 (V1700-V2240 build):
 
 ### Supported version folders
 
