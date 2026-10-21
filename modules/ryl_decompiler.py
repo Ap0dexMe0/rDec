@@ -214,7 +214,17 @@ def fmt_str(raw: bytes) -> bytes:
     return b'"' + text.encode("utf-8") + b'"'
 
 
-def scan_calls(code: bytes, funcmap: dict, strbuf: bytes, srel: set):
+def merge_sigs(ext: dict = None) -> dict:
+    """Merge extra signatures over SIGS, joining per-name arity maps."""
+    out = {**SIGS}
+    for nm, shapes in (ext or {}).items():
+        out[nm] = {**out.get(nm, {}), **shapes}
+    return out
+
+
+def scan_calls(code: bytes, funcmap: dict, strbuf: bytes, srel: set,
+               sigs: dict = None):
+    SIG_EXT = merge_sigs(sigs) if sigs else SIGS
     calls = []
     anomalies = []
     offs = set(funcmap)
@@ -237,7 +247,7 @@ def scan_calls(code: bytes, funcmap: dict, strbuf: bytes, srel: set):
                   and code[i + 6] == 0xC4
                   and struct.unpack_from("<I", code, i + 7)[0] == 4 * len(args))
         names = funcmap[tgt]
-        cands = [nm for nm in names if len(args) in SIGS.get(nm, {})]
+        cands = [nm for nm in names if len(args) in SIG_EXT.get(nm, {})]
         if len(cands) != 1:
             anomalies.append((i, tgt, names, args))
             continue
@@ -266,20 +276,23 @@ def render_arg(typ: str, imm: int, strbuf: bytes, anomalies: list, where: str):
     return fmt_int(v).encode("ascii")
 
 
-def decompile_file(src: Path):
+def decompile_file(src: Path, dec: bytes = None, sigs: dict = None):
     raw = src.read_bytes()
     log.debug(f"{src.name}: read {len(raw):,} bytes.")
-    dec = decode(raw)
+    if dec is None:
+        dec = decode(raw)
     P = parse(dec)
     log.debug(f"{src.name}: decoded into {len(P['code']):,} code bytes, "
               f"{len(P['funcmap'])} functions and "
               f"{len(P['strbuf']):,} string bytes.")
-    calls, anomalies = scan_calls(P["code"], P["funcmap"], P["strbuf"], P["srel"])
+    calls, anomalies = scan_calls(P["code"], P["funcmap"], P["strbuf"],
+                                  P["srel"], sigs)
+    merged = merge_sigs(sigs) if sigs else SIGS
     out = []
     first = True
     arg_anom = []
     for addr, name, args in calls:
-        types, indent, blanks = SIGS[name][len(args)]
+        types, indent, blanks = merged[name][len(args)]
         if not first:
             if name == "SetNPC":
                 out.extend([b""] * 2)

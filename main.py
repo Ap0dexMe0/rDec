@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from modules.cli import (discover_files, menu_loop, resolve_version)
 from modules.logging import setup
+from modules.row_decompiler import row_setup
 
 log = setup()
 
@@ -28,6 +29,11 @@ def _output_for(src: Path, base: Path, handler: str) -> Path:
     return base / src.relative_to(base).parent / output_name_for(src.name)
 
 
+def _decompile_ncf(src: Path, namemap: dict) -> bytes:
+    from modules.row_decompiler import decompile_ncf
+    return decompile_ncf(src, namemap)
+
+
 def _decompile_mcf(src: Path):
     from modules.ryl_decompiler import decompile_ryl_mcf
     return decompile_ryl_mcf(src)
@@ -38,14 +44,15 @@ def _decompile_gsf(src: Path, namemap: dict, version=None) -> bytes:
     return decompile_ryl_gsf(src, namemap, version)
 
 
-def _decompile_row_gsf(src: Path, namemap: dict) -> bytes:
+def _decompile_row_gsf(src: Path, namemap: dict, pages=None,
+                       item_stride: int = None) -> bytes:
     from modules.row_decompiler import decompile_row_gsf
-    return decompile_row_gsf(src, namemap)
+    return decompile_row_gsf(src, namemap, pages, item_stride)
 
 
-def _decompile_ncf(src: Path, namemap: dict) -> bytes:
-    from modules.row_decompiler import decompile_ncf
-    return decompile_ncf(src, namemap)
+def _decompile_row_mcf(src: Path) -> bytes:
+    from modules.row_decompiler import decompile_row_mcf
+    return decompile_row_mcf(src)
 
 
 def run(version: str, base_dir=None) -> int:
@@ -59,7 +66,8 @@ def run(version: str, base_dir=None) -> int:
     if not base.is_dir():
         log.error(f"Input directory not found: {base}.")
         return 2
-    is_row = (version == "ROW")
+    is_row = version == "ROW" or version.startswith("ROW/")
+    row_pages, row_stride = row_setup(version) if is_row else (None, None)
 
     supported, unsupported = discover_files(base)
     log.info(f"Decompiling version '{version}' from {base}.")
@@ -71,7 +79,8 @@ def run(version: str, base_dir=None) -> int:
         if is_row:
             try:
                 from modules.row_decompiler import build_row_namemap
-                namemap = build_row_namemap([p for p, _ in supported])
+                namemap = build_row_namemap([p for p, _ in supported],
+                                            row_pages, row_stride)
                 if namemap:
                     log.info(f"Loaded {len(namemap):,} item names "
                              f"for Chemical lookups.")
@@ -107,7 +116,11 @@ def run(version: str, base_dir=None) -> int:
             continue
         try:
             if handler == "mcf":
-                data, n_calls, n_anom = _decompile_mcf(path)
+                if is_row:
+                    _decompile = _decompile_row_mcf
+                else:
+                    _decompile = _decompile_mcf
+                data, n_calls, n_anom = _decompile(path)
                 if n_anom == 0:
                     detail = f"{n_calls:,} calls, no anomalies"
                 else:
@@ -126,7 +139,8 @@ def run(version: str, base_dir=None) -> int:
                 detail = f"{len(data):,} bytes"
             elif is_row:
                 try:
-                    data = _decompile_row_gsf(path, namemap)
+                    data = _decompile_row_gsf(path, namemap, row_pages,
+                                              row_stride)
                 except RuntimeError as e:
                     if str(e).startswith("SKIP:"):
                         reason = str(e)[len("SKIP:"):].strip()

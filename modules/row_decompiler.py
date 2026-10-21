@@ -52,6 +52,22 @@ ROW_MONSTER_CORE = 552
 ROW_CHEM_ROW = 24
 ROW_ITEMEX_ROW = 304
 
+# Other ROW builds ship differently-cased file names and item rows
+# without the 4-byte trailer (616-byte rows instead of 620).  The crypt
+# pages match the original builds (verified by name-token decoding).
+ROW_OTHER_PAGES = {"Itemscript.gsf": (3, 4), "ItemScriptEx.gsf": (3, 4),
+                   "Chemical.gsf": (3, 4),
+                   "Monsterprototype.gsf": (3, 2),
+                   "SkillScript.gsf": (3, 3),
+                   "SkillScriptEx.gsf": None}
+ROW_VARIANT_PAGES = {"Other": ROW_OTHER_PAGES}
+ROW_VARIANT_ITEM_STRIDE = {"Other": ROW_ITEM_CORE}
+
+# NPC/quest/world-op scripts of the other ROW builds use the same MCF
+# container but XOR every 4 bytes with this key (the classic RYL builds
+# use MCF_KEY 0x425529AC in ryl_decompiler).
+ROW_MCF_KEY = 0xE2E5DCE7
+
 ROW_ITEM_HDR = ITEM_HDR + ["Trailer"]
 
 ROW_CHEM_HDR = (b"PickkingItem\t\t\tTargetItem\t\t\tResultItem\t\t\t"
@@ -59,15 +75,56 @@ ROW_CHEM_HDR = (b"PickkingItem\t\t\tTargetItem\t\t\tResultItem\t\t\t"
                 b"Name\tID\tNum\tName\tID\tNum\tName\tID\tNum\t"
                 b"ItemID\tAbilityID\tAbilityLevel\tQuestID\tPercent\r\n")
 
+# Extra op signatures used by the other ROW builds' quest/NPC .mcf files.
+# Most mirror their closest known sibling (AddPopup, QuestStart,
+# QuestSkillPointBonus, Event_MsgBox, Event_Award, Trigger_LevelTalk);
+# QuestStartLevel, Event_AlarmBox, Event_AwardItemClass, Event_AwardItemID
+# and QuestAbilityPoint are verified against the call sites they fired in
+# (same mov/push arg transports, same `add esp` trailing argument counts,
+# string arguments resolved as strbuf offsets like every known op).
+ROW_SIGS_EXT = {
+    "AddPopupGuild": {7: (["i", "i", "i", "s", "i", "i", "i"], 1, 0)},
+    "AddPopupAbility": {7: (["i", "i", "i", "s", "i", "i", "i"], 1, 0)},
+    "AddPopupFame": {7: (["i", "i", "i", "s", "i", "i", "i"], 1, 0)},
+    "QuestStartLevel": {7: (["i", "i", "i", "i", "i", "i", "b"], 0, 0)},
+    "QuestStartFame": {7: (["i", "i", "i", "i", "i", "i", "b"], 0, 0)},
+    "QuestAbilityPoint": {1: (["i"], 1, 0)},
+    "Event_AlarmBox": {1: (["s"], 3, 0)},
+    "Event_AwardItemClass": {5: (["i"] * 5, 3, 0)},
+    "Event_AwardItemID": {4: (["i"] * 4, 3, 0)},
+    "Event_AwardAbility": {4: (["i"] * 4, 3, 0)},
+    "Trigger_AbilityTalk": {3: (["i", "i", "s"], 2, 0)},
+    "Trigger_FameTalk": {3: (["i", "i", "s"], 2, 0)},
+    # extended arities of ops that already exist in the classic builds
+    "Phase_Target": {3: (["i", "i", "i"], 2, 0)},
+    "Event_Move": {4: (["i", "f", "f", "f"], 3, 0)},
+}
+
+
+def row_setup(version_id=None):
+    """Version-aware ROW wiring: (crypt pages registry, item stride).
+
+    `version_id` is the rDec menu value, e.g. 'ROW', 'ROW/Origin' or
+    'ROW/Other'.  The original ROW builds keep the exact legacy registry
+    and 620-byte rows; variant folders use their own page table.
+    """
+    leaf = version_id.split("/")[-1] if version_id and "/" in version_id \
+        else None
+    if leaf and leaf in ROW_VARIANT_PAGES:
+        return (ROW_VARIANT_PAGES[leaf],
+                ROW_VARIANT_ITEM_STRIDE.get(leaf, ROW_ITEM_ROW))
+    return ROW_PAGES, ROW_ITEM_ROW
+
 
 def output_name_for_row(filename: str) -> str:
     return Path(filename).stem + ".txt"
 
 
-def build_row_namemap(files) -> dict:
+def build_row_namemap(files, pages=None, stride=None) -> dict:
     for src in files:
-        if Path(src).name == "ItemScript.gsf":
-            return row_item_namemap(load_row_gsf(Path(src)))
+        if Path(src).name.lower() == "itemscript.gsf":
+            return row_item_namemap(load_row_gsf(Path(src), pages),
+                                    stride or ROW_ITEM_ROW)
     return {}
 
 
@@ -75,7 +132,7 @@ def ror1(b):
     return ((b << 7) & 0xFF) | (b >> 1)
 
 
-def load_row_gsf(path: Path):
+def load_row_gsf(path: Path, pages=None):
     try:
         import lzo
     except ImportError as e:
@@ -92,19 +149,20 @@ def load_row_gsf(path: Path):
                                f"{orig:,} were expected.")
     log.debug(f"{path.name}: decompressed {orig:,} payload bytes "
               f"({len(raw):,} on disk, {trash:,} trash bytes skipped).")
+    registry = ROW_PAGES if pages is None else pages
     try:
-        ver, page = ROW_PAGES[path.name]
+        ver, page = registry[path.name]
     except KeyError:
         raise ValueError(f"No ROW crypt page is registered for {path.name} "
-                         f"(known: {sorted(ROW_PAGES)}).")
+                         f"(known: {sorted(registry)}).")
     row = _row_tables()[(ver, page)]
     return bytes((ror1(c) ^ row[i % 40]) for i, c in enumerate(body))
 
 
-def row_item_namemap(dec: bytes) -> dict:
+def row_item_namemap(dec: bytes, stride: int = ROW_ITEM_ROW) -> dict:
     m = {}
-    for i in range(len(dec) // ROW_ITEM_ROW):
-        r = dec[i * ROW_ITEM_ROW:(i + 1) * ROW_ITEM_ROW]
+    for i in range(len(dec) // stride):
+        r = dec[i * stride:(i + 1) * stride]
         m[struct.unpack_from("<H", r, 0)[0]] = \
             field(cstr(r[52:116]))
     return m
@@ -114,7 +172,8 @@ def _eol_of(body: bytes) -> bytes:
     return b"\r\n" if b"\r\n" in body else b"\n"
 
 
-def decompile_row_gsf(src: Path, namemap: dict) -> bytes:
+def decompile_row_gsf(src: Path, namemap: dict, pages=None,
+                      item_stride: int = None) -> bytes:
     src = Path(src)
     if src.name.lower() == "skillscriptex.gsf":
         import shutil
@@ -135,37 +194,42 @@ def decompile_row_gsf(src: Path, namemap: dict) -> bytes:
             log.debug(f"SkillScriptEx.gsf: unluac returned {len(body):,} "
                       f"bytes.")
             return with_banner(body, _eol_of(body))
-    dec = load_row_gsf(src)
-    if src.name == "ItemScript.gsf":
-        return with_banner(decompile_row_item(dec), b"\n")
-    if src.name == "ItemScriptEx.gsf":
+    dec = load_row_gsf(src, pages)
+    low = src.name.lower()
+    if low == "itemscript.gsf":
+        return with_banner(decompile_row_item(
+            dec, item_stride or ROW_ITEM_ROW), b"\n")
+    if low == "itemscriptex.gsf":
         return with_banner(decompile_row_itemex(dec), b"\n")
-    if src.name == "MonsterProtoType.gsf":
+    if low == "monsterprototype.gsf":
         return with_banner(decompile_row_monster(dec))
-    if src.name == "SkillScript.gsf":
+    if low == "skillscript.gsf":
         from modules.ryl_decompiler import decompile_skill
         return with_banner(decompile_skill(dec))
-    if src.name == "Chemical.gsf":
+    if low == "chemical.gsf":
         return with_banner(decompile_row_chemical(dec, namemap))
     raise ValueError(f"{src.name}: no ROW GSF handler registered")
 
 
-def decompile_row_item(dec: bytes) -> bytes:
-    if len(dec) % ROW_ITEM_ROW:
+def decompile_row_item(dec: bytes, stride: int = ROW_ITEM_ROW) -> bytes:
+    trailer = stride == ROW_ITEM_ROW
+    if len(dec) % stride:
         raise ValueError(f"Item payload {len(dec):,} is not a multiple "
-                         f"of {ROW_ITEM_ROW}.")
-    n = len(dec) // ROW_ITEM_ROW
-    log.debug(f"ItemScript.gsf (ROW): {n:,} item rows.")
+                         f"of {stride}.")
+    n = len(dec) // stride
+    log.debug(f"ItemScript.gsf (ROW): {n:,} item rows of {stride} bytes.")
+    hdr = ROW_ITEM_HDR if trailer else ITEM_HDR
     nonzero = 0
-    lines = ["\t".join(ROW_ITEM_HDR)]
+    lines = ["\t".join(hdr)]
     for i in range(n):
-        r = dec[i * ROW_ITEM_ROW:(i + 1) * ROW_ITEM_ROW]
+        r = dec[i * stride:(i + 1) * stride]
         cells = list(emit_item(r[:ROW_ITEM_CORE]))
-        trailer = struct.unpack_from("<I", r, ROW_ITEM_CORE)[0]
-        nonzero += trailer != 0
-        cells.append(str(trailer))
+        if trailer:
+            cell = struct.unpack_from("<I", r, ROW_ITEM_CORE)[0]
+            nonzero += cell != 0
+            cells.append(str(cell))
         lines.append("\t".join(cells))
-    if nonzero:
+    if trailer and nonzero:
         log.info(f"ItemScript.gsf (ROW): {nonzero:,}/{n:,} rows carry a "
                  f"nonzero trailer value (kept in the Trailer column).")
     return ("\n".join(lines) + "\n").encode("utf-8")
@@ -335,6 +399,57 @@ def decompile_ncf(src: Path, namemap: dict = None) -> bytes:
     head.append("")
     head.extend(out)
     return "\r\n".join(head).encode("utf-8")
+
+
+def _probe_mcf(dec: bytes) -> dict:
+    """Strict MCF container validation; raises on a wrong-key decode."""
+    from modules.ryl_decompiler import parse
+    g, s, f = struct.unpack_from("<iii", dec, 0)
+    for name, v in (("g", g), ("s", s), ("f", f)):
+        if not 0 <= v <= (1 << 22):
+            raise ValueError(f"{name}={v:,} out of range")
+    P = parse(dec)
+    code = len(P["code"])
+    if not (P["strbuf"] and code):
+        raise ValueError("empty string/code payload")
+    for off in P["funcmap"]:
+        if not 0 <= off < code:
+            raise ValueError(f"funcmap offset {off:,} outside the "
+                             f"{code:,}-byte code payload")
+    return P
+
+
+def decompile_row_mcf(src: Path) -> bytes:
+    """Decompile a ROW .mcf op script (NPC / quest / world).
+
+    The container matches the classic RYL MCF layout, but other ROW
+    builds XOR every 4 bytes with ROW_MCF_KEY instead of MCF_KEY, so
+    both keys are probed (the classic one first, so original builds
+    keep their exact decode path).
+    """
+    from modules.ryl_decompiler import decompile_file, decode, MCF_KEY
+    src = Path(src)
+    raw = src.read_bytes()
+    log.debug(f"{src.name}: read {len(raw):,} bytes.")
+    row_key = struct.pack("<I", ROW_MCF_KEY)
+    tries = ((None, f"0x{MCF_KEY:08X}"), (row_key, f"0x{ROW_MCF_KEY:08X}"))
+    errors = []
+    for key, label in tries:
+        if key is None:
+            dec = decode(raw)
+        else:
+            dec = bytes(b ^ key[i % 4] for i, b in enumerate(raw))
+        try:
+            _probe_mcf(dec)
+        except Exception as e:
+            errors.append(f"{label} -> {type(e).__name__}: {e}")
+            continue
+        log.debug(f"{src.name}: decoded with MCF key {label}.")
+        txt, _P, calls, anomalies, arg_anom = decompile_file(
+            src, dec=dec, sigs=ROW_SIGS_EXT)
+        return txt, len(calls), len(anomalies) + len(arg_anom)
+    raise RuntimeError(f"No ROW MCF key fits {src.name}: "
+                       f"{'; '.join(errors)}")
 
 
 def decompile_row(src: Path, namemap: dict) -> bytes:

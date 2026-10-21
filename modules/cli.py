@@ -24,11 +24,29 @@ HANDLERS = {".mcf": "mcf", ".gsf": "gsf",
             ".ncf": "ncf"}
 
 VERSIONS = {
-    "ROW": "ROW - Original ROW",
-    "RYL1": "RYL1 - Original RYL Online",
-    "RYL2/V1700-V1900": "RYL2 V1700-V1900",
-    "RYL2/V2000-V2240": "RYL2 V2000-V2240",
+    "ROW": "ROW",
+    "ROW/Origin": "Original ROW (Rowplayon)",
+    "ROW/Other": "Other ROW Versions",
+    "RYL1": "Risk Your Life 1 (RYL1)",
+    "RYL2/V1700-V1900": "RYL2 V1700–V1900",
+    "RYL2/V2000-V2240": "RYL2 V2000–V2240",
 }
+
+# Fixed main-menu games.  Games with a `group` folder open a version
+# submenu (configured entries first, then any newly discovered
+# sub-folders); a game without `versions` decompiles directly.
+GAMES = (
+    {"id": "ROW", "title": "Return of Warriors (ROW)",
+     "group": "ROW", "menu": "ROW VERSIONS",
+     "versions": (("Origin", "Original ROW (Rowplayon)"),
+                  ("Other", "Other ROW Versions"))},
+    {"id": "RYL1", "title": "Risk Your Life 1 (RYL1)",
+     "group": "RYL1", "menu": None, "versions": None},
+    {"id": "RYL2", "title": "Risk Your Life 2 (RYL2)",
+     "group": "RYL2", "menu": "RYL2 VERSIONS",
+     "versions": (("V1700-V1900", "V1700–V1900"),
+                  ("V2000-V2240", "V2000–V2240"))},
+)
 
 _MENU_WIDTH = 78
 _EXIT_WORDS = {"0", "q", "quit", "exit", "back"}
@@ -85,17 +103,24 @@ def resolve_version(version_id, root=None) -> Path:
     return script_dir(root) / Path(version_id)
 
 
-def version_choices(root=None) -> list:
-    discovered = set(list_versions(root))
-    return [(vid, VERSIONS.get(vid, "unverified"))
-            for vid in sorted(set(VERSIONS) | discovered)]
+def game_version_choices(game: dict, root=None) -> list:
+    """(version_id, label) pairs for a game's submenu.
 
-
-def version_lines(root=None) -> list:
-    lines = ["Supported versions:"]
-    for vid, _label in version_choices(root):
-        lines.append(f"  {version_row(vid)}")
-    return lines
+    Configured versions come first (in menu order, only when their
+    folder exists), then any newly discovered sub-folders of the game
+    group so auto-discovery keeps working without code changes.
+    """
+    group = game["group"]
+    configured = [(f"{group}/{sub}", label)
+                  for sub, label in (game["versions"] or ())]
+    known = {vid for vid, _label in configured}
+    existing = [(vid, label) for vid, label in configured
+                if (script_dir(root) / vid).is_dir()]
+    extras = []
+    for vid in list_versions(root):
+        if vid.startswith(f"{group}/") and vid not in known:
+            extras.append((vid, version_row(vid)))
+    return existing + sorted(extras)
 
 
 def discover_files(base: Path):
@@ -193,68 +218,64 @@ def menu_loop(run) -> int:
         try:
             _fresh()
             _title("MAIN MENU")
-            _rows(["Decompile a game version",
-                   "List supported versions"], "Exit")
+            _rows([game["title"] for game in GAMES], "Exit")
             print()
-            picked = _pick("Select an option", 2)
+            picked = _pick("Select a game", len(GAMES))
             if picked == 0:
                 log.info("Goodbye!")
                 return 0
-            if picked == 1:
-                _flow_decompile(run)
+            game = GAMES[picked - 1]
+            if game["versions"] is None:
+                _flow_game(run, game["id"])
             else:
-                _flow_versions()
+                _flow_game_versions(run, game)
         except (KeyboardInterrupt, EOFError):
             log.info("Session ended. Goodbye!")
             return 0
 
 
-def _flow_versions() -> None:
-    _fresh()
-    for line in version_lines():
-        log.info(line)
-    _pause()
-
-
-def _flow_decompile(run) -> None:
-    choices = version_choices()
+def _flow_game_versions(run, game: dict) -> None:
+    choices = game_version_choices(game)
     if not choices:
-        log.error(f"No version folders found under {script_dir()}.")
-        log.info("A version is any sub-folder of script/ "
-                 "(e.g. script/RYL2).")
+        log.error(f"No version folders found under "
+                  f"{script_dir() / game['group']}.")
         _pause()
         return
     _fresh()
-    _title("SELECT A GAME VERSION")
-    _rows([version_row(name) for name, _ in choices], "Back")
+    _title(game["menu"])
+    _rows([label for _vid, label in choices], "Back")
     print()
     picked = _pick("Select a version", len(choices))
     if picked == 0:
-        log.info("Back to the menu - nothing was decompiled.")
+        log.info("Back to the main menu - nothing was decompiled.")
         return
-    name, _label = choices[picked - 1]
+    version_id, _label = choices[picked - 1]
+    _flow_game(run, version_id)
+
+
+def _flow_game(run, version_id: str) -> None:
     _fresh()
     try:
-        base = resolve_version(name)
+        base = resolve_version(version_id)
     except ValueError as e:
         log.error(str(e))
         _pause()
         return
-    log.info(f"Scanning {_display_name(name)} ({base}) ...")
+    label = version_row(version_id)
+    log.info(f"Scanning {label} ({base}) ...")
     count, breakdown = scan_summary(base)
     if not count:
-        log.warning(f"No supported files found in {name} ({breakdown}).")
+        log.warning(f"No supported files found in {label} ({breakdown}).")
         _pause()
         return
     log.info(f"Found {_fmt(count)} supported file"
-             f"{'s' if count != 1 else ''} in {_display_name(name)}"
-             f" ({base}): {breakdown}.")
-    if not _confirm(f"Decompile all supported files in "
-                    f"{version_row(name)}?"):
+             f"{'s' if count != 1 else ''} in {label} ({base}): "
+             f"{breakdown}.")
+    if not _confirm(f"Decompile all supported files in {label}?"):
         log.info("Cancelled - nothing was decompiled.")
         return
     try:
-        rc = run(name)
+        rc = run(version_id)
     except (KeyboardInterrupt, EOFError):
         log.warning("Decompilation cancelled.")
         return
