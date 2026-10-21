@@ -45,7 +45,7 @@ pip install -r requirements.txt
 - RYL1
 - RYL2 (V1700-V2240 build):
 
-https://github.com/user-attachments/assets/e1d06643-2bac-461e-bc26-5e3dfb62592b
+https://github.com/user-attachments/assets/98864fa3-6d12-48df-a4c2-7473397f825f
 
 ### Supported version folders
 
