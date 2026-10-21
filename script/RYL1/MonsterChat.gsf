@@ -1,0 +1,139 @@
+void MonsterChat(int, int, int, int, int, string); // KID, ?????, ??? ??ID, ????, ??, ?????
+
+//////	?? ID	//////////
+//						//
+//	????			=0	//
+//	???? ???	=1	//
+//	???? ??		=2	//
+//	???? ???	=3	//
+//	???? ??		=4	//
+//	???? ???	=5	//
+//	???			=6	//
+//	??				=7	//
+//						//
+//////////////////////////
+
+//////	?? ID	//////
+//					//
+//	??		=255	//
+//	??		=0		//
+//	???	=7		//
+//					//
+//////////////////////
+
+////	Skill ID	//////
+//						//
+//	?? Skill	=0xFFFF	//
+//						//
+//////////////////////////
+
+// $KILLERNAME$	????(???) ???? ????. ?? ID? 7?(??) ? ??? ??
+// $ATTNAME$		????(???) ???? ????. ?? ID? 1, 3, 5 (???) ? ??? ??
+// $DEFNAME$		????(???) ???? ????. ?? ID? 0, 2, 4 (???) ? ??? ?? (?? ??? ???? ??, random??)
+
+// KID, ?????, ??? ??ID, ?? ??? ?? ???, ??? ??? ??.
+
+// ex 
+//MonsterChat(4001, 2, 0xFFFF, 0, 20, "?? ??? ? ?? ???1");
+//MonsterChat(4001, 2, 0xFFFF, 0, 20, "?? ??? ? ?? ???2");
+// (1~100??? ??? ??? ??, ?? ???? 1~20??, ?? ???? 21~40??. ? ?? ??? ??? ???.) 
+
+//???? ?? ??, ?? ?? ??? ??? ???.
+
+
+//////////////////////////////////////////////////////////
+/////////////          Named Monster-Boss		//////////////
+//////////////////////////////////////////////////////////
+
+//Ancient Guard
+MonsterChat(4001, 6, 0, 7, 100, "'Something evil is rising from darkness...'");
+MonsterChat(4001, 2, 0xFFFF, 0, 10, "Feel the strength of my pure evil!!! ");
+MonsterChat(4001, 2, 0xFFFF, 0, 10, "Darkness is source of my life... Huaaaarrgghhh!!!");
+MonsterChat(4001, 4, 0, 0, 50, "Now!!!... Huaaaarrrgghhh!!! You die!!");
+MonsterChat(4001, 4, 0, 0, 50, "$DEFNAME$, I will bring you to hell!!!");
+MonsterChat(4001, 7, 0, 7, 100, "$KILLERNAME$! The darkness will always follow you!!!...Remember that!!!");
+
+//Flame Demon
+MonsterChat(4002, 6, 0, 7, 100, "'In the Ak'kan land,something evil living there now...'");
+MonsterChat(4002, 2, 0xFFFF, 0, 10, "Ak'kan land is my home now. Earth's blood is my strength");
+MonsterChat(4002, 2, 0xFFFF, 0, 10, "Ak'kan land is source of my life");
+MonsterChat(4002, 4, 0, 0, 50, "You shall not come here!!");
+MonsterChat(4002, 4, 0, 0, 50, "You should not been arrived here $DEFNAME$");
+MonsterChat(4002, 7, 0, 7, 100, "...$KILLERNAME$!!! Remember that i will always return...");
+
+//Lion Warrior
+MonsterChat(4003, 6, 0, 7, 100, "'You can hear the Lion roaring in the woods...'");
+MonsterChat(4003, 2, 0xFFFF, 0, 10, "Hahaha... Better run before i show my true power!");
+MonsterChat(4003, 2, 0xFFFF, 0, 10, "You made your choice so i am not going to leave you alive");
+MonsterChat(4003, 4, 0, 0, 50, "Soon you will see who is strongest here!");
+MonsterChat(4003, 4, 0, 0, 50, "$DEFNAME$, Feel the power of my sword!!!");
+MonsterChat(4003, 7, 0, 7, 100, "Ah, $KILLERNAME$ You are strong indeed...But i will be back soon...");
+
+//SK
+MonsterChat(4004, 6, 0, 7, 100, "'You can feel how son of the darkness is coming from hell...'");
+MonsterChat(4004, 2, 0xFFFF, 0, 10, "Your spirit will not rest in peace... I am here to show pain and misery..");
+MonsterChat(4004, 2, 0xFFFF, 0, 10, "You must be tired of living... Gggraaaauuumm");
+MonsterChat(4004, 4, 0, 0, 50, "Now i will take your spirit... Get ready for pain!!");
+MonsterChat(4004, 4, 0, 0, 50, "$DEFNAME$, Gggraaaauuumm... Your story ends here!!");
+MonsterChat(4004, 7, 0, 7, 100, "$KILLERNAME$, I will repay this later...");
+
+//Abomy
+MonsterChat(4005, 6, 0, 7, 100, "'I smell fresh blood and flesh here...'");
+MonsterChat(4005, 2, 0xFFFF, 0, 10, "Woorrghh!!... I want your blood to make me even more powerful!!!");
+MonsterChat(4005, 2, 0xFFFF, 0, 10, "I am the King of Caernavon and nobody can ever kill me... Wooorrgghh!!");
+MonsterChat(4005, 4, 0, 0, 50, "I am going to show you who is boss here!!!..Woorrgghh!!");
+MonsterChat(4005, 4, 0, 0, 50, "Woorrghh!!... $DEFNAME$, Woorrgghh!!... Now i am going to eat your flesh!!");
+MonsterChat(4005, 7, 0, 7, 100, "Aaaarrghhhh!!!... $KILLERNAME$, You will be cursed!!!");
+
+//Diablo
+MonsterChat(4008, 6, 0, 7, 100, "'You should stay away from Edinburgh now...'");
+MonsterChat(4008, 7, 0, 7, 100, "$KILLERNAME$, Next time i will be smarter!!!");
+
+//3-Headed Queen
+MonsterChat(4010, 6, 0, 7, 100, "'3 Heads are looking for fresh blood...'");
+MonsterChat(4010, 7, 0, 7, 100, "Aaaarrghhhh!!!... $KILLERNAME$, You cheated!!!");
+
+//Queen of Pain
+MonsterChat(4009, 6, 0, 7, 100, "'Looks like something strong appeared in canyon...'");
+MonsterChat(4009, 7, 0, 7, 100, "Hmmmmm... $KILLERNAME$, Next time will be true pain!!!");
+
+//Merman King
+MonsterChat(4006, 6, 0, 7, 100, "'Something big is hunting near New Bellin...'");
+MonsterChat(4006, 7, 0, 7, 100, "$KILLERNAME$, You was stronger i thought...");
+
+//Baphomet
+MonsterChat(4007, 6, 0, 7, 100, "'Horrible big monster appeared somewhere in Misery Island...'");
+MonsterChat(4007, 7, 0, 7, 100, "$KILLERNAME$, When i see you next time you will burn hell!!!");
+
+//Year Monster Boss
+MonsterChat(309, 6, 0, 7, 100, "'Old quiet town doesnt look so quiet anymore...'");
+MonsterChat(309, 7, 0, 7, 100, "$KILLERNAME$, You are too strong...");
+
+//Spirit Guardian
+MonsterChat(357, 6, 0, 7, 100, "'Edinburgh has got the spiritual protection...'");
+MonsterChat(357, 7, 0, 7, 100, "I still will protect Edinburgh $KILLERNAME$...");
+
+//Evoled Gecko
+MonsterChat(367, 2, 0xFFFF, 0, 10, "Are you trying to make me give you special item?");
+MonsterChat(367, 4, 0, 0, 50, "I am not giving you my Lunar item!");
+
+//Terly Healer
+MonsterChat(305, 2, 0xFFFF, 0, 10, "Dont kill me. I am healing you!");
+MonsterChat(305, 4, 0, 0, 50, "Do you want see my strong heal?");
+
+//Year Monster
+MonsterChat(308, 2, 0xFFFF, 0, 10, "Dont hit me. I am blessing you.");
+MonsterChat(308, 4, 0, 0, 50, "I got good magic.");
+
+//Small Baphomet
+MonsterChat(4134, 2, 0xFFFF, 0, 10, "Do you want see how i make your weapon shine?");
+MonsterChat(4134, 4, 0, 0, 50, "Dont kill me or im not helping you anymore.");
+
+
+
+
+
+
+
+
+
