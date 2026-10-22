@@ -1,5 +1,5 @@
 
-
+import os
 import re
 import struct
 import sys
@@ -162,30 +162,191 @@ _KS_SYMBOL = re.compile("[\u2014\u2018\u2019\u201c\u201d\u2025\u2030\u2032\u2033
                         "\u2500-\u257f\u25a0-\u25ff\u3010\u3011\u3000]")
 _CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 
+# ---------------------------------------------------------------------------
+# Text decoding (Korean / Traditional-Chinese / Simplified-Chinese builds)
+#
+# The script data is a raw byte stream in the code page of the client build:
+# CP949 Korean, Big5 Traditional Chinese or GBK Simplified Chinese.  The three
+# byte ranges overlap heavily, so every one of these codecs can "read" the
+# other two as plausible garbage - Big5 strings routinely also decode as fake
+# Hangul and Korean strings as fake Hanzi - so a single-codec guess is not
+# enough.  Instead every allowed codec must decode the string strictly and
+# pass a glyph gate, and the candidates are scored by how many of their Han
+# glyphs or Hangul syllables belong to a curated set of characters that are
+# common in that language.  The highest-scoring candidate wins; when nothing
+# scores above the threshold, the best available Chinese strict decode is
+# used (that is what a Chinese client would show), and the legacy cp1252 /
+# latin-1 fallback remains the last resort for undecodable junk.
+#
+# The language can also be forced with the RDEC_LANG environment variable
+# ("kor", "chs", "cht" or "auto" - the default).
+# ---------------------------------------------------------------------------
+_ZH_TRA = frozenset(
+    "們個時這點實現動隊讓開說話對發問還沒過處應該為後辦買賣裝備經驗職業戰騎師會聖"
+    "導錘項鍊藥遠視範圍頭體腳條記簽驗任務獲錄線連錯誤請輸帳號碼選取消確關閉視窗按指"
+    "示伺服器登密創立角色姓別寶箱賞紀幫訊息物品介切換拖曳點擊憂餘效果持續耗損怒恢復"
+    "速移穿負重修復率爆擊種類臺灣式長權驅除員樣已儲啟煉申組空間答藝都不膽怯勇婦如果"
+    "穿梭蘑菇森林垂釣名從南訪遠維珂隆族譜所歷王國遷移民建立大陸特開拓基本活努力變種"
+    "少始威脅擴領當耐磨久需智運迴致傷祈功廢鐵喔終堂正士雛鳥獨面目前雞為了要內忠誠兵"
+    "槍砲冒歡離敗礦蘊藏發現挑戰學習調樓層隨機等級裝飾置態區域圖傳送檢查方形圓形三角"
+    "條件結算是誰找尋劇情噢注哦快鬼魂覺警衝雙單軍弓榴彈藥火焰冰雷毒課益城鎮村莊巡荒"
+    "野門研究界技命擋數能不丟落到地上道幾打提煉嗎電梯明深度寬高重間結單位量取捨最值"
+    "以及將與使用可以透過力量敏捷幸運盾牌魔杖武器頭盔飾品叫賣收購通關獎勵擊殺目標得"
+    "到經驗值與金錢求排列位置視野半徑生效場合無法其他怪物攻防具備強化附屬屬性死後重"
+    "生週期十五秒半分鐘聚會會長幹部首領成員報名參現在開放開始把關卡四周傳遞送來源方"
+    "向目標距離時麵佈告欄捕捉殺掉灰石精密寶石屬於函數釣魚")
+_ZH_SIM = frozenset(
+    "们个时点实现队让开说话对发问还没过处应该为后办买卖装备经验职业战骑师会圣导锤项"
+    "链药远视范围头体脚条记签验任务获录线连错误请输帐号码选取消确认关闭视窗按指示服"
+    "务器登密创立角色性别宝箱赏纪帮讯息物品界面切换拖曳点击忧余果持续耗损怒恢复速移"
+    "动穿负重修复率爆击码种类台湾正式长权驱除员样已经话储启动炼申请组空间答艺都不胆"
+    "怯勇妇如果穿梭蘑菇森林垂钓名从南访远维珂隆族谱所历史王国迁移民建立大陆特开拓基"
+    "本生活努力变种少始威胁扩领土当耐磨久需智运回致伤祈祷功废铁喔终堂正战士雏鸟独面"
+    "目前鸡为了要内忠诚兵枪炮冒欢离败矿蕴藏发现挑战学习调楼层随机等级装饰置态区域图"
+    "传送检查方形圆形三角条件结算是谁找寻剧情噢注哦快鬼魂觉警冲双单军弓榴弹药火焰冰"
+    "雷毒课益城镇村庄巡荒野门研究界技命挡数能不丢落到地上道具几打提炼吗电梯明深度宽"
+    "高重间结单位量取舍最值以及将与使用可以透过力量敏捷幸运盾牌魔杖武器头盔饰叫收购"
+    "通关奖励击杀目标得到经验值与金钱求排列位置视野半径生效场合无法其他怪物攻防具备"
+    "强化附属属性死后重生周期十五秒半分钟聚会会长干部首领成员报名参现在开放开始把关"
+    "卡四周递送来源方向目标距离时")
+_KR_COMMON = frozenset(
+    "한다은을를에의와과이가로그리고있없않여서명면지한해주것니말함검계속제일위장물품"
+    "상태템사용선택취소확동의거래작업완료실패성공회복경치증가감소시간단추속도이동공격"
+    "방어력마력확률강화보정고블린거인위치좌표존아디이름몬스터엔피시퀘트트립대화상자팝"
+    "업문자열포인트보상금명성아템개수등급제한밸직전사도적법사마성직칸휴먼종족국가버스"
+    "데이직구매월드콘버튼클릭창온라인확인안녕환영감사합니다민국힘벨노가정작업완성체이"
+    "닝먼응즈으금은동철광석보석종이가죽각귀집요"
+)
+_ZH_EXTRA_GLYPHS = frozenset("…—‘’“”·‼‰℃ⓘ㉑㉒㉓㉔㉕¶†‡§℃")
+_ZH_HIT_MIN = 0.18
+_KR_FLOOR = 0.10
+
+
+def _lang_mode() -> str:
+    mode = os.environ.get("RDEC_LANG", "").strip().lower()
+    return mode if mode in ("kor", "chs", "cht") else "auto"
+
+
+def _cjk_glyph(c: str) -> bool:
+    o = ord(c)
+    return (0x3000 <= o <= 0x303F or 0x3400 <= o <= 0x9FFF
+            or 0xF900 <= o <= 0xFAFF or 0xFF00 <= o <= 0xFFEF
+            or o in (0x00A9, 0x00AE, 0x00B0, 0x00D7, 0x2022, 0xFFFD))
+
+
+def _zh_gate(s: str) -> bool:
+    return all(ord(c) <= 127 or _cjk_glyph(c) or c in _ZH_EXTRA_GLYPHS
+               for c in s)
+
+
+def _kr_gate(s: str) -> bool:
+    return all(ord(c) <= 127 or _HANGUL.match(c) or _KS_SYMBOL.match(c)
+               or c == "\ufffd" for c in s)
+
+
+def _han_hits(s: str, charset) -> float:
+    glyphs = [c for c in s
+              if 0x3400 <= ord(c) <= 0x9FFF or 0xF900 <= ord(c) <= 0xFAFF]
+    if not glyphs:
+        return 0.0
+    return sum(c in charset for c in glyphs) / len(glyphs)
+
+
+def _hangul_hits(s: str, charset) -> float:
+    glyphs = [c for c in s if _HANGUL.match(c)]
+    if not glyphs:
+        return 0.0
+    return sum(c in charset for c in glyphs) / len(glyphs)
+
+
+def _cjk_candidates(raw: bytes, mode: str) -> list:
+    """Gate-passing decodes of `raw` per allowed codec, scored.
+
+    Each entry is (codec, text, score).  zh_order honours RDEC_LANG: a
+    forced "cht" / "chs" only accepts its own codec, "auto" scores both
+    (and prefers the codec declared first on a tie).  Korean candidates
+    always use euc-kr first, with CP949 (UHC) as the wider fallback when
+    euc-kr cannot decode the bytes.
+
+    When a codec fails strict decoding the text is retried with
+    errors="replace" at a 0.4 score penalty; this keeps stray junk bytes
+    (the builds contain the odd 0xFF) readable in their proper codepage
+    while leaving the clean decodes in charge.
+    """
+    cands = []
+    zh_order = {"chs": ("cp936",), "cht": ("big5",)}.get(
+        mode, ("big5", "cp936"))
+    if mode != "kor":
+        for codec in zh_order:
+            charset = _ZH_TRA if codec == "big5" else _ZH_SIM
+            zh = _decode_scored(raw, codec)
+            if zh is None:
+                continue
+            s, penalty = zh
+            if _zh_gate(s):
+                cands.append((codec, s, _han_hits(s, charset) * penalty))
+    kr = None
+    for codec in ("euc-kr", "cp949"):
+        s, penalty = _decode_scored(raw, codec, allow_replacement=False)
+        if s is None:
+            continue
+        if _kr_gate(s):
+            hits = _hangul_hits(s, _KR_COMMON)
+            if len(cands) == 0 or mode == "kor":
+                # no Chinese candidate exists to compare against, so let
+                # plain evidence (any all-Hangul decode) count for Korean
+                hits = max(hits, _KR_FLOOR)
+            kr = (codec, s, hits * penalty)
+            break
+        s, penalty = _decode_scored(raw, codec, allow_replacement=True)
+        if s is not None and _kr_gate(s):
+            hits = _hangul_hits(s, _KR_COMMON) * penalty
+            if len(cands) == 0 and codec == "euc-kr":
+                hits = max(hits, _KR_FLOOR * penalty)
+            kr = (codec, s, hits)
+            break
+    if kr is not None:
+        cands.append(kr)
+    return cands
+
+
+def _decode_scored(raw: bytes, codec: str, allow_replacement: bool = True):
+    """(text, penalty) if the codec yields text at all, else (None, 0)."""
+    try:
+        return raw.decode(codec), 1.0
+    except UnicodeDecodeError:
+        if not allow_replacement:
+            return None, 0.0
+    return raw.decode(codec, errors="replace"), 0.4
+
 
 def smart_str(raw: bytes) -> str:
+    """Decode raw game bytes as UTF-8 / CJK (Korean, Chinese) / cp1252 text."""
+    if raw.isascii():
+        return raw.decode("ascii")
     try:
         return raw.decode("utf-8")
     except UnicodeDecodeError:
         pass
-    try:
-        return _kr_evidence(raw)
-    except UnicodeDecodeError:
-        pass
+    mode = _lang_mode()
+    cands = _cjk_candidates(raw, mode)
+    best = max(cands, key=lambda c: c[2], default=None)
+    if best is not None and best[2] >= _ZH_HIT_MIN:
+        return best[1]
+    if best is not None and mode == "kor":
+        # kor mode replicates the legacy gate: any strictly decodable
+        # Hangul/KS-symbol line is accepted as Korean
+        return best[1]
+    zh = [c for c in cands if c[0] in ("big5", "cp936")]
+    if zh:
+        # nothing scored above the threshold, but a Chinese decode of the
+        # bytes exists: that is what a Chinese client would show, so prefer
+        # it over latin junk
+        return max(zh, key=lambda c: c[2])[1]
     try:
         return raw.decode("cp1252")
     except UnicodeDecodeError:
         return raw.decode("latin-1")
-
-
-def _kr_evidence(raw: bytes) -> str:
-    s = raw.decode("euc-kr")
-    non_ascii = [c for c in s if ord(c) > 127]
-    if not non_ascii:
-        raise UnicodeDecodeError("euc-kr", raw, 0, 1, "no Korean evidence")
-    if all(_KS_SYMBOL.match(c) or _HANGUL.match(c) for c in non_ascii):
-        return s
-    raise UnicodeDecodeError("euc-kr", raw, 0, 1, "no Korean evidence")
 
 
 def clean_text(s: str) -> str:

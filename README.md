@@ -12,6 +12,7 @@ An interactive prompt menu decompiles every `.mcf` / `.gsf` / `.ncf` script asse
 - `.gsf` handler: items, monsters, skills, chemical recipes, abuse filter, monster chat, and Lua bytecode (`SkillScriptEX`)
 - Every output is `.txt`-only with the rDec banner on top - input binaries are only ever read, never overwritten
 - Debug mode via `RDEC_LOG_LEVEL=DEBUG`
+- Text decoding for Korean (`CP949`), Traditional-Chinese (`Big5`) and Simplified-Chinese (`GBK`) builds - e.g. `ROW/Origin` (Taiwan build) strings decompile cleanly instead of `¥xÆW¥¿¦¡¦øªA¾¹`-style mojibake. The language is detected per string; force it with the `RDEC_LANG` environment variable (`RDEC_LANG=kor`, `chs`, `cht`; default `auto`)
 
 ## Usage
 
