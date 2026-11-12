@@ -1,47 +1,42 @@
-import os, time
-from sys import stdout
+import os as _0x02fe
+from sys import stdout as _0x0300
 try:
-    from colorama import Fore, Style
+    from colorama import Fore as _0x0010
 except ImportError:
-    class _NoColor:
-        def __getattr__(self, _name):
-            return ""
-    Fore, Style = _NoColor(), _NoColor()
 
+    class _0x000f:
 
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+        def __getattr__(_0x0191, _0x0192):
+            return ''
+    _0x0010 = _0x000f()
 
+def _0x000b():
+    _0x02fe.system('cls' if _0x02fe.name == 'nt' else 'clear')
 
-def banners():
-    stdout.write("                                                                                         \n")
-    stdout.write(""+Fore.LIGHTRED_EX +"██████╗ ██████╗ ███████╗ ██████╗\n")
-    stdout.write(""+Fore.LIGHTRED_EX +"██╔══██╗██╔══██╗██╔════╝██╔════╝\n")
-    stdout.write(""+Fore.LIGHTRED_EX +"██████╔╝██║  ██║█████╗  ██║     \n")
-    stdout.write(""+Fore.LIGHTRED_EX +"██╔══██╗██║  ██║██╔══╝  ██║     \n")
-    stdout.write(""+Fore.LIGHTRED_EX +"██║  ██║██████╔╝███████╗╚██████╗\n")
-    stdout.write(""+Fore.LIGHTRED_EX +"╚═╝  ╚═╝╚═════╝ ╚══════╝ ╚═════╝\n")
-    stdout.write(""+Fore.YELLOW +"═════════════╦═════════════════════════════════╦══════════════════════════════\n")
-    stdout.write(""+Fore.YELLOW   +"╔════════════╩═════════════════════════════════╩═════════════════════════════╗\n")
-    stdout.write(""+Fore.YELLOW   +"║ \x1b[38;2;255;20;147m• "+Fore.GREEN+"AUTHOR             "+Fore.RED+"    |"+Fore.LIGHTWHITE_EX+"   Ap0dex Me0                                    "+Fore.YELLOW+"║\n")
-    stdout.write(""+Fore.YELLOW   +"╔════════════════════════════════════════════════════════════════════════════╝\n")
-    stdout.write(""+Fore.YELLOW   +"║ \x1b[38;2;255;20;147m• "+Fore.GREEN+"GITHUB             "+Fore.RED+"    |"+Fore.LIGHTWHITE_EX+"   GITHUB.COM/AP0DEXME0                          "+Fore.YELLOW+"║\n")
-    stdout.write(""+Fore.YELLOW   +"╚════════════════════════════════════════════════════════════════════════════╝\n") 
-    print(f"{Fore.YELLOW}[RDEC] - {Fore.GREEN}Decompiling Return Of Warrior (ROW) & Risk Your Life (RYL) MMORPG{Fore.RED} [V0.3] \n{Fore.RESET}")
+def _0x000c():
+    _0x0300.write('' + _0x0010.LIGHTRED_EX + '██████╗ ██████╗ ███████╗ ██████╗\n')
+    _0x0300.write('' + _0x0010.LIGHTRED_EX + '██╔══██╗██╔══██╗██╔════╝██╔════╝\n')
+    _0x0300.write('' + _0x0010.LIGHTRED_EX + '██████╔╝██║  ██║█████╗  ██║     \n')
+    _0x0300.write('' + _0x0010.LIGHTRED_EX + '██╔══██╗██║  ██║██╔══╝  ██║     \n')
+    _0x0300.write('' + _0x0010.LIGHTRED_EX + '██║  ██║██████╔╝███████╗╚██████╗\n')
+    _0x0300.write('' + _0x0010.LIGHTRED_EX + '╚═╝  ╚═╝╚═════╝ ╚══════╝ ╚═════╝\n')
+    _0x0300.write('' + _0x0010.YELLOW + '═════════════╦═════════════════════════════════╦══════════════════════════════\n')
+    _0x0300.write('' + _0x0010.YELLOW + '╔════════════╩═════════════════════════════════╩═════════════════════════════╗\n')
+    _0x0300.write('' + _0x0010.YELLOW + '║ ' + _0x0010.LIGHTRED_EX + '• ' + _0x0010.GREEN + 'AUTHOR             ' + _0x0010.YELLOW + '    |' + _0x0010.LIGHTWHITE_EX + '   Ap0dex Me0                                    ' + _0x0010.YELLOW + '║\n')
+    _0x0300.write('' + _0x0010.YELLOW + '╠════════════════════════════════════════════════════════════════════════════╣\n')
+    _0x0300.write('' + _0x0010.YELLOW + '║ ' + _0x0010.LIGHTRED_EX + '• ' + _0x0010.GREEN + 'GITHUB             ' + _0x0010.YELLOW + '    |' + _0x0010.LIGHTWHITE_EX + '   GITHUB.COM/AP0DEXME0                          ' + _0x0010.YELLOW + '║\n')
+    _0x0300.write('' + _0x0010.YELLOW + '╚════════════════════════════════════════════════════════════════════════════╝\n')
+    print(f'{_0x0010.YELLOW}[RDEC] - {_0x0010.GREEN}Return Of Warrior (ROW) & Risk Your Life (RYL) 1/2 MMORPG {_0x0010.YELLOW}[V0.5]{_0x0010.RESET}\n')
 
+def _0x000d():
+    _0x000b()
+    _0x000c()
 
-def clear_and_print():
-    time.sleep(1)
-    clear_screen()
-    banners()
-
-
-def file_banner(stamp=None):
-    from datetime import datetime
-    import sys
-    if stamp is None:
-        stamp = datetime.now().strftime("%#m/%#d/%Y %#I:%M:%S %p") \
-            if sys.platform == "win32" else datetime.now().strftime("%-m/%-d/%Y %-I:%M:%S %p")
-    title = f"// rDecompiler By Ap0dexMe0 {stamp}   //"
-    bar = "/" * max(52, len(title) + 1)
-    return [bar, title, bar]
+def _0x000e(_0x0190=None):
+    from datetime import datetime as _0x0301
+    import sys as _0x0302
+    if _0x0190 is None:
+        _0x0190 = _0x0301.now().strftime('%#m/%#d/%Y %#I:%M:%S %p') if _0x0302.platform == 'win32' else _0x0301.now().strftime('%-m/%-d/%Y %-I:%M:%S %p')
+    _0x0303 = f'// rDecompiler By Ap0dexMe0 {_0x0190}   //'
+    _0x0304 = '/' * max(52, len(_0x0303) + 1)
+    return [_0x0304, _0x0303, _0x0304]

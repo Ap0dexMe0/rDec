@@ -1,0 +1,64 @@
+void MonsterChat(int, int, int, int, int, string); // KID, MonsterAction, Monster SkillsID, Chattingtypes, Probability, ChattingMessage
+
+//Ancient Guardian																		
+MonsterChat(4001, 6, 0, 255, 100, "Dßng m¸u trong ng­êi b¹n nh­ ®«ng cøng l¹i khi Ancient Guardian b­íc ch©n lªn vïng Woods of Death.");
+MonsterChat(4001, 2, 0xFFFF, 0, 10, "$DEFNAME$ kh«ng thÓ .. tiÕn lªn.. thªm chót nµo..");
+MonsterChat(4001, 2, 0xFFFF, 0, 10, "$DEFNAME$ trªn ®Çu gèi... Chµo ta ®i, ®å ngèc!");
+MonsterChat(4001, 4, 0, 0, 50, "Ng­¬i sÏ kh«ng qua ®­îc.");
+MonsterChat(4001, 4, 0, 0, 50, "ChÝnh ta lµ ng­êi canh g¸c m¶nh ®Êt nµy.");									
+MonsterChat(4001, 7, 0, 0, 100, "Ta sÏ kh«ng chÕt, kh«ng ph¶i lóc nµy.");										
+MonsterChat(4001, 7, 0, 255, 100, "[$KILLERNAME$] ®· ®¸nh b¹i Ancient Guardian trªn vïng Woods of Death.");		
+					
+//Death Bringer
+MonsterChat(4004, 6, 0, 255, 100, "Death Bringer võa vµo vïng Woods of Death.");
+MonsterChat(4004, 2, 0xFFFF, 0, 10, "$DEFNAME$ t¹i sao ng­¬i kh«ng tù nép m¹ng?");
+MonsterChat(4004, 2, 0xFFFF, 0, 10, "$DEFNAME$ c¸i chÕt ®ang ®Õn rÊt gÇn. H·y ®Ó ta gióp.");
+MonsterChat(4004, 4, 0, 0, 50, "Dimensional Portal ®ang bÞ ph¸ hñy.");
+MonsterChat(4004, 4, 0, 0, 50, "Ng­¬i cã muèn ®i cïng ta tíi vïng Dimension of Death?");
+MonsterChat(4004, 7, 0, 0, 100, "$KILLERNAME$ ng­¬i ®i tr­íc vµ ®îi ta.");
+MonsterChat(4004, 7, 0, 255, 100, "[$KILLERNAME$] ®· ®¸nh b¹i Death Bringer.");
+
+//Bree
+MonsterChat(4005, 6, 0, 255, 100, "Bree nh×n mét c¸ch l¹nh lïng vÒ h­íng b¹n.");
+MonsterChat(4005, 2, 0xFFFF, 0, 10, "$DEFNAME$ ng­¬i cã mét c¬ thÓ thËt mÒm m¹i, h·y cho ta c¾n mét miÕng.");
+MonsterChat(4005, 2, 0xFFFF, 0, 10, "$DEFNAME$ ta sÏ göi ng­¬i tíi vïng Dimension of Death?");
+MonsterChat(4005, 4, 0, 0, 50, "Ng­¬i kh«ng lµm ta hµi lßng nh­ ta mong ®îi... Ng­¬i lµm ta ch¸n.");
+MonsterChat(4005, 4, 0, 0, 50, "Ng­¬i chØ cã nh­ vËy sao?");
+MonsterChat(4005, 7, 0, 0, 100, "$KILLERNAME$ Ta lu«n mong muèn ®ãn nhËn c¶m gi¸c nµy...");
+MonsterChat(4005, 7, 0, 255, 100, "[$KILLERNAME$] ®· ®¸nh b¹i Bree.");
+
+//Smoldering Death
+MonsterChat(4006, 6, 0, 255, 100, "Smoldering Death tù lé diÖn t¹i Caernarvon.");
+MonsterChat(4006, 2, 0xFFFF, 0, 10, " $DEFNAME$ §õng cã bá ch¹y, Ta sÏ sím kÕt thóc ng­¬i.");
+MonsterChat(4006, 2, 0xFFFF, 0, 10, "HAHAHA. $DEFNAME$ Ng­¬i vÉn ch­a thùc sù bá cuéc, ph¶i kh«ng?");
+MonsterChat(4006, 4, 0, 0, 50, "HAHAHA. Ta thÝch nh÷ng kÎ yÕu ®uèi. Ta cã thÓ ®ïa giìn víi ng­¬i chõng nµo ta muèn!");
+MonsterChat(4006, 4, 0, 0, 50, "HAHA. $DEFNAME$, Ng­¬i kh«ng ®au chø, ph¶i kh«ng?");
+MonsterChat(4006, 7, 0, 0, 100, "$KILLERNAME$, Ta ®· ®Æt lêi nguyÒn cho dßng m¸u nhµ ng­¬i!");
+MonsterChat(4006, 7, 0, 255, 100, "[$KILLERNAME$] ®· ®¸nh b¹i Smoldering Death.");
+
+//Hydra
+MonsterChat(99, 6, 0, 255, 100, "Hydra tho¸t ra khái ®èng r¸c bÈn cña vïng Gavial Swamp Valley.");
+MonsterChat(99, 2, 0xFFFF, 0, 10, "Kahahh-");
+MonsterChat(99, 2, 0xFFFF, 0, 10, "Kahaa- kahaa-");
+MonsterChat(99, 4, 0, 0, 50, "Kiahaa-");
+MonsterChat(99, 4, 0, 0, 50, "Kiahhha-");
+MonsterChat(99, 7, 0, 0, 100, "ahhhaa..$KILLERNAME$..");
+MonsterChat(99, 7, 0, 255, 100, "[$KILLERNAME$] ®· ®¸nh b¹i Hydra.");
+
+//Brute
+MonsterChat(166, 6, 0, 255, 100, "Qu¸i vËt kinh khñng Brute xuÊt hiÖn t¹i South Nohnuut Field!");
+MonsterChat(166, 2, 0xFFFF, 0, 10, "B©y giê, nh÷ng con kiÕn bÐ báng yÕu ít sÏ ph¶i ch¹y chèn nÕu chóng biÕt c¸i g× lµ tèt cho chóng.");
+MonsterChat(166, 2, 0xFFFF, 0, 10, "§õng sî h·i, lò kiÕn. Chóng mµy ®ang c¶m thÊy g×?. Ta sÏ lµm chóng mµy chÕt ngay lËp tøc!");
+MonsterChat(166, 4, 0, 0, 50, "C¸i g×? Lò kiÕn ®ang lµm g× vËy?!");
+MonsterChat(166, 4, 0, 0, 50, "§õng cã chäc giËn Brute!");
+MonsterChat(166, 7, 0, 0, 100, "AGH! §au qu¸! Ta ®· bÞ th­¬ng bëi $KILLERNAME$... ng­êi cã søc kháe phi th­êng ...");
+MonsterChat(166, 7, 0, 255, 100, "[$KILLERNAME$], ®· ®¸nh b¹i Brute kÎ khñng bè vïng South Nohnuut Field.");
+
+//Fallen Archfiend
+MonsterChat(4007, 6, 0, 255, 100, "Qu¸i vËt [Fallen Archfiend] xuÊt hiÖn t¹i vïng Collapsed Dimensional Gateway.");
+MonsterChat(4007, 2, 0xFFFF, 0, 10, "Mét c¬ thÓ kh«ng cã linh hån..");
+MonsterChat(4007, 2, 0xFFFF, 0, 10, "kh«ng cã nh÷ng c¶m gi¸c ®au ®ín!");
+MonsterChat(4007, 4, 0, 0, 50, "Ah, sinh vËt yÕu ®uèi. Nhµ ng­êi ®· uæng phÝ thêi gian cña m×nh! vµ ta sÏ r©t sung s­íng nh×n ng­¬i qu»n qu¹i trong bµn tay cña ta!");
+MonsterChat(4007, 4, 0, 0, 50, "Sù ®éc ¸c cña ta ®· m¹nh h¬n ta t­ëng!");
+MonsterChat(4007, 7, 0, 0, 100, "$KILLERNAME$ - Sù ®éc ¸c trong ta sÏ tån t¹i m·i m·i cho dï h«m nay ta cã thÊt b¹i!");
+MonsterChat(4007, 7, 0, 255, 100, "[$KILLERNAME$], ®· ®¸nh b¹i [Fallen Archfiend] t¹i vïng Collapsed Dimensional Gateway.");

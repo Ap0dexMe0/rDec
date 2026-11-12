@@ -1,60 +1,100 @@
 # rDec - RYL Decompiler
 
-An interactive prompt menu decompiles every `.mcf` / `.gsf` / `.ncf` script asset for a selected RYL game version - no command-line arguments needed.
+rDec is an interactive tool for decompiling game script files from different Risk Your Life (RYL) versions. Simply select a game, choose a version, and let rDec handle the rest.
 
 ## Features
 
-- Interactive prompt menu - pick a game, pick a version, confirm, done
-- Single-key decompile per game version (`ROW/Origin`, `ROW/Other`, `RYL1`, `RYL2/…`)
-- Automatic version discovery - a new version sub-folder under `script/ROW` or `script/RYL2` shows up in that game's submenu automatically, no code changes. A folder holding nothing but version folders (e.g. `script/RYL2` with its era builds) is treated as a group and each sub-folder is offered as its own version
-- Recursive file discovery with relative paths preserved
-- `.mcf` handler: NPC scripts, quests, and world scripts to readable RYL script text
-- `.gsf` handler: items, monsters, skills, chemical recipes, abuse filter, monster chat, and Lua bytecode (`SkillScriptEX`)
-- Every output is `.txt`-only with the rDec banner on top - input binaries are only ever read, never overwritten
-- Debug mode via `RDEC_LOG_LEVEL=DEBUG`
-- Text decoding for Korean (`CP949`), Traditional-Chinese (`Big5`) and Simplified-Chinese (`GBK`) builds - e.g. `ROW/Origin` (Taiwan build) strings decompile cleanly instead of `¥xÆW¥¿¦¡¦øªA¾¹`-style mojibake. The language is detected per string; force it with the `RDEC_LANG` environment variable (`RDEC_LANG=kor`, `chs`, `cht`; default `auto`)
+- **Interactive Menu** - Select a game and version directly from the menu.
+- **Directory Settings** - Configure and save your server-side and client-side directories.
+- **Multiple Game Support** - Supports ROW, RYL1, and RYL2.
+- **Automatic Version Detection** - Automatically detects available game versions.
+- **Batch Decompilation** - Decompile all supported files in one operation.
+- **Multiple File Support** - Supports `.mcf`, `.gsf`, and `.ncf` files.
+- **Organized Output** - Decompiled files are saved as `.txt` files inside the `decompiled/` folder.
+- **Language Support** - Supports Korean, Traditional Chinese, and Simplified Chinese text.
+- **Compiler (TXT → GSF/MCF)** - Rebuild game script files from edited text files (RYL2 only).
+- **Separate Workspace** - Keeps original game files and decompiled text files organized separately.
+- **Original File Protection** - Original files are never modified during decompilation.
+
+## Requirements & Installation
+
+**Requirements:**
+- Python 3.8 or newer
+- Java Runtime (required only for Lua bytecode support)
+
+**Installation:**
+
+```bash
+python -m venv venv
+pip install -r requirements.txt
+```
 
 ## Usage
 
-Run rDec and pick from the prompt menu:
+Start rDec using:
 
 ```bash
 python main.py
 ```
 
-| Option | Meaning |
+Select an option from the main menu:
+
+| Option | Description |
 |---|---|
-| `1` Return of Warriors (ROW) | Pick `Original ROW (Rowplayon)` or `Other ROW Versions`, then confirm to decompile every supported file inside |
-| `2` Risk Your Life 1 (RYL1) | Decompiles directly - RYL1 has no sub-versions |
-| `3` Risk Your Life 2 (RYL2) | Pick `V1700–V1900` or `V2000–V2240`, then confirm to decompile every supported file inside |
-| `0` Exit | Close rDec |
+| `1` Decompile | Select a game and version to decompile its script files. |
+| `2` Compile | Rebuild script files from edited `.txt` files (RYL2 only). |
+| `3` Directory Settings | Configure your server-side and client-side directories. |
+| `0` Exit | Close rDec. |
 
-Flow when decompiling: rDec scans the selected folder first and reports how many `.mcf`/`.gsf`/`.ncf` files it found, asks `Decompile all supported files? [Y/n]`, then writes each output as `.txt` next to the input.
+### Directory Settings
 
-## Requirements & Installation
+Configure your server-side and client-side directories through the settings menu.
 
-- Python 3.8+
-- Java runtime for Lua bytecode (`SkillScriptEX.gsf`) only
+Your settings are saved automatically in `config.ini` and can be changed whenever needed.
 
-```bash
-python -m venv venv
-pip install -r requirements.txt
+## Workspace Structure
 
-```
-## Current Testing
+Each game version uses two separate folders:
 
-- ROW
-- RYL1
-- RYL2 (V1700-V2240 build):
+| Folder | Description |
+|---|---|
+| `compiled/` | Original game script files. |
+| `decompiled/` | Decompiled `.txt` files and editable scripts. |
 
-https://github.com/user-attachments/assets/98864fa3-6d12-48df-a4c2-7473397f825f
+**Decompilation:** Reads files from `compiled/` and saves the results in `decompiled/`.
 
-### Supported version folders
+**Compilation:** Reads edited `.txt` files from `decompiled/` and generates game files in `compiled/`.
 
-| Version ID | Folder | State |
+## Compiler (RYL2 Only)
+
+The compiler allows you to rebuild game script files after making changes to the decompiled text files.
+
+Supported file types include:
+
+- NPC scripts
+- Quest scripts
+- World scripts
+- Item scripts
+- Monster data
+- Skill scripts
+- Chemical recipes
+- Abuse filter
+- Monster chat
+- Mineral vein data
+- Special compensation data
+
+**Note:** Keep a backup of your original files before compiling. Newly generated files may replace existing files in the `compiled/` folder.
+
+## Supported Versions
+
+| Game / Version | Directory | Status |
 |---|---|---|
-| `ROW/Origin` | `script/ROW/Origin` | Original ROW - decompiles |
-| `ROW/Other` | `script/ROW/Other` | Other ROW builds - decompiles (9/9 files; item rows are 616 bytes without the trailer, `.mcf` op scripts use MCF key `0xE2E5DCE7`) |
-| `RYL1` | `script/RYL1` | decompiles (4 GSF + 2 MCF); `SpeacialCompensation.gsf` needs crypt page `(3, 4)` |
-| `RYL2 V1700-V1900` | `script/RYL2/V1700-V1900` | decompiles |
-| `RYL2 V2000-V2240` | `script/RYL2/V2000-V2240` | 9/10 files; `SpeacialCompensation.gsf` needs crypt page `(3, 4)` from the V2000+
+| ROW / Origin | `script/ROW/Origin` | Decompiled Only |
+| ROW / Other | `script/ROW/Other` | Supported |
+| RYL1 | `script/RYL1` | Supported |
+| RYL2 V1700-V1900 | `script/RYL2/V1700-V1900` | Supported |
+| RYL2 V2000-V2240 | `script/RYL2/V2000-V2240` | Supported |
+
+### Preview
+
+[View rDec in action](https://github.com/user-attachments/assets/98864fa3-6d12-48df-a4c2-7473397f825f)

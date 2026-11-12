@@ -1,0 +1,69 @@
+////////////////////////////////////////////////////////
+// rDecompiler By Ap0dexMe0 11/12/2026 11:24:26 AM   //
+////////////////////////////////////////////////////////
+// rDec-Schema: monsterchat
+
+void MonsterChat(int, int, int, int, int, string); // KID, MonsterAction, Monster SkillsID, Chattingtypes, Probability, ChattingMessage
+
+//Ancient Guardian																		
+MonsterChat(4001, 6, 0, 255, 100, "The blood in your body hardens as Ancient Guardian enters the Woods of Death.");
+MonsterChat(4001, 2, 0xFFFF, 0, 10, "$DEFNAME$ cannot advance any further..");
+MonsterChat(4001, 2, 0xFFFF, 0, 10, "$DEFNAME$ on the knee... Greet me, you fool!");
+MonsterChat(4001, 4, 0, 0, 50, "You will not pass.");
+MonsterChat(4001, 4, 0, 0, 50, "I am the one guarding this land.");
+MonsterChat(4001, 7, 0, 0, 100, "I will not die, not now.");
+MonsterChat(4001, 7, 0, 255, 100, "[$KILLERNAME$] has defeated Ancient Guardian in the Woods of Death.");
+					
+//Death Bringer
+MonsterChat(4004, 6, 0, 255, 100, "Death Bringer has just entered the Woods of Death.");
+MonsterChat(4004, 2, 0xFFFF, 0, 10, "$DEFNAME$ why don't you submit your life?");
+MonsterChat(4004, 2, 0xFFFF, 0, 10, "$DEFNAME$ death is coming very near. Let me help you.");
+MonsterChat(4004, 4, 0, 0, 50, "The Dimensional Portal is being destroyed.");
+MonsterChat(4004, 4, 0, 0, 50, "Do you want to come with me to the Dimension of Death?");
+MonsterChat(4004, 7, 0, 0, 100, "$KILLERNAME$ go ahead and wait for me.");
+MonsterChat(4004, 7, 0, 255, 100, "[$KILLERNAME$] has defeated Death Bringer.");
+
+//Bree
+MonsterChat(4005, 6, 0, 255, 100, "Bree looked at you coldly.");
+MonsterChat(4005, 2, 0xFFFF, 0, 10, "$DEFNAME$ you have a soft body, let me take a bite.");
+MonsterChat(4005, 2, 0xFFFF, 0, 10, "$DEFNAME$ shall I send you to the Dimension of Death?");
+MonsterChat(4005, 4, 0, 0, 50, "You don't satisfy me as I expected... You bore me.");
+MonsterChat(4005, 4, 0, 0, 50, "Is that all you've got?");
+MonsterChat(4005, 7, 0, 0, 100, "$KILLERNAME$ I always wish to receive this feeling...");
+MonsterChat(4005, 7, 0, 255, 100, "[$KILLERNAME$] has defeated Bree.");
+
+//Smoldering Death
+MonsterChat(4006, 6, 0, 255, 100, "Smoldering Death has revealed itself at Caernarvon.");
+MonsterChat(4006, 2, 0xFFFF, 0, 10, " $DEFNAME$ don't run away, I will finish you soon.");
+MonsterChat(4006, 2, 0xFFFF, 0, 10, "HAHAHA. $DEFNAME$ You haven't really given up yet, have you?");
+MonsterChat(4006, 4, 0, 0, 50, "HAHAHA. I like weak ones. I can play with you whenever I want!");
+MonsterChat(4006, 4, 0, 0, 50, "HAHA. $DEFNAME$, it doesn't hurt, does it?");
+MonsterChat(4006, 7, 0, 0, 100, "$KILLERNAME$, I have placed a curse on your bloodline!");
+MonsterChat(4006, 7, 0, 255, 100, "[$KILLERNAME$] has defeated Smoldering Death.");
+
+//Hydra
+MonsterChat(99, 6, 0, 255, 100, "Hydra has escaped out of the pile of dirty trash of Gavial Swamp Valley.");
+MonsterChat(99, 2, 0xFFFF, 0, 10, "Kahahh-");
+MonsterChat(99, 2, 0xFFFF, 0, 10, "Kahaa- kahaa-");
+MonsterChat(99, 4, 0, 0, 50, "Kiahaa-");
+MonsterChat(99, 4, 0, 0, 50, "Kiahhha-");
+MonsterChat(99, 7, 0, 0, 100, "ahhhaa..$KILLERNAME$..");
+MonsterChat(99, 7, 0, 255, 100, "[$KILLERNAME$] has defeated Hydra.");
+
+//Brute
+MonsterChat(166, 6, 0, 255, 100, "The terrifying monster Brute has appeared at South Nohnuut Field!");
+MonsterChat(166, 2, 0xFFFF, 0, 10, "Now, the tiny weak ants will have to run if they know what's good for them.");
+MonsterChat(166, 2, 0xFFFF, 0, 10, "Don't be afraid, ants. What are you feeling? I will make you die right now!");
+MonsterChat(166, 4, 0, 0, 50, "What? What are the ants doing?!");
+MonsterChat(166, 4, 0, 0, 50, "Don't provoke Brute's anger!");
+MonsterChat(166, 7, 0, 0, 100, "AGH! It hurts so much! I have been wounded by $KILLERNAME$... you have extraordinary health...");
+MonsterChat(166, 7, 0, 255, 100, "[$KILLERNAME$], has defeated Brute, terrorist of South Nohnuut Field.");
+
+//Fallen Archfiend
+MonsterChat(4007, 6, 0, 255, 100, "The monster [Fallen Archfiend] has appeared at Collapsed Dimensional Gateway.");
+MonsterChat(4007, 2, 0xFFFF, 0, 10, "A body without a soul..");
+MonsterChat(4007, 2, 0xFFFF, 0, 10, "No pain at all!");
+MonsterChat(4007, 4, 0, 0, 50, "Ah, weak creature. You have wasted your own time! and I will be very happy to watch you writhe in my hand!");
+MonsterChat(4007, 7, 0, 0, 100, "$KILLERNAME$ - The cruelty within me is stronger than I thought!");
+MonsterChat(4007, 7, 0, 0, 100, "$KILLERNAME$ - The cruelty within me will exist forever even if I fail today!");
+MonsterChat(4007, 7, 0, 255, 100, "[$KILLERNAME$], has defeated [Fallen Archfiend] at Collapsed Dimensional Gateway.");

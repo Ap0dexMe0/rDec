@@ -1,0 +1,1351 @@
+Level 1
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 2
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 3
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 4
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 5
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 6
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 7
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 8
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 9
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 10
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 11
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 12
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 13
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 14
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 15
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 16
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 17
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 18
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 19
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 20
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 21
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 22
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 23
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 24
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 25
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 26
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 27
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 28
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 29
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 30
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 31
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 32
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 33
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 34
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 35
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 36
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 37
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 38
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 39
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 40
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 41
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 42
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 43
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 44
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 45
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 46
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 47
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 48
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 49
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 50
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 51
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 52
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 53
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 54
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 55
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 56
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 57
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 58
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 59
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 60
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 61
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 62
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 63
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 64
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 65
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 66
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 67
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 68
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 69
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 70
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 71
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 72
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 73
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 74
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 75
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 76
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 77
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 78
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 79
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 80
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 81
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 82
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 83
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 84
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 85
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 86
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 87
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 88
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 89
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 90
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 91
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 92
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 93
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 94
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 95
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 96
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 97
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 98
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 99
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 100
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 101
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 102
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 103
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 104
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 105
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 106
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 107
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 108
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 109
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 110
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 111
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 112
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 113
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 114
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 115
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 116
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 117
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 118
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 119
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 120
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 121
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 122
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 123
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 124
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 125
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 126
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 127
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 128
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 129
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 130
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 131
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 132
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 133
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 134
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 135
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 136
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 137
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 138
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 139
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 140
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 141
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 142
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 143
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 144
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 145
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 146
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 147
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 148
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 149
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+Level 150
+	AAA Grade	
+	AA Grade	
+	A Grade	
+	B Grade	
+	C Grade	
+	D Grade	
+	F Grade	
+	X Grade	
+	AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade		AAA Grade		AA Grade		A Grade		B Grade		C Grade		D Grade		F Grade		X Grade	

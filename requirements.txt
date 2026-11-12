@@ -1,2 +1,4 @@
+capstone==5.0.9
 colorama==0.4.6
+lzallright==0.2.6
 python-lzo==1.15
